@@ -6,17 +6,18 @@
 package JFrame;
 //Libreria de animaciones
 import AppPackage.AnimationClass;
+import Class.Metodos;
 import javax.swing.JOptionPane;
 /**
  *
- * @author toshib
+ * @author Randald Villegas
  */
-public class Inicio extends javax.swing.JFrame {
+public class VentanaInicio extends javax.swing.JFrame {
     private boolean navBar;
     /**
      * Creates new form Login
      */
-    public Inicio() {
+    public VentanaInicio() {
         initComponents();
         Boolean navBar = false;
         menu.setSize(0,0);
@@ -37,6 +38,8 @@ public class Inicio extends javax.swing.JFrame {
         menu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        usuarioActual = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabelMenu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -75,6 +78,15 @@ public class Inicio extends javax.swing.JFrame {
 
         background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 500));
 
+        usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 120, -1));
+
+        jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel5.setText("Welcome");
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
+
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 418, 1000, 10));
 
@@ -105,7 +117,7 @@ public class Inicio extends javax.swing.JFrame {
         });
         background.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 40, 50));
 
-        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login.png"))); // NOI18N
+        jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -114,7 +126,9 @@ public class Inicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
+        //Damos el saludo al usuario logueado
+        usuarioActual.setText(null);
+        usuarioActual.setText(Metodos.getInstance().getUsuarioLogueado().getNombreUsuario());
     }//GEN-LAST:event_formWindowOpened
 
     private void botonCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCerrarMouseClicked
@@ -135,10 +149,11 @@ public class Inicio extends javax.swing.JFrame {
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
         //Para minimizar la ventana
-        this.setState(JFrame.Inicio.ICONIFIED);
+        this.setState(JFrame.VentanaInicio.ICONIFIED);
     }//GEN-LAST:event_botonMinimizarMouseClicked
 
     private void jLabelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMenuMouseClicked
+        //controla el movimiento del menu
         if (navBar == true){                
             menu.setSize(50, 0);   
             navBar = false;                
@@ -165,21 +180,23 @@ public class Inicio extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Inicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VentanaInicio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Inicio().setVisible(true);
+                new VentanaInicio().setVisible(true);
             }
         });
     }
@@ -192,8 +209,10 @@ public class Inicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelMenu;
     private javax.swing.JPanel menu;
+    private javax.swing.JLabel usuarioActual;
     // End of variables declaration//GEN-END:variables
 }
