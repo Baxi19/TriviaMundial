@@ -26,7 +26,7 @@ public class Metodos {
     //Constructor
     protected Metodos() {
         this.listaUsuarios = new ArrayList<Usuario>();
-        this.usuarioLogueado = new Usuario("", "", "", "", "", "", fotografia);
+        this.usuarioLogueado = new Usuario("", "", "", "", "", "", fotografia,50);
         
     }
     //set & get de listas

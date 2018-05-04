@@ -73,6 +73,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel2.setBounds(60, 120, 70, 40);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Home_32px.png"))); // NOI18N
+        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel4MouseClicked(evt);
+            }
+        });
         menu.add(jLabel4);
         jLabel4.setBounds(170, 120, 40, 40);
 
@@ -162,6 +167,12 @@ public class VentanaInicio extends javax.swing.JFrame {
             navBar = true; 
         } 
     }//GEN-LAST:event_jLabelMenuMouseClicked
+
+    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+        VentanaLogin lg = new VentanaLogin();
+        lg.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jLabel4MouseClicked
 
     /**
      * @param args the command line arguments

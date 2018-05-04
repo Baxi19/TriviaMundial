@@ -10,11 +10,15 @@ import Class.Metodos;
 import Class.Usuario;
 import java.awt.Image;
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.time.LocalTime;
+import java.util.Date;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import sun.java2d.pipe.SpanShapeRenderer;
 /**
  *
  * @author Randald Villegas
@@ -29,9 +33,9 @@ public class VentanaLogin extends javax.swing.JFrame {
      */
     public VentanaLogin() {
         initComponents();
+        JLabelFecha.setText(fecha());
         //Variable para hacer aparecer un panel para el login
         Boolean navBar = false;
-        
         //se establece la medida inicial del panel del login
         login.setSize(400,0);
         //hace aparecer en el centro de la pantalla
@@ -80,6 +84,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jComboBoxSexo = new javax.swing.JComboBox<>();
         jLabel13 = new javax.swing.JLabel();
         imagenIcono = new javax.swing.JLabel();
+        JLabelFecha = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
@@ -208,7 +213,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(111, 174, 2));
         jLabel5.setText("Finalizar:");
-        registro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 230, 100, 30));
+        registro.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 70, 40));
 
         jLabel6.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(111, 174, 2));
@@ -238,7 +243,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(111, 174, 2));
         jLabel11.setText("Sexo:");
-        registro.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, 50, 30));
+        registro.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 50, 30));
 
         jLabel12.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(111, 174, 2));
@@ -313,7 +318,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 jButtonAgregarFotoActionPerformed(evt);
             }
         });
-        registro.add(jButtonAgregarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 200, 50, 40));
+        registro.add(jButtonAgregarFoto, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 180, 50, 40));
 
         jComboBoxSexo.setBackground(new java.awt.Color(33, 33, 33));
         jComboBoxSexo.setFont(new java.awt.Font("Script MT Bold", 0, 14)); // NOI18N
@@ -321,15 +326,19 @@ public class VentanaLogin extends javax.swing.JFrame {
         jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
         jComboBoxSexo.setBorder(null);
         jComboBoxSexo.setOpaque(false);
-        registro.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 160, 160, 30));
+        registro.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, 30));
 
         jLabel13.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(111, 174, 2));
         jLabel13.setText("Fotografia:");
-        registro.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 200, 80, 30));
-        registro.add(imagenIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 20, 160, 130));
+        registro.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 80, 30));
+        registro.add(imagenIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 160, 130));
 
         background.add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 660, 270));
+
+        JLabelFecha.setFont(new java.awt.Font("Script MT Bold", 0, 24)); // NOI18N
+        JLabelFecha.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(JLabelFecha, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 30, 310, 40));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 418, 1000, 10));
@@ -399,7 +408,12 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
         moverDerecha();
     }//GEN-LAST:event_jButtonNextMouseClicked
-
+    public static String fecha(){
+        //Retorna la fecha actual
+        Date fecha = new Date();
+        SimpleDateFormat formatoFecha = new SimpleDateFormat();
+        return formatoFecha.format(fecha);
+    }
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Empieza el movimiento apenas el windows inicia
         AnimationClass ac = new AnimationClass();
@@ -492,7 +506,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 imagenIcono.setIcon(foto);
                 JOptionPane.showMessageDialog(this, "Foto agregada correctamente \n"
                         + "Puedes modificar alguno de tus datos \n"
-                        + "O dar en el boton para agregar el usuario");
+                        + "O presione en el boton para agregar el usuario");
                 moverDerecha();
                 mostrarRegistro();
             } catch (Exception ex) {
@@ -513,7 +527,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Campo Vacio");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
-                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto );
+                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto, 50 );
                     Metodos.getInstance().listaUsuarios.add(usuario);
                     JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Agregado Exitosamente!");
                     ocultarRegistro();
@@ -587,12 +601,20 @@ public class VentanaLogin extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                Usuario u1 = new Usuario("Randald", "Baxi","randald1991@gmail.com", "1", "Costa Rica", "Masculino", foto,50);
+                Usuario u2 = new Usuario("Angel", "Angel","","1", "Costa Rica", "Masculino", foto,50);
+                
+                //Los agregamos a la lista
+                Metodos.getInstance().listaUsuarios.add(u1);
+                Metodos.getInstance().listaUsuarios.add(u2);
+               
                 new VentanaLogin().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JLabelFecha;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonCerrar;
     private javax.swing.JLabel botonMinimizar;

@@ -21,8 +21,10 @@ public class Usuario {
     private String pais;
     private String sexo;
     private ImageIcon fotografia;
+    private int monedas;
     //constructor
-    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia) {
+
+    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia, int monedas) {
         this.nombreCompleto = nombreCompleto;
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
@@ -30,8 +32,18 @@ public class Usuario {
         this.pais = pais;
         this.sexo = sexo;
         this.fotografia = fotografia;
+        this.monedas = monedas;
     }
+    
+    public int getMonedas() {
+        return monedas;
+    }
+
     //get & set
+    public void setMonedas(int monedas) {    
+        this.monedas = monedas;
+    }
+
     public String getNombreCompleto() {
         return nombreCompleto;
     }
