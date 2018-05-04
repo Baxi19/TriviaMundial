@@ -37,7 +37,18 @@ public class VentanaInicio extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         menu = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jButtonHome1 = new javax.swing.JButton();
+        jButtonHome = new javax.swing.JButton();
+        jButtonParticipantes = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jButtonParticipantes1 = new javax.swing.JButton();
+        jButtonParticipantes2 = new javax.swing.JButton();
+        jButtonDeleteParticipants = new javax.swing.JButton();
+        jButtonDeleteDificult = new javax.swing.JButton();
+        jButtonAddParticipants = new javax.swing.JButton();
+        jButtonAddDificult = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
         usuarioActual = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -66,20 +77,167 @@ public class VentanaInicio extends javax.swing.JFrame {
         menu.setOpaque(false);
         menu.setLayout(null);
 
-        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Home");
+        jLabel2.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel2.setText("Level");
         menu.add(jLabel2);
-        jLabel2.setBounds(60, 120, 70, 40);
+        jLabel2.setBounds(20, 270, 60, 40);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Home_32px.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        jLabel6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel6.setText("Home");
+        menu.add(jLabel6);
+        jLabel6.setBounds(20, 120, 70, 40);
+
+        jButtonHome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonHome1.setBorder(null);
+        jButtonHome1.setBorderPainted(false);
+        jButtonHome1.setContentAreaFilled(false);
+        jButtonHome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHome1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonHome1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonHome1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonHome1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                jButtonHome1MouseClicked(evt);
             }
         });
+        menu.add(jButtonHome1);
+        jButtonHome1.setBounds(160, 340, 41, 41);
+
+        jButtonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom.png"))); // NOI18N
+        jButtonHome.setBorder(null);
+        jButtonHome.setBorderPainted(false);
+        jButtonHome.setContentAreaFilled(false);
+        jButtonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHome.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonHomeMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonHome);
+        jButtonHome.setBounds(160, 120, 41, 41);
+
+        jButtonParticipantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
+        jButtonParticipantes.setBorder(null);
+        jButtonParticipantes.setBorderPainted(false);
+        jButtonParticipantes.setContentAreaFilled(false);
+        jButtonParticipantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonParticipantes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonParticipantes.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonParticipantes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonParticipantes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonParticipantesMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonParticipantes);
+        jButtonParticipantes.setBounds(100, 440, 41, 41);
+
+        jLabel4.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel4.setText("Players");
         menu.add(jLabel4);
-        jLabel4.setBounds(170, 120, 40, 40);
+        jLabel4.setBounds(20, 190, 100, 40);
+
+        jButtonParticipantes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/partic1.png"))); // NOI18N
+        jButtonParticipantes1.setBorder(null);
+        jButtonParticipantes1.setBorderPainted(false);
+        jButtonParticipantes1.setContentAreaFilled(false);
+        jButtonParticipantes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonParticipantes1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonParticipantes1MouseClicked(evt);
+            }
+        });
+        menu.add(jButtonParticipantes1);
+        jButtonParticipantes1.setBounds(160, 190, 41, 41);
+
+        jButtonParticipantes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/copa1.png"))); // NOI18N
+        jButtonParticipantes2.setBorder(null);
+        jButtonParticipantes2.setBorderPainted(false);
+        jButtonParticipantes2.setContentAreaFilled(false);
+        jButtonParticipantes2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonParticipantes2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonParticipantes2MouseClicked(evt);
+            }
+        });
+        menu.add(jButtonParticipantes2);
+        jButtonParticipantes2.setBounds(160, 270, 41, 41);
+
+        jButtonDeleteParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
+        jButtonDeleteParticipants.setBorder(null);
+        jButtonDeleteParticipants.setBorderPainted(false);
+        jButtonDeleteParticipants.setContentAreaFilled(false);
+        jButtonDeleteParticipants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteParticipants.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteParticipants.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteParticipants.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteParticipants.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeleteParticipantsMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonDeleteParticipants);
+        jButtonDeleteParticipants.setBounds(110, 190, 41, 41);
+
+        jButtonDeleteDificult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
+        jButtonDeleteDificult.setBorder(null);
+        jButtonDeleteDificult.setBorderPainted(false);
+        jButtonDeleteDificult.setContentAreaFilled(false);
+        jButtonDeleteDificult.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteDificult.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeleteDificultMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonDeleteDificult);
+        jButtonDeleteDificult.setBounds(110, 270, 41, 41);
+
+        jButtonAddParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
+        jButtonAddParticipants.setBorder(null);
+        jButtonAddParticipants.setBorderPainted(false);
+        jButtonAddParticipants.setContentAreaFilled(false);
+        jButtonAddParticipants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAddParticipants.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddParticipants.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddParticipants.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddParticipants.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddParticipantsMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonAddParticipants);
+        jButtonAddParticipants.setBounds(200, 190, 41, 41);
+
+        jButtonAddDificult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
+        jButtonAddDificult.setBorder(null);
+        jButtonAddDificult.setBorderPainted(false);
+        jButtonAddDificult.setContentAreaFilled(false);
+        jButtonAddDificult.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAddDificult.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddDificult.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddDificult.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAddDificult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddDificultMouseClicked(evt);
+            }
+        });
+        menu.add(jButtonAddDificult);
+        jButtonAddDificult.setBounds(200, 270, 41, 41);
+
+        jLabel7.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel7.setText("Start Tournament");
+        menu.add(jLabel7);
+        jLabel7.setBounds(20, 340, 140, 40);
 
         background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 500));
 
@@ -137,19 +295,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_formWindowOpened
 
     private void botonCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCerrarMouseClicked
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-        
-        
+        cerrar();
+       
     }//GEN-LAST:event_botonCerrarMouseClicked
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
@@ -168,12 +315,58 @@ public class VentanaInicio extends javax.swing.JFrame {
         } 
     }//GEN-LAST:event_jLabelMenuMouseClicked
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
+      
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
         this.dispose();
-    }//GEN-LAST:event_jLabel4MouseClicked
+        
+    }//GEN-LAST:event_jButtonHomeMouseClicked
 
+    private void jButtonParticipantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantesMouseClicked
+        cerrar();
+    }//GEN-LAST:event_jButtonParticipantesMouseClicked
+
+    private void jButtonParticipantes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantes1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonParticipantes1MouseClicked
+
+    private void jButtonParticipantes2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantes2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonParticipantes2MouseClicked
+
+    private void jButtonAddParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddParticipantsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddParticipantsMouseClicked
+
+    private void jButtonAddDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddDificultMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddDificultMouseClicked
+
+    private void jButtonDeleteParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteParticipantsMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteParticipantsMouseClicked
+
+    private void jButtonDeleteDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDificultMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonDeleteDificultMouseClicked
+
+    private void jButtonHome1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHome1MouseClicked
+    public void cerrar(){
+        //Para salir del sistema
+        try {
+            int dialoButton = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
+            if (result == 0) {
+                System.exit(0);
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
+    }
     /**
      * @param args the command line arguments
      */
@@ -216,11 +409,22 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonCerrar;
     private javax.swing.JLabel botonMinimizar;
+    private javax.swing.JButton jButtonAddDificult;
+    private javax.swing.JButton jButtonAddParticipants;
+    private javax.swing.JButton jButtonDeleteDificult;
+    private javax.swing.JButton jButtonDeleteParticipants;
+    private javax.swing.JButton jButtonHome;
+    private javax.swing.JButton jButtonHome1;
+    private javax.swing.JButton jButtonParticipantes;
+    private javax.swing.JButton jButtonParticipantes1;
+    private javax.swing.JButton jButtonParticipantes2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelMenu;
     private javax.swing.JPanel menu;
