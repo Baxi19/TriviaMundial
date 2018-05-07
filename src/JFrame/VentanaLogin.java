@@ -430,10 +430,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //Empieza el movimiento apenas el windows inicia
         AnimationClass ac = new AnimationClass();
-        ac.jLabelXLeft(0, -1000, 15, 5, jLabelPublic1);
+        ac.jLabelXLeft(0, -1000, 5, 8, jLabelPublic1);
         
         AnimationClass acc = new AnimationClass();
-        acc.jLabelXLeft(1000,0, 15, 5, jLabelPublic2);
+        acc.jLabelXLeft(1000,0, 5, 8, jLabelPublic2);
     }//GEN-LAST:event_formWindowOpened
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
@@ -461,8 +461,6 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButtonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMouseClicked
         if(Metodos.getInstance().verificar(nombreUsuario.getText(), contraseña.getText())){
-            //Metodos.getInstance().getUsuarioLogueado().setNombreUsuario(nombreUsuario.getText());
-            //Metodos.getInstance().getUsuarioLogueado().setContraseña(contraseña.getText());
             VentanaInicio inicio = new VentanaInicio(nombreUsuario.getText());
             inicio.setVisible(true);
             this.dispose();
@@ -547,32 +545,32 @@ public class VentanaLogin extends javax.swing.JFrame {
     public void moverDerecha() {
         // Establecemos la variable que vamos a presentar a la izquierda en x,y  y su movimiento 25 y 5
         AnimationClass ac = new AnimationClass();
-        ac.jLabelXLeft(0, -1000, 10, 5, jLabelPublic1);
+        ac.jLabelXLeft(0, -1000, 5, 8, jLabelPublic1);
 
         AnimationClass acc = new AnimationClass();
-        acc.jLabelXLeft(1000, 0, 10, 5, jLabelPublic2);
+        acc.jLabelXLeft(1000, 0, 5, 8, jLabelPublic2);
     }
 
     public void moverIzquierda() {
         // Establecemos la variable que vamos a presentar a la izquierda en x,y  y su movimiento 25 y 5
         AnimationClass ac = new AnimationClass();
-        ac.jLabelXRight(-1000, 0, 10, 5, jLabelPublic1);
+        ac.jLabelXRight(-1000, 0, 5, 8, jLabelPublic1);
 
         AnimationClass acc = new AnimationClass();
-        acc.jLabelXRight(0, 1000, 10, 5, jLabelPublic2);
+        acc.jLabelXRight(0, 1000, 5, 8, jLabelPublic2);
     }
 
     public void ocultarRegistro() {
         //se encarga de cerrar la segunda imagen para ocultar el registro
         AnimationClass acc = new AnimationClass();
-        acc.jLabelYDown(-220, 100, 10, 5, jLabelPublic2);
+        acc.jLabelYDown(-220, 100, 5, 8, jLabelPublic2);
 
     }
 
     public void mostrarRegistro() {
         //se encarga de abrir la segunda imagen para mostrar el registro
         AnimationClass acc = new AnimationClass();
-        acc.jLabelYUp(100, -220, 10, 5, jLabelPublic2);
+        acc.jLabelYUp(100, -220, 5, 8, jLabelPublic2);
     }
     public void cerrar(){
         //Para salir del sistema

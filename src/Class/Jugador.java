@@ -17,7 +17,7 @@ public class Jugador {
         this.jugador = jugador;
         this.monedas = monedas;
     }
-
+    
     public Usuario getJugador() {
         return jugador;
     }

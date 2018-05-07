@@ -15,11 +15,14 @@ import javax.swing.ImageIcon;
  */
 public class Metodos {
     private int cantidadJugadores;
+    private int nivelSeleccionado;
+    private int usuarioSelecionado;
     private int auxCodigo;
     private ImageIcon fotografia;
     protected Usuario usuarioLogueado;
     public ArrayList<Usuario> listaUsuarios;
     private ArrayList<Jugador> listaJugadores;
+    private ArrayList<Jugador> listaJugadoresSeleccionados;
     private ArrayList<Categoria> listaCategorias;
     private ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
     private ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
@@ -34,16 +37,43 @@ public class Metodos {
     protected Metodos() {
         
         this.cantidadJugadores = cantidadJugadores;
+        this.nivelSeleccionado = nivelSeleccionado;
+        this.usuarioSelecionado = 0;
         this.auxCodigo = 0;
         this.fotografia = fotografia;
         this.usuarioLogueado = usuarioLogueado;
         this.listaUsuarios = new ArrayList<Usuario>();
         this.listaJugadores = new ArrayList<Jugador>();
+        this.listaJugadoresSeleccionados = new ArrayList<Jugador>();
         this.listaCategorias = new ArrayList<Categoria>();
         this.listaPreguntasVerdaderoFalso = new ArrayList<PreguntaVerdaderoFalso>();
         this.listaPreguntaSeleccionUnicas = new ArrayList<PreguntaSeleccionUnica>();
         this.listaPreguntaSeleccionMultiples = new ArrayList<PreguntaSeleccionMultiple>();
 
+    }
+
+    public int getUsuarioSelecionado() {
+        return usuarioSelecionado;
+    }
+
+    public void setUsuarioSelecionado(int usuarioSelecionado) {
+        this.usuarioSelecionado = usuarioSelecionado;
+    }
+    
+    public int getNivelSeleccionado() {
+        return nivelSeleccionado;
+    }
+
+    public void setNivelSeleccionado(int nivelSeleccionado) {
+        this.nivelSeleccionado = nivelSeleccionado;
+    }
+
+    public ArrayList<Jugador> getListaJugadoresSeleccionados() {
+        return listaJugadoresSeleccionados;
+    }
+
+    public void setListaJugadoresSeleccionados(ArrayList<Jugador> listaJugadoresSeleccionados) {
+        this.listaJugadoresSeleccionados = listaJugadoresSeleccionados;
     }
 
     public int getCantidadJugadores() {
@@ -155,15 +185,50 @@ public class Metodos {
         return auxCodigo;
     
     }
-
+    //metodo del singleton
     public static Metodos getInstance(){
         if(instance == null)
             instance = new Metodos();
         return instance;
     }
+    //metodo para imprimir categorias
+    public void imprimirCategorias(){
+        for (int i = 0; i < listaCategorias.size(); i++) {
+            System.out.println("Categoria :" + listaCategorias.get(i).getTipo());
+        }
+    }
+    //metodo para imprimir Jugadores
+    public void imprimirJugadores(){
+        for (int i = 0; i < listaJugadores.size(); i++) {
+            System.out.println("Jugador :" + listaJugadores.get(i).getJugador().nombreUsuario);
+        }
+    }
+    //metodo para imprimir Usuarios
+    public void imprimirUsuarios(){
+        for (int i = 0; i < listaUsuarios.size(); i++) {
+            System.out.println("Nombre :" + listaUsuarios.get(i).getNombreCompleto());
+        }
+    }
+    //metodo para imprimir Preguntas Verdaderas o falsas
+    public void imprimirPreguntaFalsaVerdad(){
+        for (int i = 0; i < listaPreguntasVerdaderoFalso.size(); i++) {
+            System.out.println("Tipo: Verdad o falsa \n Pregunta :" + listaPreguntasVerdaderoFalso.get(i).getPregunta());
+        }
+    }
+    //metodo para imprimir Preguntas Seleccion Unica
+    public void imprimirPreguntaSeleccionUnica(){
+        for (int i = 0; i < listaPreguntaSeleccionUnicas.size(); i++) {
+            System.out.println("Tipo: Seleccion Unica  \n Pregunta :" + listaPreguntaSeleccionUnicas.get(i).getPregunta());
+        }
+    }
+    //metodo para imprimir Preguntas Seleccion Multiple
+    public void imprimirPreguntaSeleccionMultiple(){
+        for (int i = 0; i < listaPreguntaSeleccionMultiples.size(); i++) {
+            System.out.println("Tipo: Seleccion Multiples  \n Pregunta :" + listaPreguntaSeleccionMultiples.get(i).getPregunta());
+        }
+    }
+    
 
-    
-    
     
     
 
