@@ -21,10 +21,9 @@ public class Usuario {
     private String pais;
     private String sexo;
     private ImageIcon fotografia;
-    private int monedas;
     //constructor
 
-    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia, int monedas) {
+    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia) {
         this.nombreCompleto = nombreCompleto;
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
@@ -32,17 +31,10 @@ public class Usuario {
         this.pais = pais;
         this.sexo = sexo;
         this.fotografia = fotografia;
-        this.monedas = monedas;
+       
     }
     
-    public int getMonedas() {
-        return monedas;
-    }
-
-    //get & set
-    public void setMonedas(int monedas) {    
-        this.monedas = monedas;
-    }
+    
 
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -99,11 +91,12 @@ public class Usuario {
     public void setFotografia(ImageIcon fotografia) {
         this.fotografia = fotografia;
     }
-    //to string
+
     @Override
     public String toString() {
-        return "Usuarios{" + "nombreCompleto=" + nombreCompleto + ", nombreUsuario=" + nombreUsuario + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + ", pais=" + pais + ", sexo=" + sexo + ", fotografia=" + fotografia + '}';
+        return "Usuario{" + "nombreCompleto=" + nombreCompleto + ", nombreUsuario=" + nombreUsuario + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + ", pais=" + pais + ", sexo=" + sexo + ", fotografia=" + fotografia + '}';
     }
+    
    
     
     

@@ -13,17 +13,20 @@ import javax.swing.JOptionPane;
  * @author Randald Villegas
  */
 public class VentanaInicio extends javax.swing.JFrame {
-    private boolean navBar;
+   
     /**
      * Creates new form Login
      */
-    public VentanaInicio() {
+    public VentanaInicio(String nombreUsuarioLogueado) {
         initComponents();
-        Boolean navBar = false;
-        menu.setSize(0,0);
+        
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
+        //Damos el saludo al usuario logueado
+        usuarioActual.setText(null);
+        usuarioActual.setText(nombreUsuarioLogueado);
     }
+
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -34,29 +37,38 @@ public class VentanaInicio extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
-        menu = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jButtonHome1 = new javax.swing.JButton();
-        jButtonHome = new javax.swing.JButton();
-        jButtonParticipantes = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
-        jButtonParticipantes1 = new javax.swing.JButton();
-        jButtonParticipantes2 = new javax.swing.JButton();
-        jButtonDeleteParticipants = new javax.swing.JButton();
-        jButtonDeleteDificult = new javax.swing.JButton();
-        jButtonAddParticipants = new javax.swing.JButton();
-        jButtonAddDificult = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         usuarioActual = new javax.swing.JLabel();
+        jButtonStartTournament = new javax.swing.JButton();
+        jLabelStrat = new javax.swing.JLabel();
+        jLabelHome = new javax.swing.JLabel();
+        jLabelPlayers = new javax.swing.JLabel();
+        jButtonDeleteParticipants = new javax.swing.JButton();
+        JlabelPlayersIcon = new javax.swing.JButton();
+        jButtonAddParticipants = new javax.swing.JButton();
+        jLabelLevel = new javax.swing.JLabel();
+        jButtonAddDificult = new javax.swing.JButton();
+        jButtonDeleteDificult = new javax.swing.JButton();
+        JlabelLevelIcon = new javax.swing.JButton();
+        jButtonOff = new javax.swing.JButton();
+        jButtonHome = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabelPaloVertical = new javax.swing.JLabel();
+        JButtonConfiguracion = new javax.swing.JButton();
+        JButtonPerfil = new javax.swing.JButton();
+        jLabelNumeroJugadores = new javax.swing.JLabel();
+        jLabelNivel = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jLabelMenu = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
-        botonCerrar = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
+        jButtonHome2 = new javax.swing.JButton();
+
+        jLabel11.setText("jLabel11");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -71,103 +83,39 @@ public class VentanaInicio extends javax.swing.JFrame {
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        menu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
-        menu.setForeground(new java.awt.Color(33, 33, 33));
-        menu.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        menu.setOpaque(false);
-        menu.setLayout(null);
+        usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 120, 30));
 
-        jLabel2.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel2.setText("Level");
-        menu.add(jLabel2);
-        jLabel2.setBounds(20, 270, 60, 40);
-
-        jLabel6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel6.setText("Home");
-        menu.add(jLabel6);
-        jLabel6.setBounds(20, 120, 70, 40);
-
-        jButtonHome1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
-        jButtonHome1.setBorder(null);
-        jButtonHome1.setBorderPainted(false);
-        jButtonHome1.setContentAreaFilled(false);
-        jButtonHome1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonHome1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonHome1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonHome1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonHome1.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonStartTournament.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonStartTournament.setBorder(null);
+        jButtonStartTournament.setBorderPainted(false);
+        jButtonStartTournament.setContentAreaFilled(false);
+        jButtonStartTournament.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonStartTournament.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonStartTournament.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonStartTournament.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonStartTournament.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonHome1MouseClicked(evt);
+                jButtonStartTournamentMouseClicked(evt);
             }
         });
-        menu.add(jButtonHome1);
-        jButtonHome1.setBounds(160, 340, 41, 41);
+        background.add(jButtonStartTournament, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 440, -1, -1));
 
-        jButtonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom.png"))); // NOI18N
-        jButtonHome.setBorder(null);
-        jButtonHome.setBorderPainted(false);
-        jButtonHome.setContentAreaFilled(false);
-        jButtonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonHome.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonHomeMouseClicked(evt);
-            }
-        });
-        menu.add(jButtonHome);
-        jButtonHome.setBounds(160, 120, 41, 41);
+        jLabelStrat.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelStrat.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelStrat.setText("Start Tournament");
+        background.add(jLabelStrat, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 450, -1, -1));
 
-        jButtonParticipantes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
-        jButtonParticipantes.setBorder(null);
-        jButtonParticipantes.setBorderPainted(false);
-        jButtonParticipantes.setContentAreaFilled(false);
-        jButtonParticipantes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonParticipantes.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
-        jButtonParticipantes.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
-        jButtonParticipantes.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
-        jButtonParticipantes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonParticipantesMouseClicked(evt);
-            }
-        });
-        menu.add(jButtonParticipantes);
-        jButtonParticipantes.setBounds(100, 440, 41, 41);
+        jLabelHome.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelHome.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelHome.setText("Home");
+        background.add(jLabelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
 
-        jLabel4.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel4.setText("Players");
-        menu.add(jLabel4);
-        jLabel4.setBounds(20, 190, 100, 40);
-
-        jButtonParticipantes1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/partic1.png"))); // NOI18N
-        jButtonParticipantes1.setBorder(null);
-        jButtonParticipantes1.setBorderPainted(false);
-        jButtonParticipantes1.setContentAreaFilled(false);
-        jButtonParticipantes1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonParticipantes1.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonParticipantes1MouseClicked(evt);
-            }
-        });
-        menu.add(jButtonParticipantes1);
-        jButtonParticipantes1.setBounds(160, 190, 41, 41);
-
-        jButtonParticipantes2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/copa1.png"))); // NOI18N
-        jButtonParticipantes2.setBorder(null);
-        jButtonParticipantes2.setBorderPainted(false);
-        jButtonParticipantes2.setContentAreaFilled(false);
-        jButtonParticipantes2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonParticipantes2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonParticipantes2MouseClicked(evt);
-            }
-        });
-        menu.add(jButtonParticipantes2);
-        jButtonParticipantes2.setBounds(160, 270, 41, 41);
+        jLabelPlayers.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelPlayers.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelPlayers.setText("Players");
+        background.add(jLabelPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, -1, -1));
 
         jButtonDeleteParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
         jButtonDeleteParticipants.setBorder(null);
@@ -182,24 +130,19 @@ public class VentanaInicio extends javax.swing.JFrame {
                 jButtonDeleteParticipantsMouseClicked(evt);
             }
         });
-        menu.add(jButtonDeleteParticipants);
-        jButtonDeleteParticipants.setBounds(110, 190, 41, 41);
+        background.add(jButtonDeleteParticipants, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, -1, -1));
 
-        jButtonDeleteDificult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
-        jButtonDeleteDificult.setBorder(null);
-        jButtonDeleteDificult.setBorderPainted(false);
-        jButtonDeleteDificult.setContentAreaFilled(false);
-        jButtonDeleteDificult.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonDeleteDificult.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteDificult.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteDificult.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteDificult.addMouseListener(new java.awt.event.MouseAdapter() {
+        JlabelPlayersIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/partic1.png"))); // NOI18N
+        JlabelPlayersIcon.setBorder(null);
+        JlabelPlayersIcon.setBorderPainted(false);
+        JlabelPlayersIcon.setContentAreaFilled(false);
+        JlabelPlayersIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JlabelPlayersIcon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonDeleteDificultMouseClicked(evt);
+                JlabelPlayersIconMouseClicked(evt);
             }
         });
-        menu.add(jButtonDeleteDificult);
-        jButtonDeleteDificult.setBounds(110, 270, 41, 41);
+        background.add(JlabelPlayersIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, -1, -1));
 
         jButtonAddParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
         jButtonAddParticipants.setBorder(null);
@@ -214,8 +157,12 @@ public class VentanaInicio extends javax.swing.JFrame {
                 jButtonAddParticipantsMouseClicked(evt);
             }
         });
-        menu.add(jButtonAddParticipants);
-        jButtonAddParticipants.setBounds(200, 190, 41, 41);
+        background.add(jButtonAddParticipants, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+
+        jLabelLevel.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelLevel.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelLevel.setText("Level");
+        background.add(jLabelLevel, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 200, -1, -1));
 
         jButtonAddDificult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
         jButtonAddDificult.setBorder(null);
@@ -230,36 +177,128 @@ public class VentanaInicio extends javax.swing.JFrame {
                 jButtonAddDificultMouseClicked(evt);
             }
         });
-        menu.add(jButtonAddDificult);
-        jButtonAddDificult.setBounds(200, 270, 41, 41);
+        background.add(jButtonAddDificult, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 200, -1, -1));
 
-        jLabel7.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel7.setText("Start Tournament");
-        menu.add(jLabel7);
-        jLabel7.setBounds(20, 340, 140, 40);
+        jButtonDeleteDificult.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
+        jButtonDeleteDificult.setBorder(null);
+        jButtonDeleteDificult.setBorderPainted(false);
+        jButtonDeleteDificult.setContentAreaFilled(false);
+        jButtonDeleteDificult.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDeleteDificult.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDeleteDificult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonDeleteDificultMouseClicked(evt);
+            }
+        });
+        background.add(jButtonDeleteDificult, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, -1, -1));
 
-        background.add(menu, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 0, 500));
+        JlabelLevelIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/copa1.png"))); // NOI18N
+        JlabelLevelIcon.setBorder(null);
+        JlabelLevelIcon.setBorderPainted(false);
+        JlabelLevelIcon.setContentAreaFilled(false);
+        JlabelLevelIcon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JlabelLevelIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JlabelLevelIconMouseClicked(evt);
+            }
+        });
+        background.add(JlabelLevelIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 190, -1, -1));
 
-        usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 120, -1));
+        jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
+        jButtonOff.setBorder(null);
+        jButtonOff.setBorderPainted(false);
+        jButtonOff.setContentAreaFilled(false);
+        jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonOff.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonOffMouseClicked(evt);
+            }
+        });
+        background.add(jButtonOff, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, -1, -1));
+
+        jButtonHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/log1.png"))); // NOI18N
+        jButtonHome.setBorder(null);
+        jButtonHome.setBorderPainted(false);
+        jButtonHome.setContentAreaFilled(false);
+        jButtonHome.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHome.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/log2.png"))); // NOI18N
+        jButtonHome.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/log2.png"))); // NOI18N
+        jButtonHome.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/log2.png"))); // NOI18N
+        jButtonHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonHomeMouseClicked(evt);
+            }
+        });
+        background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 21, 50, 50));
+
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/botonesperf-conf.png"))); // NOI18N
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 50, 60));
+
+        jLabelPaloVertical.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublicVertical.png"))); // NOI18N
+        background.add(jLabelPaloVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, 500));
+
+        JButtonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/config-botton_on.png"))); // NOI18N
+        JButtonConfiguracion.setBorder(null);
+        JButtonConfiguracion.setBorderPainted(false);
+        JButtonConfiguracion.setContentAreaFilled(false);
+        JButtonConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JButtonConfiguracion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
+        JButtonConfiguracion.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
+        JButtonConfiguracion.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
+        JButtonConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButtonConfiguracionMouseClicked(evt);
+            }
+        });
+        background.add(JButtonConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 240, -1, -1));
+
+        JButtonPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton_on.png"))); // NOI18N
+        JButtonPerfil.setBorder(null);
+        JButtonPerfil.setBorderPainted(false);
+        JButtonPerfil.setContentAreaFilled(false);
+        JButtonPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        JButtonPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
+        JButtonPerfil.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
+        JButtonPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
+        JButtonPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                JButtonPerfilMouseClicked(evt);
+            }
+        });
+        background.add(JButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
+
+        jLabelNumeroJugadores.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelNumeroJugadores.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelNumeroJugadores.setText("Players");
+        background.add(jLabelNumeroJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 160, 70, -1));
+
+        jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelNivel.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelNivel.setText("Level");
+        background.add(jLabelNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 70, -1));
+
+        jLabel10.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel10.setText("Level");
+        background.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 230, 70, -1));
+
+        jLabel9.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel9.setText("Players");
+        background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 160, 70, -1));
 
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(111, 174, 2));
         jLabel5.setText("Welcome");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, -1, -1));
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 80, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 418, 1000, 10));
-
-        jLabelMenu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Menu_32px.png"))); // NOI18N
-        jLabelMenu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabelMenuMouseClicked(evt);
-            }
-        });
-        background.add(jLabelMenu, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(2, 94, 1000, 10));
@@ -272,16 +311,23 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
-        botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Delete_32px.png"))); // NOI18N
-        botonCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonCerrarMouseClicked(evt);
-            }
-        });
-        background.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 40, 50));
-
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
+
+        jButtonHome2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom.png"))); // NOI18N
+        jButtonHome2.setBorder(null);
+        jButtonHome2.setBorderPainted(false);
+        jButtonHome2.setContentAreaFilled(false);
+        jButtonHome2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonHome2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
+        jButtonHome2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonHome2MouseClicked(evt);
+            }
+        });
+        background.add(jButtonHome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -289,32 +335,15 @@ public class VentanaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        //Damos el saludo al usuario logueado
-        usuarioActual.setText(null);
-        usuarioActual.setText(Metodos.getInstance().getUsuarioLogueado().getNombreUsuario());
+        
+        
     }//GEN-LAST:event_formWindowOpened
-
-    private void botonCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCerrarMouseClicked
-        cerrar();
-       
-    }//GEN-LAST:event_botonCerrarMouseClicked
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
         //Para minimizar la ventana
         this.setState(JFrame.VentanaInicio.ICONIFIED);
     }//GEN-LAST:event_botonMinimizarMouseClicked
-
-    private void jLabelMenuMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelMenuMouseClicked
-        //controla el movimiento del menu
-        if (navBar == true){                
-            menu.setSize(50, 0);   
-            navBar = false;                
-        }else{
-            menu.setSize(250, 500);   
-            navBar = true; 
-        } 
-    }//GEN-LAST:event_jLabelMenuMouseClicked
-
+    
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
       
         VentanaLogin lg = new VentanaLogin();
@@ -323,20 +352,28 @@ public class VentanaInicio extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButtonHomeMouseClicked
 
-    private void jButtonParticipantesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantesMouseClicked
+    private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
         cerrar();
-    }//GEN-LAST:event_jButtonParticipantesMouseClicked
+    }//GEN-LAST:event_jButtonOffMouseClicked
 
-    private void jButtonParticipantes1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantes1MouseClicked
+    private void JlabelPlayersIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelPlayersIconMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonParticipantes1MouseClicked
+    }//GEN-LAST:event_JlabelPlayersIconMouseClicked
 
-    private void jButtonParticipantes2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonParticipantes2MouseClicked
+    private void JlabelLevelIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelLevelIconMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonParticipantes2MouseClicked
+    }//GEN-LAST:event_JlabelLevelIconMouseClicked
 
     private void jButtonAddParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddParticipantsMouseClicked
-        // TODO add your handling code here:
+        int cantidad = Metodos.getInstance().getCantidadJugadores();
+        if (cantidad < 5) {
+            cantidad++;
+            Metodos.getInstance().setCantidadJugadores(cantidad);
+            jLabelNumeroJugadores.setText(String.valueOf(cantidad));
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "You already selected the maximum number of players!");
+        }
     }//GEN-LAST:event_jButtonAddParticipantsMouseClicked
 
     private void jButtonAddDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddDificultMouseClicked
@@ -344,16 +381,36 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAddDificultMouseClicked
 
     private void jButtonDeleteParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteParticipantsMouseClicked
-        // TODO add your handling code here:
+        int cantidad = Metodos.getInstance().getCantidadJugadores();
+        if (cantidad > 1) {
+            cantidad--;
+            Metodos.getInstance().setCantidadJugadores(cantidad);
+            jLabelNumeroJugadores.setText(String.valueOf(cantidad));
+            
+        }else{
+            JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
+        }
     }//GEN-LAST:event_jButtonDeleteParticipantsMouseClicked
 
     private void jButtonDeleteDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDificultMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonDeleteDificultMouseClicked
 
-    private void jButtonHome1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome1MouseClicked
+    private void jButtonStartTournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournamentMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonHome1MouseClicked
+    }//GEN-LAST:event_jButtonStartTournamentMouseClicked
+
+    private void JButtonPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonPerfilMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonPerfilMouseClicked
+
+    private void jButtonHome2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonHome2MouseClicked
+
+    private void JButtonConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonConfiguracionMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JButtonConfiguracionMouseClicked
     public void cerrar(){
         //Para salir del sistema
         try {
@@ -400,34 +457,41 @@ public class VentanaInicio extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new VentanaInicio().setVisible(true);
+                new VentanaInicio("").setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonConfiguracion;
+    private javax.swing.JButton JButtonPerfil;
+    private javax.swing.JButton JlabelLevelIcon;
+    private javax.swing.JButton JlabelPlayersIcon;
     private javax.swing.JPanel background;
-    private javax.swing.JLabel botonCerrar;
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JButton jButtonAddDificult;
     private javax.swing.JButton jButtonAddParticipants;
     private javax.swing.JButton jButtonDeleteDificult;
     private javax.swing.JButton jButtonDeleteParticipants;
     private javax.swing.JButton jButtonHome;
-    private javax.swing.JButton jButtonHome1;
-    private javax.swing.JButton jButtonParticipantes;
-    private javax.swing.JButton jButtonParticipantes1;
-    private javax.swing.JButton jButtonParticipantes2;
+    private javax.swing.JButton jButtonHome2;
+    private javax.swing.JButton jButtonOff;
+    private javax.swing.JButton jButtonStartTournament;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelMenu;
-    private javax.swing.JPanel menu;
+    private javax.swing.JLabel jLabelHome;
+    private javax.swing.JLabel jLabelLevel;
+    private javax.swing.JLabel jLabelNivel;
+    private javax.swing.JLabel jLabelNumeroJugadores;
+    private javax.swing.JLabel jLabelPaloVertical;
+    private javax.swing.JLabel jLabelPlayers;
+    private javax.swing.JLabel jLabelStrat;
     private javax.swing.JLabel usuarioActual;
     // End of variables declaration//GEN-END:variables
 }

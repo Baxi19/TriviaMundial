@@ -6,7 +6,13 @@
 package JFrame;
 //Libreria de animaciones
 import AppPackage.AnimationClass;
+import Class.Categoria;
+
 import Class.Metodos;
+import Class.PreguntaSeleccionMultiple;
+import Class.PreguntaSeleccionUnica;
+import Class.PreguntaVerdaderoFalso;
+import Class.Respuesta;
 import Class.Usuario;
 import java.awt.Image;
 import java.io.File;
@@ -88,8 +94,8 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
-        botonCerrar = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jButtonOff = new javax.swing.JButton();
         jButtonNext = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
 
@@ -354,14 +360,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
-        botonCerrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/icons8_Delete_32px.png"))); // NOI18N
-        botonCerrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                botonCerrarMouseClicked(evt);
-            }
-        });
-        background.add(botonCerrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 10, 40, 50));
-
         jButtonBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/atras1.png"))); // NOI18N
         jButtonBack.setBorder(null);
         jButtonBack.setBorderPainted(false);
@@ -377,6 +375,21 @@ public class VentanaLogin extends javax.swing.JFrame {
             }
         });
         background.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 40));
+
+        jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
+        jButtonOff.setBorder(null);
+        jButtonOff.setBorderPainted(false);
+        jButtonOff.setContentAreaFilled(false);
+        jButtonOff.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonOff.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off2.png"))); // NOI18N
+        jButtonOff.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonOffMouseClicked(evt);
+            }
+        });
+        background.add(jButtonOff, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 20, 50, 40));
 
         jButtonNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante1.png"))); // NOI18N
         jButtonNext.setBorder(null);
@@ -423,22 +436,6 @@ public class VentanaLogin extends javax.swing.JFrame {
         acc.jLabelXLeft(1000,0, 15, 5, jLabelPublic2);
     }//GEN-LAST:event_formWindowOpened
 
-    private void botonCerrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonCerrarMouseClicked
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-        
-        
-    }//GEN-LAST:event_botonCerrarMouseClicked
-
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
         //Para minimizar la ventana
         this.setState(JFrame.VentanaLogin.ICONIFIED);
@@ -464,9 +461,9 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButtonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMouseClicked
         if(Metodos.getInstance().verificar(nombreUsuario.getText(), contraseña.getText())){
-            Metodos.getInstance().getUsuarioLogueado().setNombreUsuario(jTextFieldNombreUsuario.getText());
-            Metodos.getInstance().getUsuarioLogueado().setContraseña(jTextFieldContraseña.getText());
-            VentanaInicio inicio = new VentanaInicio();
+            //Metodos.getInstance().getUsuarioLogueado().setNombreUsuario(nombreUsuario.getText());
+            //Metodos.getInstance().getUsuarioLogueado().setContraseña(contraseña.getText());
+            VentanaInicio inicio = new VentanaInicio(nombreUsuario.getText());
             inicio.setVisible(true);
             this.dispose();
         }
@@ -527,7 +524,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Campo Vacio");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
-                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto, 50 );
+                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto);
                     Metodos.getInstance().listaUsuarios.add(usuario);
                     JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Agregado Exitosamente!");
                     ocultarRegistro();
@@ -542,81 +539,59 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void jButtonAgregarFoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAgregarFoto1ActionPerformed
-    
-    public void moverDerecha(){
+
+    private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
+        cerrar();
+    }//GEN-LAST:event_jButtonOffMouseClicked
+
+    public void moverDerecha() {
         // Establecemos la variable que vamos a presentar a la izquierda en x,y  y su movimiento 25 y 5
         AnimationClass ac = new AnimationClass();
         ac.jLabelXLeft(0, -1000, 10, 5, jLabelPublic1);
-        
+
         AnimationClass acc = new AnimationClass();
-        acc.jLabelXLeft(1000,0, 10, 5, jLabelPublic2);
+        acc.jLabelXLeft(1000, 0, 10, 5, jLabelPublic2);
     }
-    public void moverIzquierda(){
+
+    public void moverIzquierda() {
         // Establecemos la variable que vamos a presentar a la izquierda en x,y  y su movimiento 25 y 5
         AnimationClass ac = new AnimationClass();
         ac.jLabelXRight(-1000, 0, 10, 5, jLabelPublic1);
-        
+
         AnimationClass acc = new AnimationClass();
         acc.jLabelXRight(0, 1000, 10, 5, jLabelPublic2);
     }
-    public void ocultarRegistro(){
+
+    public void ocultarRegistro() {
         //se encarga de cerrar la segunda imagen para ocultar el registro
         AnimationClass acc = new AnimationClass();
         acc.jLabelYDown(-220, 100, 10, 5, jLabelPublic2);
-      
+
     }
-    public void mostrarRegistro(){
+
+    public void mostrarRegistro() {
         //se encarga de abrir la segunda imagen para mostrar el registro
         AnimationClass acc = new AnimationClass();
         acc.jLabelYUp(100, -220, 10, 5, jLabelPublic2);
     }
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Windows (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    public void cerrar(){
+        //Para salir del sistema
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
+            int dialoButton = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
+            if (result == 0) {
+                System.exit(0);
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(VentanaLogin.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
         }
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                Usuario u1 = new Usuario("Randald", "Baxi","randald1991@gmail.com", "1", "Costa Rica", "Masculino", foto,50);
-                Usuario u2 = new Usuario("Angel", "Angel","","1", "Costa Rica", "Masculino", foto,50);
-                
-                //Los agregamos a la lista
-                Metodos.getInstance().listaUsuarios.add(u1);
-                Metodos.getInstance().listaUsuarios.add(u2);
-               
-                new VentanaLogin().setVisible(true);
-            }
-        });
     }
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelFecha;
     private javax.swing.JPanel background;
-    private javax.swing.JLabel botonCerrar;
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JPasswordField contraseña;
     private javax.swing.JLabel imagenIcono;
@@ -626,6 +601,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDown;
     private javax.swing.JButton jButtonEntrar;
     private javax.swing.JButton jButtonNext;
+    private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonUp;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JLabel jLabel1;
