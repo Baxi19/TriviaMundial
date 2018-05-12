@@ -73,7 +73,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         registro = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
+        User = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
@@ -88,7 +88,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jButtonAgregarFoto1 = new javax.swing.JButton();
         jButtonAgregarFoto = new javax.swing.JButton();
         jComboBoxSexo = new javax.swing.JComboBox<>();
-        jLabel13 = new javax.swing.JLabel();
+        Photo = new javax.swing.JLabel();
         imagenIcono = new javax.swing.JLabel();
         JLabelFecha = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -142,12 +142,12 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         jLabelUsuario1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelUsuario1.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelUsuario1.setText("Contraseña");
+        jLabelUsuario1.setText("Password");
         login.add(jLabelUsuario1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, 90, 30));
 
         jLabelUsuario.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelUsuario.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelUsuario.setText("Usuario");
+        jLabelUsuario.setText("User");
         login.add(jLabelUsuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 30, 70, 30));
 
         jLabelLogin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/LOGIN_INGRESO2.png"))); // NOI18N
@@ -223,37 +223,37 @@ public class VentanaLogin extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel6.setText("Nombre Completo:");
+        jLabel6.setText("Name");
         registro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
 
-        jLabel7.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel7.setText("Nombre Usuario:");
-        registro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
+        User.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
+        User.setForeground(new java.awt.Color(111, 174, 2));
+        User.setText("User");
+        registro.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
 
         jLabel8.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel8.setText("Correo:");
+        jLabel8.setText("Email");
         registro.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 60, 30));
 
         jLabel9.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel9.setText("Confirmar Contraseña:");
+        jLabel9.setText("Confirm Password");
         registro.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 30));
 
         jLabel10.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel10.setText("Pais:");
-        registro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 50, 30));
+        jLabel10.setText("Country");
+        registro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 110, 30));
 
         jLabel11.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel11.setText("Sexo:");
+        jLabel11.setText("Gender");
         registro.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 50, 30));
 
         jLabel12.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel12.setText("Contraseña:");
+        jLabel12.setText("Password");
         registro.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 80, 30));
 
         jTextFieldConfirmarContraseña.setBackground(new java.awt.Color(33, 33, 33));
@@ -329,15 +329,15 @@ public class VentanaLogin extends javax.swing.JFrame {
         jComboBoxSexo.setBackground(new java.awt.Color(33, 33, 33));
         jComboBoxSexo.setFont(new java.awt.Font("Script MT Bold", 0, 14)); // NOI18N
         jComboBoxSexo.setForeground(new java.awt.Color(255, 255, 255));
-        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Hombre", "Mujer" }));
+        jComboBoxSexo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Male\t", "Female" }));
         jComboBoxSexo.setBorder(null);
         jComboBoxSexo.setOpaque(false);
         registro.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, 30));
 
-        jLabel13.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel13.setText("Fotografia:");
-        registro.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 80, 30));
+        Photo.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
+        Photo.setForeground(new java.awt.Color(111, 174, 2));
+        Photo.setText("Fotografia:");
+        registro.add(Photo, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 80, 30));
         registro.add(imagenIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 160, 130));
 
         background.add(registro, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 130, 660, 270));
@@ -458,9 +458,15 @@ public class VentanaLogin extends javax.swing.JFrame {
             navBar = true;                 
         }
     }//GEN-LAST:event_jLabel2MouseClicked
-
+    
     private void jButtonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMouseClicked
-        if(Metodos.getInstance().verificar(nombreUsuario.getText(), contraseña.getText())){
+        
+        if(Metodos.getInstance().verificarAdmi(nombreUsuario.getText(), contraseña.getText())){
+            VentanaAdmi va = new VentanaAdmi(nombreUsuario.getText());
+            va.setVisible(true);
+            this.dispose();
+        }
+        else if(Metodos.getInstance().verificar(nombreUsuario.getText(), contraseña.getText())){
             VentanaInicio inicio = new VentanaInicio(nombreUsuario.getText());
             inicio.setVisible(true);
             this.dispose();
@@ -589,6 +595,8 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel JLabelFecha;
+    private javax.swing.JLabel Photo;
+    private javax.swing.JLabel User;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JPasswordField contraseña;
@@ -606,12 +614,10 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBackground;

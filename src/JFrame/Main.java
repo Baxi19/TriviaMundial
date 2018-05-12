@@ -19,12 +19,12 @@ import javax.swing.ImageIcon;
  *
  * @author Randald Villegas
  */
-public class Factory extends javax.swing.JFrame {
+public class Main extends javax.swing.JFrame {
 
     /**
      * Creates new form Main
      */
-    public Factory() {
+    public Main() {
         initComponents();
     }
 
@@ -70,14 +70,16 @@ public class Factory extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Factory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Factory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Factory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Factory.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Main.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -87,11 +89,11 @@ public class Factory extends javax.swing.JFrame {
                 ImageIcon foto = Metodos.getInstance().getFotografia();
 
                 //Se crean los usuarios
-                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Hombre", foto);
-                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Hombre", foto);
-                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Mujer", foto);
-                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Mujer", foto);
-                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Hombre", foto);
+                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto);
+                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto);
+                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto);
 
                 //Los agregamos a la lista
                 Metodos.getInstance().listaUsuarios.add(u1);
@@ -99,6 +101,11 @@ public class Factory extends javax.swing.JFrame {
                 Metodos.getInstance().listaUsuarios.add(u3);
                 Metodos.getInstance().listaUsuarios.add(u4);
                 Metodos.getInstance().listaUsuarios.add(u5);
+                
+                //Los administradores los agregamos a la lista
+                Metodos.getInstance().listaUsuariosAdmi.add(u1);
+                Metodos.getInstance().listaUsuariosAdmi.add(u2);
+                Metodos.getInstance().listaUsuariosAdmi.add(u3);
                 
                 //Crean Jugadores
                 Jugador ju1 = new Jugador(u1, 50);
@@ -115,27 +122,32 @@ public class Factory extends javax.swing.JFrame {
                 Metodos.getInstance().getListaJugadores().add(ju5);
                 
                 //se crean las categorias
-                Categoria cat1 = new Categoria("jugadores", Metodos.getInstance().aumentarCategoria());
-                Categoria cat2 = new Categoria("estadios", Metodos.getInstance().aumentarCategoria());
-                Categoria cat3 = new Categoria("equipos", Metodos.getInstance().aumentarCategoria());
+                Categoria cat1 = new Categoria("Jugadores", Metodos.getInstance().aumentarCategoria());
+                Categoria cat2 = new Categoria("Estadios", Metodos.getInstance().aumentarCategoria());
+                Categoria cat3 = new Categoria("Equipos", Metodos.getInstance().aumentarCategoria());
+                Categoria cat4 = new Categoria("Fechas", Metodos.getInstance().aumentarCategoria());
+                Categoria cat5 = new Categoria("Partidos", Metodos.getInstance().aumentarCategoria());
+                
                 
                 //agregamos las categorias a la lista
                 Metodos.getInstance().getListaCategorias().add(cat1);
                 Metodos.getInstance().getListaCategorias().add(cat2);
                 Metodos.getInstance().getListaCategorias().add(cat3);
+                Metodos.getInstance().getListaCategorias().add(cat4);
+                Metodos.getInstance().getListaCategorias().add(cat5);
 
                 //se crean las preguntas de verdadero o falso
                 Respuesta rp1 = new Respuesta("Si", true);
                 Respuesta rp2 = new Respuesta("No", false);
-                PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, "Se enfrentaran los equipos Egipto vrs Uruguay?", "verdaderoFalso", 1);
+                PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, "Se enfrentaran los equipos Egipto vrs Uruguay?", "Fechas", 1);
 
                 Respuesta rp3 = new Respuesta("Si", false);
                 Respuesta rp4 = new Respuesta("No", true);
-                PreguntaVerdaderoFalso fv2 = new PreguntaVerdaderoFalso(rp3, rp4, "El mundial es en Alemania?", "verdaderoFalso", 3);
+                PreguntaVerdaderoFalso fv2 = new PreguntaVerdaderoFalso(rp3, rp4, "El mundial es en Alemania?", "Estadios", 3);
 
                 Respuesta rp5 = new Respuesta("Si", true);
                 Respuesta rp6 = new Respuesta("No", false);
-                PreguntaVerdaderoFalso fv3 = new PreguntaVerdaderoFalso(rp5, rp6, "Se enfrentaran los equipos Rusia vrs Arabia Saudí?", "verdaderoFalso", 5);
+                PreguntaVerdaderoFalso fv3 = new PreguntaVerdaderoFalso(rp5, rp6, "Se enfrentaran los equipos Rusia vrs Arabia Saudí?", "Partidos", 5);
 
                 //agregamos las preguntas de verdadero o falso  a la lista
                 Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(fv1);
@@ -147,19 +159,19 @@ public class Factory extends javax.swing.JFrame {
                 Respuesta rp8 = new Respuesta("sábado 16 junio", false);
                 Respuesta rp9 = new Respuesta("domingo 17 junio", false);
                 Respuesta rp10 = new Respuesta("lunes 18 junio", false);
-                PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp7, rp8, rp9, rp10, "Que dia se enfrenta Rusia vrs Arabia Saudí?", "seleccionUnica", 1);
+                PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp7, rp8, rp9, rp10, "Que dia se enfrenta Rusia vrs Arabia Saudí?", "Fechas", 1);
 
                 Respuesta rp11 = new Respuesta("viernes 15 junio", false);
                 Respuesta rp12 = new Respuesta("sábado 16 junio", false);
                 Respuesta rp13 = new Respuesta("domingo 17 junio", true);
                 Respuesta rp14 = new Respuesta("lunes 18 junio", false);
-                PreguntaSeleccionUnica psu2 = new PreguntaSeleccionUnica(rp11, rp12, rp13, rp14, "Que dia se enfrenta Brasil vrs Suiza?", "seleccionUnica", 3);
+                PreguntaSeleccionUnica psu2 = new PreguntaSeleccionUnica(rp11, rp12, rp13, rp14, "Que dia se enfrenta Brasil vrs Suiza?", "Fechas", 3);
 
                 Respuesta rp15 = new Respuesta("viernes 15 junio", false);
                 Respuesta rp16 = new Respuesta("sábado 16 junio", true);
                 Respuesta rp17 = new Respuesta("domingo 17 junio", false);
                 Respuesta rp18 = new Respuesta("lunes 18 junio", false);
-                PreguntaSeleccionUnica psu3 = new PreguntaSeleccionUnica(rp15, rp16, rp17, rp18, "Que dia se enfrenta Francia vrs Australia?", "seleccionUnica", 5);
+                PreguntaSeleccionUnica psu3 = new PreguntaSeleccionUnica(rp15, rp16, rp17, rp18, "Que dia se enfrenta Francia vrs Australia?", "Fechas", 5);
 
                 //agregamos las preguntas de seleccion unica  a la lista
                 Metodos.getInstance().getListaPreguntaSeleccionUnicas().add(psu1);
@@ -175,7 +187,7 @@ public class Factory extends javax.swing.JFrame {
                 Respuesta rp24 = new Respuesta("USA", false);
                 Respuesta rp25 = new Respuesta("China", false);
                 Respuesta rp26 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp19, rp20, rp21, rp22, rp23, rp24, rp25, rp26, "Equipos que se enfrentaran el viernes 15 junio ", "seleccionMultiple", 1);
+                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp19, rp20, rp21, rp22, rp23, rp24, rp25, rp26, "Equipos que se enfrentaran el viernes 15 junio ", "Partidos", 1);
 
                 Respuesta rp27 = new Respuesta("Francia", true);
                 Respuesta rp28 = new Respuesta("Argentina", true);
@@ -185,7 +197,7 @@ public class Factory extends javax.swing.JFrame {
                 Respuesta rp32 = new Respuesta("USA", false);
                 Respuesta rp33 = new Respuesta("China", false);
                 Respuesta rp34 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm2 = new PreguntaSeleccionMultiple(rp27, rp28, rp29, rp30, rp31, rp32, rp33, rp34, "Equipos que se enfrentaran el sabado 16 junio ", "seleccionMultiple", 3);
+                PreguntaSeleccionMultiple psm2 = new PreguntaSeleccionMultiple(rp27, rp28, rp29, rp30, rp31, rp32, rp33, rp34, "Equipos que se enfrentaran el sabado 16 junio ", "Partidos", 3);
 
                 Respuesta rp35 = new Respuesta("España", false);
                 Respuesta rp36 = new Respuesta("Portugal", false);
@@ -195,7 +207,7 @@ public class Factory extends javax.swing.JFrame {
                 Respuesta rp40 = new Respuesta("USA", false);
                 Respuesta rp41 = new Respuesta("China", false);
                 Respuesta rp42 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm3 = new PreguntaSeleccionMultiple(rp35, rp36, rp37, rp38, rp39, rp40, rp41, rp42, "Equipos que se enfrentaran el Domingo 17 junio ", "seleccionMultiple", 5);
+                PreguntaSeleccionMultiple psm3 = new PreguntaSeleccionMultiple(rp35, rp36, rp37, rp38, rp39, rp40, rp41, rp42, "Equipos que se enfrentaran el Domingo 17 junio ", "Partidos", 5);
 
                 //agregamos las preguntas de seleccion multiple  a la lista
                 Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm1);

@@ -13,13 +13,13 @@ import javax.swing.JOptionPane;
  * @author Randald Villegas
  */
 public class VentanaInicio extends javax.swing.JFrame {
-   
+    String nombreUsuario;
     /**
      * Creates new form Login
      */
     public VentanaInicio(String nombreUsuarioLogueado) {
         initComponents();
-        
+        nombreUsuario = nombreUsuarioLogueado;
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
@@ -155,8 +155,8 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jLabelHome.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelHome.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelHome.setText("Home");
-        background.add(jLabelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, -1, -1));
+        jLabelHome.setText("Log Out");
+        background.add(jLabelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, -1));
 
         jLabelPlayers.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelPlayers.setForeground(new java.awt.Color(111, 174, 2));
@@ -300,7 +300,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 50));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/botonesperf-conf.png"))); // NOI18N
-        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 50, 60));
+        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 10, 60));
 
         jLabelPaloVertical.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublicVertical.png"))); // NOI18N
         background.add(jLabelPaloVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, 500));
@@ -480,15 +480,36 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonStartTournamentMouseClicked
 
     private void JButtonPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonPerfilMouseClicked
-        // TODO add your handling code here:
+        VentanaEditarPerfil edit = new VentanaEditarPerfil(nombreUsuario);
+        edit.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_JButtonPerfilMouseClicked
 
     private void jButtonHome2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome2MouseClicked
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonHome2MouseClicked
 
     private void JButtonConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonConfiguracionMouseClicked
-        // TODO add your handling code here:
+     
+        //Para ir a la ventana de admin
+        try {
+            int dialoButton = JOptionPane.YES_NO_OPTION;
+            int result = JOptionPane.showConfirmDialog(null, "Eres un administrador del sistema ?", "Login", dialoButton);
+            if (result == 0) {
+                String admi = JOptionPane.showInputDialog("Ingrese su nombre completo ");
+                String contrasenaAdmi = JOptionPane.showInputDialog("Ingrese su contraseña para continuar");
+
+                if (Metodos.getInstance().verificarAdmi(admi, contrasenaAdmi)) {
+                    VentanaAdmi va = new VentanaAdmi(admi);
+                    va.setVisible(true);
+                    this.dispose();
+                }
+
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, e);
+        }
     }//GEN-LAST:event_JButtonConfiguracionMouseClicked
 
     private void JlabelPlayersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelPlayersMouseClicked
@@ -499,11 +520,13 @@ public class VentanaInicio extends javax.swing.JFrame {
         int aux = Metodos.getInstance().getUsuarioSelecionado();
         aux --;
         if (aux == 0){
+            String aux3 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
+            jugador.setText(aux3);
             JOptionPane.showMessageDialog(this, "This is the first player!");
         }
         else {
             Metodos.getInstance().setUsuarioSelecionado(aux);
-            String aux2 = Metodos.getInstance().getListaJugadores().get(aux).getJugador().getNombreUsuario();
+            String aux2 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
             jugador.setText(aux2);
         }
     }//GEN-LAST:event_jButtonBackPlayerMouseClicked
@@ -511,12 +534,12 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jButtonNextPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextPlayerMouseClicked
         int aux = Metodos.getInstance().getUsuarioSelecionado();
         aux++;
-        if (aux > Metodos.getInstance().getListaJugadores().size()-1){
+        if (aux > Metodos.getInstance().getListaUsuarios().size()-1){
             JOptionPane.showMessageDialog(this, "This is the last player!");
         }
         else {
             
-            String aux2 = Metodos.getInstance().getListaJugadores().get(aux).getJugador().getNombreUsuario();
+            String aux2 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
             Metodos.getInstance().setUsuarioSelecionado(aux);
             jugador.setText(aux2);
        }

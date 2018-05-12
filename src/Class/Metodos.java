@@ -8,6 +8,7 @@ package Class;
 
 import java.util.ArrayList;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -21,12 +22,13 @@ public class Metodos {
     private ImageIcon fotografia;
     protected Usuario usuarioLogueado;
     public ArrayList<Usuario> listaUsuarios;
+    public ArrayList<Usuario> listaUsuariosAdmi;
     private ArrayList<Jugador> listaJugadores;
     private ArrayList<Jugador> listaJugadoresSeleccionados;
-    private ArrayList<Categoria> listaCategorias;
-    private ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
-    private ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
-    private ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
+    public ArrayList<Categoria> listaCategorias;
+    public ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
+    public ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
+    public ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
     
     
     //Singleton
@@ -43,6 +45,7 @@ public class Metodos {
         this.fotografia = fotografia;
         this.usuarioLogueado = usuarioLogueado;
         this.listaUsuarios = new ArrayList<Usuario>();
+        this.listaUsuariosAdmi = new ArrayList<Usuario>();
         this.listaJugadores = new ArrayList<Jugador>();
         this.listaJugadoresSeleccionados = new ArrayList<Jugador>();
         this.listaCategorias = new ArrayList<Categoria>();
@@ -50,6 +53,20 @@ public class Metodos {
         this.listaPreguntaSeleccionUnicas = new ArrayList<PreguntaSeleccionUnica>();
         this.listaPreguntaSeleccionMultiples = new ArrayList<PreguntaSeleccionMultiple>();
 
+    }
+
+    @Override
+    public String toString() {
+        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + '}';
+    }
+    
+
+    public ArrayList<Usuario> getListaUsuariosAdmi() {
+        return listaUsuariosAdmi;
+    }
+
+    public void setListaUsuariosAdmi(ArrayList<Usuario> listaUsuariosAdmi) {
+        this.listaUsuariosAdmi = listaUsuariosAdmi;
     }
 
     public int getUsuarioSelecionado() {
@@ -170,6 +187,15 @@ public class Metodos {
         }
         return false;
     }
+    // metodo que verifica el acceso de un usuario registrado como administrador
+    public boolean verificarAdmi(String nombre, String contraseña){
+        for (int i = 0; i < listaUsuariosAdmi.size() ; i++) {
+            if (listaUsuariosAdmi.get(i).getNombreCompleto().equals(nombre) & listaUsuariosAdmi.get(i).contraseña.equals(contraseña)){
+                return true;
+            }
+        }
+        return false;
+    }
     // metodo que verifica el acceso de un usuario registrado
     public boolean verificar(String nombre, String contraseña){
         for (int i = 0; i < listaUsuarios.size() ; i++) {
@@ -228,6 +254,20 @@ public class Metodos {
         }
     }
     
+    
+    //metodo para eliminar una categoria
+    public String EliminarCategoria(String Nombre) {
+        for (int i = 0; i < Metodos.getInstance().listaCategorias.size(); i++) {
+            if (Metodos.getInstance().listaCategorias.get(i).equals(Nombre)) {
+                Metodos.getInstance().listaCategorias.remove(i);
+                String aux = Metodos.getInstance().listaCategorias.get(i).getClass().getName();
+                JOptionPane.showMessageDialog(null, "Categoria Eliminada");
+                return  aux;
+
+            }
+        }
+        return "No encontrado";
+    }
 
     
     
