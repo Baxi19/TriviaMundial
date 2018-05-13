@@ -7,7 +7,13 @@ package JFrame;
 //Libreria de animaciones
 import AppPackage.AnimationClass;
 import Class.Metodos;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import java.util.Collections;
 /**
  *
  * @author Randald Villegas
@@ -25,6 +31,9 @@ public class VentanaInicio extends javax.swing.JFrame {
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
         usuarioActual.setText(nombreUsuarioLogueado);
+        desordenarLista();
+        showDate();
+        showTime();
     }
 
 
@@ -39,6 +48,8 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
+        fechaAdmi = new javax.swing.JLabel();
+        horaAdmi = new javax.swing.JLabel();
         usuarioActual = new javax.swing.JLabel();
         jugador = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -72,7 +83,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
-        jButtonHome2 = new javax.swing.JButton();
 
         jLabel11.setText("jLabel11");
 
@@ -89,9 +99,19 @@ public class VentanaInicio extends javax.swing.JFrame {
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        fechaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
+        fechaAdmi.setForeground(new java.awt.Color(111, 174, 2));
+        fechaAdmi.setToolTipText("");
+        background.add(fechaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 140, 30));
+
+        horaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
+        horaAdmi.setForeground(new java.awt.Color(111, 174, 2));
+        horaAdmi.setToolTipText("");
+        background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 140, 30));
+
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 120, 30));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 240, 30));
 
         jugador.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jugador.setForeground(new java.awt.Color(111, 174, 2));
@@ -377,21 +397,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
-        jButtonHome2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom.png"))); // NOI18N
-        jButtonHome2.setBorder(null);
-        jButtonHome2.setBorderPainted(false);
-        jButtonHome2.setContentAreaFilled(false);
-        jButtonHome2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonHome2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonHome2MouseClicked(evt);
-            }
-        });
-        background.add(jButtonHome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         pack();
@@ -401,7 +406,30 @@ public class VentanaInicio extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_formWindowOpened
-
+    public void showDate(){
+        //metodo que retorna la fecha
+        Date d = new Date();
+        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
+        fechaAdmi.setText(s.format(d));
+    }
+    public void showTime(){
+        //metodo que retorna la hora
+        new Timer(0, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Date d = new Date();
+                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
+                horaAdmi.setText(s.format(d));
+            }
+        }).start();
+    }
+    public void  desordenarLista(){
+        //metodo para desordenar las listas de las preguntas
+        Collections.shuffle(Metodos.getInstance().listaPreguntasVerdaderoFalso);
+        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionUnicas);
+        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionMultiples);
+        
+    }
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
         //Para minimizar la ventana
         this.setState(JFrame.VentanaInicio.ICONIFIED);
@@ -484,10 +512,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         edit.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JButtonPerfilMouseClicked
-
-    private void jButtonHome2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome2MouseClicked
-        
-    }//GEN-LAST:event_jButtonHome2MouseClicked
 
     private void JButtonConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonConfiguracionMouseClicked
      
@@ -604,13 +628,14 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JButton JlabelPlayersIcon;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonMinimizar;
+    private javax.swing.JLabel fechaAdmi;
+    private javax.swing.JLabel horaAdmi;
     private javax.swing.JButton jButtonAddDificult;
     private javax.swing.JButton jButtonAddParticipants;
     private javax.swing.JButton jButtonBackPlayer;
     private javax.swing.JButton jButtonDeleteDificult;
     private javax.swing.JButton jButtonDeleteParticipants;
     private javax.swing.JButton jButtonHome;
-    private javax.swing.JButton jButtonHome2;
     private javax.swing.JButton jButtonNextPlayer;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonStartTournament;

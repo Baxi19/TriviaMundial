@@ -258,9 +258,9 @@ public class Metodos {
     //metodo para eliminar una categoria
     public String EliminarCategoria(String Nombre) {
         for (int i = 0; i < Metodos.getInstance().listaCategorias.size(); i++) {
-            if (Metodos.getInstance().listaCategorias.get(i).equals(Nombre)) {
-                Metodos.getInstance().listaCategorias.remove(i);
+            if (Metodos.getInstance().listaCategorias.get(i).getTipo().equals(Nombre)) {
                 String aux = Metodos.getInstance().listaCategorias.get(i).getClass().getName();
+                Metodos.getInstance().listaCategorias.remove(i);
                 JOptionPane.showMessageDialog(null, "Categoria Eliminada");
                 return  aux;
 
@@ -269,7 +269,26 @@ public class Metodos {
         return "No encontrado";
     }
 
+    //Metodo para verificar si ya existe una categoria
+    public boolean VerificarCategoria (String nuevaCategoria){
+        for (int i = 0; i < Metodos.getInstance().listaCategorias.size() ; i++) {
+            if (Metodos.getInstance().listaCategorias.get(i).getTipo().equals(nuevaCategoria)){
+                return false;
+            }
+        }
+        return true;
+        
+    }
+    //metodo para verificar que hay seleccionado en un J list
+    public boolean verificarSeleccionCategoria(String eliminar){
+        for (int i = 0; i < Metodos.getInstance().listaCategorias.size(); i++) {
+            if(Metodos.getInstance().listaCategorias.get(i).getTipo().equals(eliminar)){
+                return true;
+            }
+        }
+        return false;
     
+    }
     
 
 }

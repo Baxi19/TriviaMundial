@@ -15,6 +15,8 @@ import Class.PreguntaVerdaderoFalso;
 import Class.Respuesta;
 import Class.Usuario;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.time.LocalTime;
@@ -23,6 +25,7 @@ import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import sun.java2d.pipe.SpanShapeRenderer;
 /**
@@ -46,6 +49,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         login.setSize(400,0);
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -434,6 +438,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         
         AnimationClass acc = new AnimationClass();
         acc.jLabelXLeft(1000,0, 5, 8, jLabelPublic2);
+        
     }//GEN-LAST:event_formWindowOpened
 
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
