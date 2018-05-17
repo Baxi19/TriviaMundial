@@ -533,7 +533,7 @@ public class VentanaLogin extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(this, "Campo Vacio");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
-                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto);
+                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto,10);
                     Metodos.getInstance().listaUsuarios.add(usuario);
                     JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Agregado Exitosamente!");
                     ocultarRegistro();

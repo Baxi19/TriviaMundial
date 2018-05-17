@@ -7,24 +7,35 @@ package JFrame;
 //Libreria de animaciones 
 import AppPackage.AnimationClass;
 import Class.Metodos;
+import Class.Usuario;
+import java.awt.Image;
+import java.io.File;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 /**
  *
  * @author Randald Villegas
  */
 public class VentanaEditarPerfil extends javax.swing.JFrame {
-    String nombreUsuario;
+    String usuarioLogueado;
+    private static ImageIcon foto;
+    private File auxFile;
     /**
      * Creates new form Login
      */
     public VentanaEditarPerfil(String nombreUsuarioLogueado) {
         initComponents();
-        nombreUsuario = nombreUsuarioLogueado;
+        usuarioLogueado = nombreUsuarioLogueado;
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
         usuarioActual.setText(nombreUsuarioLogueado);
+        ImageIcon foto = Metodos.getInstance().BuscarFotoUsuario(usuarioLogueado);
+        imagenIcono.setIcon(foto);
     }
 
 
@@ -345,7 +356,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
       
-        VentanaInicio lg = new VentanaInicio(nombreUsuario);
+        VentanaInicio lg = new VentanaInicio(usuarioLogueado);
         lg.setVisible(true);
         this.dispose();
         
@@ -368,23 +379,23 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_JButtonConfiguracionMouseClicked
 
     private void jButtonAgregarFoto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1MouseClicked
-       /* if (Metodos.getInstance().buscarNombre(nombreUsuario.getText())) {
+        if (Metodos.getInstance().buscarNombre(jTextFieldNombreUsuario.getText())) {
             JOptionPane.showMessageDialog(this, "Este nombre de usuario ya existe, prueba con otro para continuar");
         } else {
             if (jTextFieldNombreCompleto.getText().isEmpty() | jTextFieldNombreUsuario.getText().isEmpty() | jTextFieldContraseña.getText().isEmpty() | jTextFieldConfirmarContraseña.getText().isEmpty() | jTextFieldCorreo.getText().isEmpty() | jTextFieldPais.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(this, "Campo Vacio");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
-                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto);
-                    Metodos.getInstance().listaUsuarios.add(usuario);
-                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Agregado Exitosamente!");
-                    ocultarRegistro();
-                    moverIzquierda();
+                    int monedas = Metodos.getInstance().getCatidadMonedas(usuarioLogueado);
+                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto,monedas);
+                    Metodos.getInstance().ModificarUsuario(usuario, usuarioLogueado);
+                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Modificado Exitosamente!");
+                    
                 } else {
                     JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
                 }
             }
-        } */
+        } 
     }//GEN-LAST:event_jButtonAgregarFoto1MouseClicked
 
     private void jButtonAgregarFoto1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1ActionPerformed
@@ -392,12 +403,12 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarFoto1ActionPerformed
 
     private void jButtonAgregarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoMouseClicked
-      /*  int resultado ;
+      int resultado ;
         VentanaCargarArchivos ventana = new VentanaCargarArchivos();
         FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Fotos: JPG y PNG", "jpg","png");
         ventana.jFileCargarFoto.setFileFilter(filtro1);
         resultado = ventana.jFileCargarFoto.showOpenDialog(null);
-
+       
         if(JFileChooser.APPROVE_OPTION == resultado){
             //guardar el archivo selecionado
             auxFile = ventana.jFileCargarFoto.getSelectedFile();
@@ -411,14 +422,13 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
                 //mostrar imagen en label
                 imagenIcono.setIcon(foto);
                 JOptionPane.showMessageDialog(this, "Foto agregada correctamente \n"
-                    + "Puedes modificar alguno de tus datos \n"
-                    + "O presione en el boton para agregar el usuario");
-                moverDerecha();
-                mostrarRegistro();
+                        + "Puedes modificar alguno de tus datos \n"
+                        + "O presione en el boton para agregar el usuario");
+                
             } catch (Exception ex) {
                 JOptionPane.showMessageDialog(null,"Error al abrir la imagen " + ex);
             }
-        } */
+        }
     }//GEN-LAST:event_jButtonAgregarFotoMouseClicked
 
     private void jButtonAgregarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoActionPerformed

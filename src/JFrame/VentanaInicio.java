@@ -5,8 +5,10 @@
  */
 package JFrame;
 //Libreria de animaciones
+
 import AppPackage.AnimationClass;
 import Class.Metodos;
+import Class.Usuario;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
@@ -14,28 +16,32 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.util.Collections;
+import javax.swing.DefaultListModel;
+
 /**
  *
  * @author Randald Villegas
  */
 public class VentanaInicio extends javax.swing.JFrame {
+    DefaultListModel<String> listModel = new DefaultListModel<>();
     String nombreUsuario;
+
     /**
      * Creates new form Login
      */
     public VentanaInicio(String nombreUsuarioLogueado) {
         initComponents();
         nombreUsuario = nombreUsuarioLogueado;
+        Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
+        Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
         usuarioActual.setText(nombreUsuarioLogueado);
-        desordenarLista();
         showDate();
         showTime();
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -50,6 +56,10 @@ public class VentanaInicio extends javax.swing.JFrame {
         background = new javax.swing.JPanel();
         fechaAdmi = new javax.swing.JLabel();
         horaAdmi = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jButtonAddPlayer = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jListCategorias = new javax.swing.JList<>();
         usuarioActual = new javax.swing.JLabel();
         jugador = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -108,6 +118,38 @@ public class VentanaInicio extends javax.swing.JFrame {
         horaAdmi.setForeground(new java.awt.Color(111, 174, 2));
         horaAdmi.setToolTipText("");
         background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 140, 30));
+
+        jLabel13.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel13.setText("Players Selected:");
+        background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 150, -1));
+
+        jButtonAddPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonAddPlayer.setBorder(null);
+        jButtonAddPlayer.setBorderPainted(false);
+        jButtonAddPlayer.setContentAreaFilled(false);
+        jButtonAddPlayer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAddPlayer.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonAddPlayer.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonAddPlayer.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonAddPlayer.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonAddPlayerMouseClicked(evt);
+            }
+        });
+        background.add(jButtonAddPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, -1, -1));
+
+        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jScrollPane1.setOpaque(false);
+
+        jListCategorias.setBackground(new java.awt.Color(0, 0, 0));
+        jListCategorias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jListCategorias.setForeground(new java.awt.Color(111, 174, 2));
+        jListCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane1.setViewportView(jListCategorias);
+
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 150, 130));
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
@@ -403,16 +445,17 @@ public class VentanaInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        
-        
+
+
     }//GEN-LAST:event_formWindowOpened
-    public void showDate(){
+    public void showDate() {
         //metodo que retorna la fecha
         Date d = new Date();
         SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
         fechaAdmi.setText(s.format(d));
     }
-    public void showTime(){
+
+    public void showTime() {
         //metodo que retorna la hora
         new Timer(0, new ActionListener() {
             @Override
@@ -423,28 +466,22 @@ public class VentanaInicio extends javax.swing.JFrame {
             }
         }).start();
     }
-    public void  desordenarLista(){
-        //metodo para desordenar las listas de las preguntas
-        Collections.shuffle(Metodos.getInstance().listaPreguntasVerdaderoFalso);
-        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionUnicas);
-        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionMultiples);
-        
-    }
+
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
         //Para minimizar la ventana
         this.setState(JFrame.VentanaInicio.ICONIFIED);
     }//GEN-LAST:event_botonMinimizarMouseClicked
-    
+
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
-      
+
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
         this.dispose();
-        
+
     }//GEN-LAST:event_jButtonHomeMouseClicked
 
     private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
-        cerrar();
+        Metodos.getInstance().cerrar();
     }//GEN-LAST:event_jButtonOffMouseClicked
 
     private void JlabelPlayersIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JlabelPlayersIconMouseClicked
@@ -456,49 +493,53 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JlabelLevelIconMouseClicked
 
     private void jButtonAddParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddParticipantsMouseClicked
+        //disminuye la cantidad de jugadores y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getCantidadJugadores();
         if (cantidad < 5) {
             cantidad++;
             Metodos.getInstance().setCantidadJugadores(cantidad);
             jLabelNumeroJugadores.setText(String.valueOf(cantidad));
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "You already selected the maximum number of players!");
-        }    
+        }
     }//GEN-LAST:event_jButtonAddParticipantsMouseClicked
 
     private void jButtonAddDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddDificultMouseClicked
+        //sube el nivel de la dificultad y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getNivelSeleccionado();
         if (cantidad < 5) {
             cantidad++;
             Metodos.getInstance().setNivelSeleccionado(cantidad);
             jLabelNivel.setText(String.valueOf(cantidad));
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "You already selected the maximum level");
-        }    
+        }
     }//GEN-LAST:event_jButtonAddDificultMouseClicked
 
     private void jButtonDeleteParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteParticipantsMouseClicked
+        //disminuye la cantidad de jugadores y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getCantidadJugadores();
         if (cantidad > 1) {
             cantidad--;
             Metodos.getInstance().setCantidadJugadores(cantidad);
             jLabelNumeroJugadores.setText(String.valueOf(cantidad));
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
         }
     }//GEN-LAST:event_jButtonDeleteParticipantsMouseClicked
 
     private void jButtonDeleteDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDificultMouseClicked
+        //baja el nivel de la dificultad y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getNivelSeleccionado();
         if (cantidad > 1) {
             cantidad--;
             Metodos.getInstance().setNivelSeleccionado(cantidad);
             jLabelNivel.setText(String.valueOf(cantidad));
-            
-        }else{
+
+        } else {
             JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
         }
     }//GEN-LAST:event_jButtonDeleteDificultMouseClicked
@@ -514,14 +555,14 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JButtonPerfilMouseClicked
 
     private void JButtonConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonConfiguracionMouseClicked
-     
+
         //Para ir a la ventana de admin
         try {
             int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Eres un administrador del sistema ?", "Login", dialoButton);
+            int result = JOptionPane.showConfirmDialog(null, "his area is for system administrators, do you want to continue?", "Administrator profile", dialoButton);
             if (result == 0) {
-                String admi = JOptionPane.showInputDialog("Ingrese su nombre completo ");
-                String contrasenaAdmi = JOptionPane.showInputDialog("Ingrese su contraseña para continuar");
+                String admi = JOptionPane.showInputDialog("Full name");
+                String contrasenaAdmi = JOptionPane.showInputDialog("Password");
 
                 if (Metodos.getInstance().verificarAdmi(admi, contrasenaAdmi)) {
                     VentanaAdmi va = new VentanaAdmi(admi);
@@ -541,14 +582,14 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_JlabelPlayersMouseClicked
 
     private void jButtonBackPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonBackPlayerMouseClicked
+        //metodo para moverse entre los jugadores hacia la izquierda
         int aux = Metodos.getInstance().getUsuarioSelecionado();
-        aux --;
-        if (aux == 0){
+        aux--;
+        if (aux == 0) {
             String aux3 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
             jugador.setText(aux3);
             JOptionPane.showMessageDialog(this, "This is the first player!");
-        }
-        else {
+        } else {
             Metodos.getInstance().setUsuarioSelecionado(aux);
             String aux2 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
             jugador.setText(aux2);
@@ -556,31 +597,48 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonBackPlayerMouseClicked
 
     private void jButtonNextPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextPlayerMouseClicked
+        //metodo para moverse entre los jugadores hacia la derecha
         int aux = Metodos.getInstance().getUsuarioSelecionado();
         aux++;
-        if (aux > Metodos.getInstance().getListaUsuarios().size()-1){
+        if (aux > Metodos.getInstance().getListaUsuarios().size() - 1) {
             JOptionPane.showMessageDialog(this, "This is the last player!");
-        }
-        else {
-            
+        } else {
+
             String aux2 = Metodos.getInstance().getListaUsuarios().get(aux).getNombreUsuario();
             Metodos.getInstance().setUsuarioSelecionado(aux);
             jugador.setText(aux2);
-       }
-    }//GEN-LAST:event_jButtonNextPlayerMouseClicked
-    public void cerrar(){
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
         }
-    }
+    }//GEN-LAST:event_jButtonNextPlayerMouseClicked
+
+    private void jButtonAddPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddPlayerMouseClicked
+        //metodo para selecionar los contrincantes del juego
+        int jugadores = Metodos.getInstance().getCantidadJugadores();
+        if (jugadores == 5) {
+            JOptionPane.showMessageDialog(rootPane, "You selected the maximun players");
+        } else {
+            for (int i = 0; i < Metodos.getInstance().getListaJugadoresSeleccionados().size(); i++) {
+                if (Metodos.getInstance().getListaJugadoresSeleccionados().get(i).getNombreUsuario().equals(jugador.getText())) {
+                    JOptionPane.showMessageDialog(rootPane, "This player is already selected ");
+                    return;
+                }
+            }
+            Usuario aux = Metodos.getInstance().buscarUsuario(jugador.getText());
+            Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
+            jugadores++;
+            Metodos.getInstance().setCantidadJugadores(jugadores);
+
+        }
+        //metodo para imprimir Juagdores Seleccionados 
+        listModel.clear();//limpiamos el listmodel
+        for (int i = 0; i < Metodos.getInstance().getListaJugadoresSeleccionados().size(); i++) {
+            String aux = Metodos.getInstance().getListaJugadoresSeleccionados().get(i).getNombreUsuario();
+            listModel.addElement(aux);
+        }
+        jListCategorias.setModel(listModel);
+
+    }//GEN-LAST:event_jButtonAddPlayerMouseClicked
+    
+
     /**
      * @param args the command line arguments
      */
@@ -632,6 +690,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel horaAdmi;
     private javax.swing.JButton jButtonAddDificult;
     private javax.swing.JButton jButtonAddParticipants;
+    private javax.swing.JButton jButtonAddPlayer;
     private javax.swing.JButton jButtonBackPlayer;
     private javax.swing.JButton jButtonDeleteDificult;
     private javax.swing.JButton jButtonDeleteParticipants;
@@ -643,6 +702,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
@@ -655,6 +715,8 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelPlayers;
     private javax.swing.JLabel jLabelStrat;
+    private javax.swing.JList<String> jListCategorias;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel jugador;
     private javax.swing.JLabel usuarioActual;
     // End of variables declaration//GEN-END:variables

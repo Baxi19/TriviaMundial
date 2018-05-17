@@ -6,7 +6,6 @@
 package JFrame;
 
 import Class.Categoria;
-import Class.Jugador;
 import Class.Metodos;
 import Class.PreguntaSeleccionMultiple;
 import Class.PreguntaSeleccionUnica;
@@ -86,14 +85,14 @@ public class Main extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                ImageIcon foto = Metodos.getInstance().getFotografia();
+                ImageIcon foto =  Metodos.getInstance().getFotografia();
 
                 //Se crean los usuarios
-                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto);
-                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto);
-                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto);
-                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto);
-                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto,10);
+                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto,10);
+                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto,10);
+                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto,10);
+                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto,10);
 
                 //Los agregamos a la lista
                 Metodos.getInstance().listaUsuarios.add(u1);
@@ -107,19 +106,6 @@ public class Main extends javax.swing.JFrame {
                 Metodos.getInstance().listaUsuariosAdmi.add(u2);
                 Metodos.getInstance().listaUsuariosAdmi.add(u3);
                 
-                //Crean Jugadores
-                Jugador ju1 = new Jugador(u1, 50);
-                Jugador ju2 = new Jugador(u2, 50);
-                Jugador ju3 = new Jugador(u3, 50);
-                Jugador ju4 = new Jugador(u4, 50);
-                Jugador ju5 = new Jugador(u5, 50);
-                
-                //Los agregamos a la lista
-                Metodos.getInstance().getListaJugadores().add(ju1);
-                Metodos.getInstance().getListaJugadores().add(ju2);
-                Metodos.getInstance().getListaJugadores().add(ju3);
-                Metodos.getInstance().getListaJugadores().add(ju4);
-                Metodos.getInstance().getListaJugadores().add(ju5);
                 
                 //se crean las categorias
                 Categoria cat1 = new Categoria("Jugadores", Metodos.getInstance().aumentarCategoria());

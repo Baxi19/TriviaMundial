@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class Torneo {
     
     private String nombreTorneo;
-    private ArrayList<Jugador> listaJugadores;
+    private ArrayList<Usuario> listaJugadores;
     
     private int participantes;
     private int dificultad; 
@@ -45,11 +45,11 @@ public class Torneo {
         this.nombreTorneo = nombreTorneo;
     }
 
-    public ArrayList<Jugador> getListaJugadores() {
+    public ArrayList<Usuario> getListaJugadores() {
         return listaJugadores;
     }
 
-    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
+    public void setListaJugadores(ArrayList<Usuario> listaJugadores) {
         this.listaJugadores = listaJugadores;
     }
 

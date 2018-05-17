@@ -33,9 +33,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
      */
     public VentanaAdmi(String nombreUsuarioLogueado) {
         initComponents();
-        jPanelTrueFalse.setVisible(false);
-        jPanelSeleccionUnica.setVisible(false);
-        jPanelSeleccionMultiple.setVisible(false);
+        cerrarPreguntas();
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
@@ -77,13 +75,18 @@ public class VentanaAdmi extends javax.swing.JFrame {
         fechaAdmi = new javax.swing.JLabel();
         botonAgregar = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jListEventos = new javax.swing.JList<>();
+        jListQuestions = new javax.swing.JList<>();
         botonEventos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         categoria = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListCategorias = new javax.swing.JList<>();
         botonEliminarCategoria = new javax.swing.JButton();
+        jPanelEditar = new javax.swing.JPanel();
+        nuevaPregunta = new javax.swing.JTextField();
+        agregarPregunta = new javax.swing.JButton();
+        jLabel31 = new javax.swing.JLabel();
+        jLabel32 = new javax.swing.JLabel();
         jPanelSeleccionMultiple = new javax.swing.JPanel();
         jLabelNivelSeleccionMultiple = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -280,10 +283,10 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jScrollPane2.setForeground(new java.awt.Color(255, 255, 255));
         jScrollPane2.setOpaque(false);
 
-        jListEventos.setBackground(new java.awt.Color(0, 0, 0));
-        jListEventos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2), 3));
-        jListEventos.setForeground(new java.awt.Color(111, 174, 2));
-        jScrollPane2.setViewportView(jListEventos);
+        jListQuestions.setBackground(new java.awt.Color(0, 0, 0));
+        jListQuestions.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2), 3));
+        jListQuestions.setForeground(new java.awt.Color(111, 174, 2));
+        jScrollPane2.setViewportView(jListQuestions);
 
         background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, 420, 130));
 
@@ -335,6 +338,46 @@ public class VentanaAdmi extends javax.swing.JFrame {
             }
         });
         background.add(botonEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 50, 40));
+
+        jPanelEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jPanelEditar.setOpaque(false);
+        jPanelEditar.setLayout(null);
+
+        nuevaPregunta.setBackground(new java.awt.Color(0, 0, 0));
+        nuevaPregunta.setForeground(new java.awt.Color(111, 174, 2));
+        nuevaPregunta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        nuevaPregunta.setOpaque(false);
+        nuevaPregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                nuevaPreguntaActionPerformed(evt);
+            }
+        });
+        jPanelEditar.add(nuevaPregunta);
+        nuevaPregunta.setBounds(10, 60, 390, 50);
+
+        agregarPregunta.setBackground(new java.awt.Color(0, 0, 0));
+        agregarPregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adm4.png"))); // NOI18N
+        agregarPregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                agregarPreguntaActionPerformed(evt);
+            }
+        });
+        jPanelEditar.add(agregarPregunta);
+        agregarPregunta.setBounds(190, 220, 63, 39);
+
+        jLabel31.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel31.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel31.setText("Add");
+        jPanelEditar.add(jLabel31);
+        jLabel31.setBounds(150, 220, 40, 30);
+
+        jLabel32.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel32.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel32.setText("Question");
+        jPanelEditar.add(jLabel32);
+        jLabel32.setBounds(170, 30, 70, 20);
+
+        background.add(jPanelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 410, 260));
 
         jPanelSeleccionMultiple.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
         jPanelSeleccionMultiple.setOpaque(false);
@@ -737,7 +780,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         background.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 130, -1));
 
         ModificarPreguntas.setBackground(new java.awt.Color(0, 0, 0));
-        ModificarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/admi1.png"))); // NOI18N
+        ModificarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fb.png"))); // NOI18N
         ModificarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarPreguntasActionPerformed(evt);
@@ -927,7 +970,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
-        jListEventos.setModel(listModel2);
+        jListQuestions.setModel(listModel2);
+       
 
     
     }
@@ -970,6 +1014,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jListCategoriasTrueFalse.setModel(listModel);
         jListCategoriasSeleccionUnica.setModel(listModel);
         jListCategoriasSeleccionMultiple.setModel(listModel);
+        
     }
     private void descripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcion1ActionPerformed
         // TODO add your handling code here:
@@ -1011,6 +1056,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jPanelTrueFalse.setVisible(false);
         jPanelSeleccionUnica.setVisible(false);
         jPanelSeleccionMultiple.setVisible(false);
+        jPanelEditar.setVisible(false);
     }
     private void crearPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasActionPerformed
         //metodo para abrir paneles
@@ -1027,11 +1073,12 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_crearPreguntasActionPerformed
 
     private void editarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editarPreguntasActionPerformed
-        // TODO add your handling code here:
+        cerrarPreguntas();
+        jPanelEditar.setVisible(true);
     }//GEN-LAST:event_editarPreguntasActionPerformed
 
     private void ModificarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPreguntasActionPerformed
-        // TODO add your handling code here:
+        Metodos.getInstance().abrirFacebook();
     }//GEN-LAST:event_ModificarPreguntasActionPerformed
 
     private void crearPreguntasTrueFalseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalseActionPerformed
@@ -1232,6 +1279,14 @@ public class VentanaAdmi extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_crearPreguntasSeleccionMultipleActionPerformed
+
+    private void nuevaPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaPreguntaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nuevaPreguntaActionPerformed
+
+    private void agregarPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPreguntaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_agregarPreguntaActionPerformed
     public void cerrar(){
         //Para salir del sistema
         try {
@@ -1292,6 +1347,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton JlabelLevelIcon1;
     private javax.swing.JButton JlabelLevelIcon2;
     private javax.swing.JButton ModificarPreguntas;
+    private javax.swing.JButton agregarPregunta;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonAgregar;
@@ -1345,6 +1401,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
+    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
@@ -1357,13 +1415,14 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JList<String> jListCategoriasSeleccionMultiple;
     private javax.swing.JList<String> jListCategoriasSeleccionUnica;
     private javax.swing.JList<String> jListCategoriasTrueFalse;
-    private javax.swing.JList<String> jListEventos;
     private javax.swing.JList<String> jListEventos1;
+    private javax.swing.JList<String> jListQuestions;
     private javax.swing.JList<String> jListUsuarios1;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanelEditar;
     private javax.swing.JPanel jPanelSeleccionMultiple;
     private javax.swing.JPanel jPanelSeleccionUnica;
     private javax.swing.JPanel jPanelTrueFalse;
@@ -1374,6 +1433,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JTextField nuevaPregunta;
     private javax.swing.JTextField preguntaSeleccionMultiple;
     private javax.swing.JTextField preguntaSeleccionUnica;
     private javax.swing.JTextField preguntaTrueFalse;
