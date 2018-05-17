@@ -31,6 +31,7 @@ public class VentanaInicio extends javax.swing.JFrame {
      */
     public VentanaInicio(String nombreUsuarioLogueado) {
         initComponents();
+        jugador.setText(Metodos.getInstance().getListaUsuarios().get(0).getNombreUsuario());
         nombreUsuario = nombreUsuarioLogueado;
         Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
         Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
@@ -57,6 +58,10 @@ public class VentanaInicio extends javax.swing.JFrame {
         fechaAdmi = new javax.swing.JLabel();
         horaAdmi = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jTextFieldNombreTorneo = new javax.swing.JTextField();
+        jComboBoxCantidad = new javax.swing.JComboBox<>();
         jButtonAddPlayer = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListCategorias = new javax.swing.JList<>();
@@ -69,10 +74,10 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabelStrat = new javax.swing.JLabel();
         jLabelHome = new javax.swing.JLabel();
         jLabelPlayers = new javax.swing.JLabel();
-        jButtonDeleteParticipants = new javax.swing.JButton();
+        jButtonDisminuirPregunta = new javax.swing.JButton();
         JlabelPlayersIcon = new javax.swing.JButton();
         JLabelParticipantes = new javax.swing.JLabel();
-        jButtonAddParticipants = new javax.swing.JButton();
+        jButtonAumentarPregunta = new javax.swing.JButton();
         jLabelLevel = new javax.swing.JLabel();
         jButtonAddDificult = new javax.swing.JButton();
         jButtonDeleteDificult = new javax.swing.JButton();
@@ -84,7 +89,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabelPaloVertical = new javax.swing.JLabel();
         JButtonConfiguracion = new javax.swing.JButton();
         JButtonPerfil = new javax.swing.JButton();
-        jLabelNumeroJugadores = new javax.swing.JLabel();
+        jLabelNumeroPreguntas = new javax.swing.JLabel();
         jLabelNivel = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -122,22 +127,46 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(111, 174, 2));
         jLabel13.setText("Players Selected:");
-        background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 160, 150, -1));
+        background.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 240, 150, -1));
 
-        jButtonAddPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel14.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel14.setText("Cantidad De Preguntas");
+        background.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 140, 180, -1));
+
+        jLabel15.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel15.setText("Add Player");
+        background.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 360, 90, -1));
+
+        jTextFieldNombreTorneo.setBackground(new java.awt.Color(33, 33, 33));
+        jTextFieldNombreTorneo.setFont(new java.awt.Font("Script MT Bold", 0, 14)); // NOI18N
+        jTextFieldNombreTorneo.setForeground(new java.awt.Color(255, 255, 255));
+        background.add(jTextFieldNombreTorneo, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 140, 160, 30));
+
+        jComboBoxCantidad.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBoxCantidad.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
+        jComboBoxCantidad.setForeground(new java.awt.Color(111, 174, 2));
+        jComboBoxCantidad.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5" }));
+        jComboBoxCantidad.setBorder(null);
+        jComboBoxCantidad.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jComboBoxCantidad.setOpaque(false);
+        background.add(jComboBoxCantidad, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 140, 60, -1));
+
+        jButtonAddPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adduser2.png"))); // NOI18N
         jButtonAddPlayer.setBorder(null);
         jButtonAddPlayer.setBorderPainted(false);
         jButtonAddPlayer.setContentAreaFilled(false);
         jButtonAddPlayer.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonAddPlayer.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonAddPlayer.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonAddPlayer.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonAddPlayer.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adduser1.png"))); // NOI18N
+        jButtonAddPlayer.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adduser1.png"))); // NOI18N
+        jButtonAddPlayer.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adduser1.png"))); // NOI18N
         jButtonAddPlayer.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAddPlayerMouseClicked(evt);
             }
         });
-        background.add(jButtonAddPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 360, -1, -1));
+        background.add(jButtonAddPlayer, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 350, -1, -1));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
@@ -149,7 +178,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jListCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jScrollPane1.setViewportView(jListCategorias);
 
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 200, 150, 130));
+        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 270, 150, 130));
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
@@ -158,12 +187,12 @@ public class VentanaInicio extends javax.swing.JFrame {
         jugador.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jugador.setForeground(new java.awt.Color(111, 174, 2));
         jugador.setText("Name");
-        background.add(jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 300, 150, -1));
+        background.add(jugador, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 300, 150, -1));
 
         jLabel12.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(111, 174, 2));
         jLabel12.setText("Player:");
-        background.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 90, -1));
+        background.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 300, 70, -1));
 
         jButtonNextPlayer.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
         jButtonNextPlayer.setBorder(null);
@@ -225,20 +254,20 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabelPlayers.setText("# Players");
         background.add(jLabelPlayers, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 140, 100, -1));
 
-        jButtonDeleteParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
-        jButtonDeleteParticipants.setBorder(null);
-        jButtonDeleteParticipants.setBorderPainted(false);
-        jButtonDeleteParticipants.setContentAreaFilled(false);
-        jButtonDeleteParticipants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonDeleteParticipants.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteParticipants.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteParticipants.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
-        jButtonDeleteParticipants.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonDisminuirPregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus1.png"))); // NOI18N
+        jButtonDisminuirPregunta.setBorder(null);
+        jButtonDisminuirPregunta.setBorderPainted(false);
+        jButtonDisminuirPregunta.setContentAreaFilled(false);
+        jButtonDisminuirPregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonDisminuirPregunta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDisminuirPregunta.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDisminuirPregunta.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Minus2.png"))); // NOI18N
+        jButtonDisminuirPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonDeleteParticipantsMouseClicked(evt);
+                jButtonDisminuirPreguntaMouseClicked(evt);
             }
         });
-        background.add(jButtonDeleteParticipants, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 140, -1, -1));
+        background.add(jButtonDisminuirPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 180, -1, -1));
 
         JlabelPlayersIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/partic1.png"))); // NOI18N
         JlabelPlayersIcon.setBorder(null);
@@ -250,27 +279,27 @@ public class VentanaInicio extends javax.swing.JFrame {
                 JlabelPlayersIconMouseClicked(evt);
             }
         });
-        background.add(JlabelPlayersIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 130, -1, -1));
+        background.add(JlabelPlayersIcon, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 130, -1, -1));
 
         JLabelParticipantes.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         JLabelParticipantes.setForeground(new java.awt.Color(111, 174, 2));
         JLabelParticipantes.setText("Select Players");
         background.add(JLabelParticipantes, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 300, 110, 30));
 
-        jButtonAddParticipants.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
-        jButtonAddParticipants.setBorder(null);
-        jButtonAddParticipants.setBorderPainted(false);
-        jButtonAddParticipants.setContentAreaFilled(false);
-        jButtonAddParticipants.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonAddParticipants.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
-        jButtonAddParticipants.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
-        jButtonAddParticipants.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
-        jButtonAddParticipants.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonAumentarPregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add1.png"))); // NOI18N
+        jButtonAumentarPregunta.setBorder(null);
+        jButtonAumentarPregunta.setBorderPainted(false);
+        jButtonAumentarPregunta.setContentAreaFilled(false);
+        jButtonAumentarPregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonAumentarPregunta.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAumentarPregunta.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAumentarPregunta.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add2.png"))); // NOI18N
+        jButtonAumentarPregunta.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonAddParticipantsMouseClicked(evt);
+                jButtonAumentarPreguntaMouseClicked(evt);
             }
         });
-        background.add(jButtonAddParticipants, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 140, -1, -1));
+        background.add(jButtonAumentarPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 180, -1, -1));
 
         jLabelLevel.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelLevel.setForeground(new java.awt.Color(111, 174, 2));
@@ -397,15 +426,15 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         background.add(JButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
 
-        jLabelNumeroJugadores.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabelNumeroJugadores.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelNumeroJugadores.setText("0");
-        background.add(jLabelNumeroJugadores, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 140, 30, -1));
+        jLabelNumeroPreguntas.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelNumeroPreguntas.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelNumeroPreguntas.setText("1");
+        background.add(jLabelNumeroPreguntas, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 180, 30, -1));
 
         jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelNivel.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelNivel.setText("0");
-        background.add(jLabelNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, 30, -1));
+        jLabelNivel.setText("1");
+        background.add(jLabelNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 220, 30, -1));
 
         jLabel10.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(111, 174, 2));
@@ -414,7 +443,7 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jLabel9.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel9.setText("Number of Players:");
+        jLabel9.setText("Tournament Name:");
         background.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 140, 150, -1));
 
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
@@ -492,18 +521,18 @@ public class VentanaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JlabelLevelIconMouseClicked
 
-    private void jButtonAddParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddParticipantsMouseClicked
+    private void jButtonAumentarPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAumentarPreguntaMouseClicked
         //disminuye la cantidad de jugadores y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getCantidadJugadores();
         if (cantidad < 5) {
             cantidad++;
             Metodos.getInstance().setCantidadJugadores(cantidad);
-            jLabelNumeroJugadores.setText(String.valueOf(cantidad));
+            jLabelNumeroPreguntas.setText(String.valueOf(cantidad));
 
         } else {
-            JOptionPane.showMessageDialog(this, "You already selected the maximum number of players!");
+            JOptionPane.showMessageDialog(this, "You already selected the maximum number of questions!");
         }
-    }//GEN-LAST:event_jButtonAddParticipantsMouseClicked
+    }//GEN-LAST:event_jButtonAumentarPreguntaMouseClicked
 
     private void jButtonAddDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddDificultMouseClicked
         //sube el nivel de la dificultad y se guarda en una variable en los metodos 
@@ -518,18 +547,18 @@ public class VentanaInicio extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButtonAddDificultMouseClicked
 
-    private void jButtonDeleteParticipantsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteParticipantsMouseClicked
+    private void jButtonDisminuirPreguntaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDisminuirPreguntaMouseClicked
         //disminuye la cantidad de jugadores y se guarda en una variable en los metodos 
         int cantidad = Metodos.getInstance().getCantidadJugadores();
         if (cantidad > 1) {
             cantidad--;
             Metodos.getInstance().setCantidadJugadores(cantidad);
-            jLabelNumeroJugadores.setText(String.valueOf(cantidad));
+            jLabelNumeroPreguntas.setText(String.valueOf(cantidad));
 
         } else {
-            JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
+            JOptionPane.showMessageDialog(this, "You already selected the minimum number of questions!");
         }
-    }//GEN-LAST:event_jButtonDeleteParticipantsMouseClicked
+    }//GEN-LAST:event_jButtonDisminuirPreguntaMouseClicked
 
     private void jButtonDeleteDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDificultMouseClicked
         //baja el nivel de la dificultad y se guarda en una variable en los metodos 
@@ -540,7 +569,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             jLabelNivel.setText(String.valueOf(cantidad));
 
         } else {
-            JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
+            JOptionPane.showMessageDialog(this, "You already selected the minimum level!");
         }
     }//GEN-LAST:event_jButtonDeleteDificultMouseClicked
 
@@ -613,21 +642,32 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jButtonAddPlayerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAddPlayerMouseClicked
         //metodo para selecionar los contrincantes del juego
         int jugadores = Metodos.getInstance().getCantidadJugadores();
-        if (jugadores == 5) {
+        //int cantidadJugadores = Integer.parseInt(jLabelNumeroJugadores.getText());
+        int cantidadJugadores = jComboBoxCantidad.getSelectedIndex()+1;
+        if (jugadores == cantidadJugadores) {
             JOptionPane.showMessageDialog(rootPane, "You selected the maximun players");
         } else {
+            boolean verifica = false;
             for (int i = 0; i < Metodos.getInstance().getListaJugadoresSeleccionados().size(); i++) {
                 if (Metodos.getInstance().getListaJugadoresSeleccionados().get(i).getNombreUsuario().equals(jugador.getText())) {
-                    JOptionPane.showMessageDialog(rootPane, "This player is already selected ");
-                    return;
+
+                    verifica = true;
                 }
             }
-            Usuario aux = Metodos.getInstance().buscarUsuario(jugador.getText());
-            Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
-            jugadores++;
-            Metodos.getInstance().setCantidadJugadores(jugadores);
-
+            if (verifica) {
+                JOptionPane.showMessageDialog(rootPane, "This player is already selected");
+            } else {
+                Usuario aux = Metodos.getInstance().buscarUsuario(jugador.getText());
+                Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
+                jugadores++;
+                Metodos.getInstance().setCantidadJugadores(jugadores);
+            }
         }
+        imprimirJugadoresSelecionados();
+
+    }//GEN-LAST:event_jButtonAddPlayerMouseClicked
+    
+    public void imprimirJugadoresSelecionados(){
         //metodo para imprimir Juagdores Seleccionados 
         listModel.clear();//limpiamos el listmodel
         for (int i = 0; i < Metodos.getInstance().getListaJugadoresSeleccionados().size(); i++) {
@@ -635,8 +675,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             listModel.addElement(aux);
         }
         jListCategorias.setModel(listModel);
-
-    }//GEN-LAST:event_jButtonAddPlayerMouseClicked
+    }
     
 
     /**
@@ -689,20 +728,23 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel fechaAdmi;
     private javax.swing.JLabel horaAdmi;
     private javax.swing.JButton jButtonAddDificult;
-    private javax.swing.JButton jButtonAddParticipants;
     private javax.swing.JButton jButtonAddPlayer;
+    private javax.swing.JButton jButtonAumentarPregunta;
     private javax.swing.JButton jButtonBackPlayer;
     private javax.swing.JButton jButtonDeleteDificult;
-    private javax.swing.JButton jButtonDeleteParticipants;
+    private javax.swing.JButton jButtonDisminuirPregunta;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonNextPlayer;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonStartTournament;
+    private javax.swing.JComboBox<String> jComboBoxCantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel8;
@@ -711,12 +753,13 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelHome;
     private javax.swing.JLabel jLabelLevel;
     private javax.swing.JLabel jLabelNivel;
-    private javax.swing.JLabel jLabelNumeroJugadores;
+    private javax.swing.JLabel jLabelNumeroPreguntas;
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelPlayers;
     private javax.swing.JLabel jLabelStrat;
     private javax.swing.JList<String> jListCategorias;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextFieldNombreTorneo;
     private javax.swing.JLabel jugador;
     private javax.swing.JLabel usuarioActual;
     // End of variables declaration//GEN-END:variables
