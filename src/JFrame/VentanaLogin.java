@@ -9,9 +9,7 @@ import AppPackage.AnimationClass;
 import Class.Categoria;
 
 import Class.Metodos;
-import Class.PreguntaSeleccionMultiple;
-import Class.PreguntaSeleccionUnica;
-import Class.PreguntaVerdaderoFalso;
+
 import Class.Respuesta;
 import Class.Usuario;
 import java.awt.Image;

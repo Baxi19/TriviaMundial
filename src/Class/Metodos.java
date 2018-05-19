@@ -19,7 +19,9 @@ import javax.swing.JOptionPane;
 public class Metodos {
 
     private int cantidadJugadores;
-    private Pregunta pregunta;
+    private PreguntaSeleccionMultiple preguntaSM;
+    private PreguntaSeleccionUnica preguntaSU;
+    private PreguntaVerdaderoFalso preguntaVF;
     private int nivelSeleccionado;
     private int usuarioSelecionado;
     private int auxCodigo;
@@ -42,6 +44,9 @@ public class Metodos {
     protected Metodos() {
 
         this.cantidadJugadores = 1;
+        this.preguntaSM = preguntaSM;
+        this.preguntaSU = preguntaSU;
+        this.preguntaVF = preguntaVF;
         this.nivelSeleccionado = nivelSeleccionado;
         this.usuarioSelecionado = 0;
         this.auxCodigo = 0;
@@ -61,7 +66,32 @@ public class Metodos {
 
     @Override
     public String toString() {
-        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + ", listaTorneos=" + listaTorneos + '}';
+        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", preguntaSM=" + preguntaSM + ", preguntaSU=" + preguntaSU + ", preguntaVF=" + preguntaVF + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + ", listaTorneos=" + listaTorneos + '}';
+    }
+
+    
+    public PreguntaSeleccionMultiple getPreguntaSM() {
+        return preguntaSM;
+    }
+
+    public void setPreguntaSM(PreguntaSeleccionMultiple preguntaSM) {
+        this.preguntaSM = preguntaSM;
+    }
+
+    public PreguntaSeleccionUnica getPreguntaSU() {
+        return preguntaSU;
+    }
+
+    public void setPreguntaSU(PreguntaSeleccionUnica preguntaSU) {
+        this.preguntaSU = preguntaSU;
+    }
+
+    public PreguntaVerdaderoFalso getPreguntaVF() {
+        return preguntaVF;
+    }
+
+    public void setPreguntaVF(PreguntaVerdaderoFalso preguntaVF) {
+        this.preguntaVF = preguntaVF;
     }
 
     
@@ -271,26 +301,6 @@ public class Metodos {
         }
     }
 
-    public void imprimirPreguntaFalsaVerdad() {
-        //metodo para imprimir Preguntas Verdaderas o falsas
-        for (int i = 0; i < listaPreguntasVerdaderoFalso.size(); i++) {
-            System.out.println("Type: True or false \n Question : " + listaPreguntasVerdaderoFalso.get(i).getPregunta());
-        }
-    }
-
-    public void imprimirPreguntaSeleccionUnica() {
-        //metodo para imprimir Preguntas Seleccion Unica
-        for (int i = 0; i < listaPreguntaSeleccionUnicas.size(); i++) {
-            System.out.println("Type: Unique Selection \n Question : " + listaPreguntaSeleccionUnicas.get(i).getPregunta());
-        }
-    }
-
-    public void imprimirPreguntaSeleccionMultiple() {
-        //metodo para imprimir Preguntas Seleccion Multiple
-        for (int i = 0; i < listaPreguntaSeleccionMultiples.size(); i++) {
-            System.out.println("Type: Multiple Selection \n Question: " + listaPreguntaSeleccionMultiples.get(i).getPregunta());
-        }
-    }
 
     public String EliminarCategoria(String Nombre) {
         //metodo para eliminar una categoria
@@ -379,7 +389,7 @@ public class Metodos {
         }
         return null;
     }
-    
+    /*
     public boolean EliminarPregunta(String preguntaEliminar){
         //metodo para recorrer las preguntas y eliminarla
         
@@ -457,5 +467,5 @@ public class Metodos {
         return false;
     
     }
-    
+    */
 }

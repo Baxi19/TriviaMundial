@@ -7,9 +7,9 @@ package Class;
 
 /**
  *
- * @author Randald Villegas
+ * @author toshib
  */
-public class PreguntaVerdaderoFalso extends Pregunta{
+public class PreguntaVerdaderoFalso extends Pregunta {
     private Respuesta respuestaVerdadera;
     private Respuesta respuestaFalsa;
 
@@ -18,6 +18,7 @@ public class PreguntaVerdaderoFalso extends Pregunta{
         this.respuestaVerdadera = respuestaVerdadera;
         this.respuestaFalsa = respuestaFalsa;
     }
+
 
     public Respuesta getRespuestaVerdadera() {
         return respuestaVerdadera;
@@ -34,20 +35,15 @@ public class PreguntaVerdaderoFalso extends Pregunta{
     public void setRespuestaFalsa(Respuesta respuestaFalsa) {
         this.respuestaFalsa = respuestaFalsa;
     }
+    
 
-    @Override
+  
     public String obtenerRespuesta() {
-        return null;
-        
+        return "Respuesta Verdadera= " + respuestaVerdadera.getRespuesta();
     }
-
-    @Override
+    
     public String toString() {
         return    "Respuesta 1 = " + respuestaVerdadera.getRespuesta() + "\n "
                 + "Respuesta 2 = " + respuestaFalsa.getRespuesta() + '}';
     }
-    
-    
-
-
 }

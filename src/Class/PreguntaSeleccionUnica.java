@@ -7,9 +7,9 @@ package Class;
 
 /**
  *
- * @author Randald Villegas
+ * @author toshib
  */
-public class PreguntaSeleccionUnica extends Pregunta {
+public class PreguntaSeleccionUnica extends Pregunta{
     private Respuesta respuesta1;
     private Respuesta respuesta2;
     private Respuesta respuesta3;
@@ -23,6 +23,7 @@ public class PreguntaSeleccionUnica extends Pregunta {
         this.respuesta4 = respuesta4;
     }
 
+    
     public Respuesta getRespuesta1() {
         return respuesta1;
     }
@@ -54,19 +55,27 @@ public class PreguntaSeleccionUnica extends Pregunta {
     public void setRespuesta4(Respuesta respuesta4) {
         this.respuesta4 = respuesta4;
     }
-
-    @Override
+    
+    
+   
     public String obtenerRespuesta() {
+        if(respuesta1.isCorrecta() == true){
+           return respuesta1.getRespuesta();
+       }else if(respuesta2.isCorrecta() == true){
+           return respuesta2.getRespuesta();
+       }else if(respuesta3.isCorrecta() == true){
+           return respuesta3.getRespuesta();
+       }else if(respuesta4.isCorrecta() == true){
+           return respuesta4.getRespuesta();
+       }
+       
         return null;
-        
     }
-
-    @Override
+    
     public String toString() {
         return    "Respuesta 1 = " + respuesta1.getRespuesta() + "\n "
                 + "Respuesta 2 = " + respuesta2.getRespuesta() + "\n "
                 + "Respuesta 3 = " + respuesta3.getRespuesta() + "\n "
                 + "Respuesta 4 = " + respuesta4.getRespuesta() + '}';
     }
-    
-    }
+}

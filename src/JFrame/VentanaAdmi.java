@@ -7,11 +7,14 @@ package JFrame;
 //Libreria de animaciones
 import AppPackage.AnimationClass;
 import Class.Categoria;
+import Class.Crea;
+import Class.CreaPreguntas;
 import Class.Metodos;
 import Class.Pregunta;
 import Class.PreguntaSeleccionMultiple;
 import Class.PreguntaSeleccionUnica;
 import Class.PreguntaVerdaderoFalso;
+
 import Class.Respuesta;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -1143,13 +1146,16 @@ public class VentanaAdmi extends javax.swing.JFrame {
             } else {
                 String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
                 String respuestaIncorrecta = JOptionPane.showInputDialog("Wrong answer");
-
                 Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
                 Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
                 int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
-                
                 PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar , nivel);
-                Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(fv1);
+                Metodos.getInstance().setPreguntaVF(fv1);
+                Crea crea;
+                crea = new CreaPreguntas();
+                PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
+                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
+                System.out.println(pregunta);
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
             }
         }
@@ -1242,11 +1248,17 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
                 Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
                 Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
-                
+          
                 int nivel = Integer.parseInt(jLabelNivelSeleccionUnica.getText());
                 PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp1, rp2, rp3, rp4, preguntaSeleccionUnica.getText(), eliminar, nivel);
-                Metodos.getInstance().getListaPreguntaSeleccionUnicas().add(psu1);
+                Metodos.getInstance().setPreguntaSU(psu1);
+                Crea crea;
+                crea = new CreaPreguntas();
+                PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
+                Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
+                System.out.println(pregunta);
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
+                
             }
         }
         
@@ -1316,7 +1328,12 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 Respuesta rp4 = new Respuesta(respuestaIncorrecta2, false);
                 int nivel = Integer.parseInt(jLabelNivelSeleccionMultiple.getText());
                 PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp1, rp2, rp3, rp4,  preguntaSeleccionMultiple.getText(), eliminar, nivel);
-                Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm1);
+                Metodos.getInstance().setPreguntaSM(psm1);
+                Crea crea;
+                crea = new CreaPreguntas();
+                PreguntaSeleccionMultiple pregunta = crea.creaPreguntaSeleccionMultiple();
+                Metodos.getInstance().listaPreguntaSeleccionMultiples.add(pregunta);
+                System.out.println(pregunta);
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
             }
         }
@@ -1327,7 +1344,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private void crearPreguntasTrueFalse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalse1ActionPerformed
         
         String preguntaEliminar = jListPreguntasEditar.getSelectedValue();
-        Metodos.getInstance().ModificarPregunta(preguntaEliminar);
+      //  Metodos.getInstance().ModificarPregunta(preguntaEliminar);
     }//GEN-LAST:event_crearPreguntasTrueFalse1ActionPerformed
 
     private void botonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizar1ActionPerformed
