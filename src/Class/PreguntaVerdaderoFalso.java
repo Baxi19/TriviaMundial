@@ -43,7 +43,8 @@ public class PreguntaVerdaderoFalso extends Pregunta{
 
     @Override
     public String toString() {
-        return "PreguntaVerdaderoFalso{" + "respuestaVerdadera=" + respuestaVerdadera + ", respuestaFalsa=" + respuestaFalsa + '}';
+        return    "Respuesta 1 = " + respuestaVerdadera.getRespuesta() + "\n "
+                + "Respuesta 2 = " + respuestaFalsa.getRespuesta() + '}';
     }
     
     

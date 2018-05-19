@@ -19,6 +19,7 @@ import javax.swing.JOptionPane;
 public class Metodos {
 
     private int cantidadJugadores;
+    private Pregunta pregunta;
     private int nivelSeleccionado;
     private int usuarioSelecionado;
     private int auxCodigo;
@@ -32,6 +33,7 @@ public class Metodos {
     public ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
     public ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
     public ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
+    public ArrayList<Torneo> listaTorneos;
 
     //Singleton
     public static Metodos instance = null;
@@ -53,12 +55,23 @@ public class Metodos {
         this.listaPreguntasVerdaderoFalso = new ArrayList<PreguntaVerdaderoFalso>();
         this.listaPreguntaSeleccionUnicas = new ArrayList<PreguntaSeleccionUnica>();
         this.listaPreguntaSeleccionMultiples = new ArrayList<PreguntaSeleccionMultiple>();
+        this.listaTorneos = new ArrayList<Torneo>();
 
     }
 
     @Override
     public String toString() {
-        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + '}';
+        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + ", listaTorneos=" + listaTorneos + '}';
+    }
+
+    
+    
+    public ArrayList<Torneo> getListaTorneos() {
+        return listaTorneos;
+    }
+
+    public void setListaTorneos(ArrayList<Torneo> listaTorneos) {
+        this.listaTorneos = listaTorneos;
     }
 
     public ArrayList<Usuario> getListaUsuariosAdmi() {
@@ -339,7 +352,7 @@ public class Metodos {
     public void abrirFacebook(){
         //funcion para abrir facebook
         try {
-            Desktop.getDesktop().browse(URI.create("https://www.facebook.com/"));
+            Desktop.getDesktop().browse(URI.create("https://github.com/JustinCast"));
         } catch (Exception e) {
         }
     }
@@ -366,4 +379,83 @@ public class Metodos {
         }
         return null;
     }
+    
+    public boolean EliminarPregunta(String preguntaEliminar){
+        //metodo para recorrer las preguntas y eliminarla
+        
+        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
+            PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
+            if (aux.getPregunta().equals(preguntaEliminar)
+                    | aux.getRespuesta1().equals(preguntaEliminar)
+                    | aux.getRespuesta2().equals(preguntaEliminar)
+                    | aux.getRespuesta3().equals(preguntaEliminar) 
+                    | aux.getRespuesta4().equals(preguntaEliminar)) {
+                Metodos.getInstance().listaPreguntaSeleccionMultiples.remove(i);
+                return true;
+            }
+        }
+        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
+            PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
+            if(aux2.getPregunta().equals(preguntaEliminar)
+                    | aux2.getRespuesta1().equals(preguntaEliminar)
+                    | aux2.getRespuesta2().equals(preguntaEliminar)
+                    | aux2.getRespuesta3().equals(preguntaEliminar) 
+                    | aux2.getRespuesta4().equals(preguntaEliminar)){
+                Metodos.getInstance().listaPreguntaSeleccionUnicas.remove(i);
+                return true;
+            }
+        }
+        for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
+            PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
+            if(aux3.getPregunta().equals(preguntaEliminar)
+                    | aux3.getRespuestaVerdadera().equals(preguntaEliminar)
+                    | aux3.getRespuestaFalsa().equals(preguntaEliminar)){
+                Metodos.getInstance().listaPreguntasVerdaderoFalso.remove(i);
+                return true;
+            }
+        }
+        
+        return false;
+    
+    }
+    public boolean ModificarPregunta(String preguntaModificar){
+        //metodo para recorrer las preguntas y modificarla
+        
+        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
+            PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
+            if (aux.getPregunta().equals(preguntaModificar)
+                    | aux.getRespuesta1().equals(preguntaModificar)
+                    | aux.getRespuesta2().equals(preguntaModificar)
+                    | aux.getRespuesta3().equals(preguntaModificar) 
+                    | aux.getRespuesta4().equals(preguntaModificar)) {
+                Metodos.getInstance().listaPreguntaSeleccionMultiples.remove(i);
+                 
+                return true;
+            }
+        }
+        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
+            PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
+            if(aux2.getPregunta().equals(preguntaModificar)
+                    | aux2.getRespuesta1().equals(preguntaModificar)
+                    | aux2.getRespuesta2().equals(preguntaModificar)
+                    | aux2.getRespuesta3().equals(preguntaModificar) 
+                    | aux2.getRespuesta4().equals(preguntaModificar)){
+                Metodos.getInstance().listaPreguntaSeleccionUnicas.remove(i);
+                return true;
+            }
+        }
+        for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
+            PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
+            if(aux3.getPregunta().equals(preguntaModificar)
+                    | aux3.getRespuestaVerdadera().equals(preguntaModificar)
+                    | aux3.getRespuestaFalsa().equals(preguntaModificar)){
+                Metodos.getInstance().listaPreguntasVerdaderoFalso.remove(i);
+                return true;
+            }
+        }
+        
+        return false;
+    
+    }
+    
 }

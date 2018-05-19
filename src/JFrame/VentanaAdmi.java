@@ -83,10 +83,16 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jListCategorias = new javax.swing.JList<>();
         botonEliminarCategoria = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
-        nuevaPregunta = new javax.swing.JTextField();
-        agregarPregunta = new javax.swing.JButton();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
+        jScrollPane9 = new javax.swing.JScrollPane();
+        jListPreguntasEditar = new javax.swing.JList<>();
+        jScrollPane8 = new javax.swing.JScrollPane();
+        jListCategoriasEditar = new javax.swing.JList<>();
+        crearPreguntasTrueFalse1 = new javax.swing.JButton();
+        jLabel33 = new javax.swing.JLabel();
+        jLabel36 = new javax.swing.JLabel();
+        jComboBoxTipo1 = new javax.swing.JComboBox<>();
+        botonActualizar1 = new javax.swing.JButton();
+        botonEventos1 = new javax.swing.JButton();
         jPanelSeleccionMultiple = new javax.swing.JPanel();
         jLabelNivelSeleccionMultiple = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
@@ -139,7 +145,6 @@ public class VentanaAdmi extends javax.swing.JFrame {
         crearPreguntas = new javax.swing.JButton();
         botonActualizar = new javax.swing.JButton();
         usuarioActual = new javax.swing.JLabel();
-        jLabelHome = new javax.swing.JLabel();
         jButtonOff = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
@@ -263,12 +268,12 @@ public class VentanaAdmi extends javax.swing.JFrame {
         horaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
         horaAdmi.setForeground(new java.awt.Color(111, 174, 2));
         horaAdmi.setToolTipText("");
-        background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 60, 140, 30));
+        background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 60, 140, 30));
 
         fechaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
         fechaAdmi.setForeground(new java.awt.Color(111, 174, 2));
         fechaAdmi.setToolTipText("");
-        background.add(fechaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 10, 140, 30));
+        background.add(fechaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 10, 140, 30));
 
         botonAgregar.setBackground(new java.awt.Color(0, 0, 0));
         botonAgregar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/add4.png"))); // NOI18N
@@ -343,39 +348,81 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jPanelEditar.setOpaque(false);
         jPanelEditar.setLayout(null);
 
-        nuevaPregunta.setBackground(new java.awt.Color(0, 0, 0));
-        nuevaPregunta.setForeground(new java.awt.Color(111, 174, 2));
-        nuevaPregunta.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
-        nuevaPregunta.setOpaque(false);
-        nuevaPregunta.addActionListener(new java.awt.event.ActionListener() {
+        jScrollPane9.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane9.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jScrollPane9.setOpaque(false);
+
+        jListPreguntasEditar.setBackground(new java.awt.Color(0, 0, 0));
+        jListPreguntasEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jListPreguntasEditar.setForeground(new java.awt.Color(111, 174, 2));
+        jListPreguntasEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane9.setViewportView(jListPreguntasEditar);
+
+        jPanelEditar.add(jScrollPane9);
+        jScrollPane9.setBounds(10, 150, 280, 60);
+
+        jScrollPane8.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jScrollPane8.setOpaque(false);
+
+        jListCategoriasEditar.setBackground(new java.awt.Color(0, 0, 0));
+        jListCategoriasEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jListCategoriasEditar.setForeground(new java.awt.Color(111, 174, 2));
+        jListCategoriasEditar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane8.setViewportView(jListCategoriasEditar);
+
+        jPanelEditar.add(jScrollPane8);
+        jScrollPane8.setBounds(10, 70, 280, 70);
+
+        crearPreguntasTrueFalse1.setBackground(new java.awt.Color(0, 0, 0));
+        crearPreguntasTrueFalse1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Edit File_40px.png"))); // NOI18N
+        crearPreguntasTrueFalse1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nuevaPreguntaActionPerformed(evt);
+                crearPreguntasTrueFalse1ActionPerformed(evt);
             }
         });
-        jPanelEditar.add(nuevaPregunta);
-        nuevaPregunta.setBounds(10, 60, 390, 50);
+        jPanelEditar.add(crearPreguntasTrueFalse1);
+        crearPreguntasTrueFalse1.setBounds(320, 209, 73, 50);
 
-        agregarPregunta.setBackground(new java.awt.Color(0, 0, 0));
-        agregarPregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adm4.png"))); // NOI18N
-        agregarPregunta.addActionListener(new java.awt.event.ActionListener() {
+        jLabel33.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel33.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel33.setText("Edit");
+        jPanelEditar.add(jLabel33);
+        jLabel33.setBounds(270, 220, 40, 40);
+
+        jLabel36.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel36.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel36.setText("Select the Category & Question");
+        jPanelEditar.add(jLabel36);
+        jLabel36.setBounds(70, 10, 290, 30);
+
+        jComboBoxTipo1.setBackground(new java.awt.Color(0, 0, 0));
+        jComboBoxTipo1.setForeground(new java.awt.Color(111, 174, 2));
+        jComboBoxTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "True \\ False", "Single choice", "Multiple choice" }));
+        jComboBoxTipo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jComboBoxTipo1.setOpaque(false);
+        jPanelEditar.add(jComboBoxTipo1);
+        jComboBoxTipo1.setBounds(300, 40, 94, 20);
+
+        botonActualizar1.setBackground(new java.awt.Color(0, 0, 0));
+        botonActualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update1.png"))); // NOI18N
+        botonActualizar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                agregarPreguntaActionPerformed(evt);
+                botonActualizar1ActionPerformed(evt);
             }
         });
-        jPanelEditar.add(agregarPregunta);
-        agregarPregunta.setBounds(190, 220, 63, 39);
+        jPanelEditar.add(botonActualizar1);
+        botonActualizar1.setBounds(320, 90, 63, 39);
 
-        jLabel31.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel31.setText("Add");
-        jPanelEditar.add(jLabel31);
-        jLabel31.setBounds(150, 220, 40, 30);
-
-        jLabel32.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel32.setText("Question");
-        jPanelEditar.add(jLabel32);
-        jLabel32.setBounds(170, 30, 70, 20);
+        botonEventos1.setBackground(new java.awt.Color(0, 0, 0));
+        botonEventos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
+        botonEventos1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEventos1ActionPerformed(evt);
+            }
+        });
+        jPanelEditar.add(botonEventos1);
+        botonEventos1.setBounds(320, 160, 63, 39);
 
         background.add(jPanelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 410, 260));
 
@@ -817,12 +864,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 370, 30));
-
-        jLabelHome.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabelHome.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelHome.setText("Log Out");
-        background.add(jLabelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, -1));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 40, 320, 30));
 
         jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
         jButtonOff.setBorder(null);
@@ -852,12 +894,12 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 jButtonHomeMouseClicked(evt);
             }
         });
-        background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 50));
+        background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(111, 174, 2));
         jLabel5.setText("Welcome");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 80, 30));
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 80, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublicVertical.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 10, 400));
@@ -947,31 +989,40 @@ public class VentanaAdmi extends javax.swing.JFrame {
         //metodo para imprimir preguuntas 
         listModel2.clear();//limpiamos el listmodel
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
-            String aux = Metodos.getInstance().listaPreguntaSeleccionMultiples.get(i).getTipo();
-            if(aux.equals(categoria)){
-                Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionMultiples.get(i);
-                listModel2.addElement(nuevo.getPregunta());
+            PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
+            if (aux.getTipo().equals(categoria)) {
+                listModel2.addElement(aux.getPregunta());
+                listModel2.addElement(aux.getRespuesta1().toString());
+                listModel2.addElement(aux.getRespuesta2().toString());
+                listModel2.addElement(aux.getRespuesta3().toString());
+                listModel2.addElement(aux.getRespuesta4().toString());
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
-            String aux = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i).getTipo();
-            if(aux.equals(categoria)){
+            PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
+            if(aux2.getTipo().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
-                listModel2.addElement(nuevo.getPregunta());
+                listModel2.addElement(aux2.getPregunta());
+                listModel2.addElement(aux2.getRespuesta1().toString());
+                listModel2.addElement(aux2.getRespuesta2().toString());
+                listModel2.addElement(aux2.getRespuesta3().toString());
+                listModel2.addElement(aux2.getRespuesta4().toString());
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
-            String aux = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i).getTipo();
-            if(aux.equals(categoria)){
+            PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
+            if(aux3.getTipo().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
-                listModel2.addElement(nuevo.getPregunta());
+                listModel2.addElement(aux3.getPregunta());
+                listModel2.addElement(aux3.getRespuestaFalsa().toString());
+                listModel2.addElement(aux3.getRespuestaVerdadera().toString());
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
         jListQuestions.setModel(listModel2);
-       
+        jListPreguntasEditar.setModel(listModel2);
 
     
     }
@@ -1014,7 +1065,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jListCategoriasTrueFalse.setModel(listModel);
         jListCategoriasSeleccionUnica.setModel(listModel);
         jListCategoriasSeleccionMultiple.setModel(listModel);
-        
+        jListCategoriasEditar.setModel(listModel);
     }
     private void descripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcion1ActionPerformed
         // TODO add your handling code here:
@@ -1096,6 +1147,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
                 Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
                 int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
+                
                 PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar , nivel);
                 Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(fv1);
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
@@ -1182,9 +1234,9 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Empty field");
             } else {
                 String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
 
                 Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
                 Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
@@ -1252,26 +1304,18 @@ public class VentanaAdmi extends javax.swing.JFrame {
             if (jLabelNivelSeleccionMultiple.getText().isEmpty() | preguntaSeleccionMultiple.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Empty field");
             } else {
-                String respuestaCorrecta1 = JOptionPane.showInputDialog("Correct answer");
-                String respuestaCorrecta2 = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta4 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta5 = JOptionPane.showInputDialog("Wrong answer");
-                String respuestaIncorrecta6 = JOptionPane.showInputDialog("Wrong answer");
+                String respuestaCorrecta1 = JOptionPane.showInputDialog("Correct answer 1");
+                String respuestaCorrecta2 = JOptionPane.showInputDialog("Correct answer 2");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+               
                 
                 Respuesta rp1 = new Respuesta(respuestaCorrecta1, true);
                 Respuesta rp2 = new Respuesta(respuestaCorrecta2, true);
                 Respuesta rp3 = new Respuesta(respuestaIncorrecta1, false);
                 Respuesta rp4 = new Respuesta(respuestaIncorrecta2, false);
-                Respuesta rp5 = new Respuesta(respuestaIncorrecta3, false);
-                Respuesta rp6 = new Respuesta(respuestaIncorrecta4, false);
-                Respuesta rp7 = new Respuesta(respuestaIncorrecta5, false);
-                Respuesta rp8 = new Respuesta(respuestaIncorrecta6, false);
-                
                 int nivel = Integer.parseInt(jLabelNivelSeleccionMultiple.getText());
-                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp1, rp2, rp3, rp4, rp5, rp6, rp7, rp8, preguntaSeleccionMultiple.getText(), eliminar, nivel);
+                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp1, rp2, rp3, rp4,  preguntaSeleccionMultiple.getText(), eliminar, nivel);
                 Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm1);
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
             }
@@ -1280,13 +1324,20 @@ public class VentanaAdmi extends javax.swing.JFrame {
         
     }//GEN-LAST:event_crearPreguntasSeleccionMultipleActionPerformed
 
-    private void nuevaPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevaPreguntaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nuevaPreguntaActionPerformed
+    private void crearPreguntasTrueFalse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalse1ActionPerformed
+        
+        String preguntaEliminar = jListPreguntasEditar.getSelectedValue();
+        Metodos.getInstance().ModificarPregunta(preguntaEliminar);
+    }//GEN-LAST:event_crearPreguntasTrueFalse1ActionPerformed
 
-    private void agregarPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_agregarPreguntaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_agregarPreguntaActionPerformed
+    private void botonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizar1ActionPerformed
+        imprimirCategorias();
+    }//GEN-LAST:event_botonActualizar1ActionPerformed
+
+    private void botonEventos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEventos1ActionPerformed
+        String categoria = jListCategoriasEditar.getSelectedValue();
+        imprimirPreguntas(categoria);
+    }//GEN-LAST:event_botonEventos1ActionPerformed
     public void cerrar(){
         //Para salir del sistema
         try {
@@ -1347,13 +1398,14 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton JlabelLevelIcon1;
     private javax.swing.JButton JlabelLevelIcon2;
     private javax.swing.JButton ModificarPreguntas;
-    private javax.swing.JButton agregarPregunta;
     private javax.swing.JPanel background;
     private javax.swing.JButton botonActualizar;
+    private javax.swing.JButton botonActualizar1;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAgregar1;
     private javax.swing.JButton botonEliminarCategoria;
     private javax.swing.JButton botonEventos;
+    private javax.swing.JButton botonEventos1;
     private javax.swing.JButton botonEventos2;
     private javax.swing.JButton botonEventos3;
     private javax.swing.JLabel botonMinimizar;
@@ -1362,6 +1414,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton crearPreguntasSeleccionMultiple;
     private javax.swing.JButton crearPreguntasSeleccionUnica;
     private javax.swing.JButton crearPreguntasTrueFalse;
+    private javax.swing.JButton crearPreguntasTrueFalse1;
     private javax.swing.JTextField descripcion1;
     private javax.swing.JButton editarPreguntas;
     private javax.swing.JTextField fecha1;
@@ -1378,6 +1431,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton jButtonHome2;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JComboBox<String> jComboBoxTipo;
+    private javax.swing.JComboBox<String> jComboBoxTipo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1401,21 +1455,22 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
+    private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel36;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelHome;
     private javax.swing.JLabel jLabelNivelSeleccionMultiple;
     private javax.swing.JLabel jLabelNivelSeleccionUnica;
     private javax.swing.JLabel jLabelNivelTrueFalse;
     private javax.swing.JList<String> jListCategorias;
+    private javax.swing.JList<String> jListCategoriasEditar;
     private javax.swing.JList<String> jListCategoriasSeleccionMultiple;
     private javax.swing.JList<String> jListCategoriasSeleccionUnica;
     private javax.swing.JList<String> jListCategoriasTrueFalse;
     private javax.swing.JList<String> jListEventos1;
+    private javax.swing.JList<String> jListPreguntasEditar;
     private javax.swing.JList<String> jListQuestions;
     private javax.swing.JList<String> jListUsuarios1;
     private javax.swing.JPanel jPanel4;
@@ -1433,7 +1488,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
-    private javax.swing.JTextField nuevaPregunta;
+    private javax.swing.JScrollPane jScrollPane8;
+    private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTextField preguntaSeleccionMultiple;
     private javax.swing.JTextField preguntaSeleccionUnica;
     private javax.swing.JTextField preguntaTrueFalse;

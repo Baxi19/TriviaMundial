@@ -36,7 +36,7 @@ public class Respuesta {
 
     @Override
     public String toString() {
-        return "Respuesta{" + "respuesta=" + respuesta + ", correcta=" + correcta + '}';
+        return "Respuesta = " + respuesta ;
     }
     
 }

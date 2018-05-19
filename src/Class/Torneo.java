@@ -14,43 +14,24 @@ import java.util.ArrayList;
 public class Torneo {
     
     private String nombreTorneo;
-    private ArrayList<Usuario> listaJugadores;
-    
     private int participantes;
-    private int dificultad; 
+    private int dificultad;
     private int cantidadPreguntasJugador;
-    
-    //Singleton
-    public static Torneo instance = null;
-    
-    protected Torneo() {
+
+    public Torneo(String nombreTorneo, int participantes, int dificultad, int cantidadPreguntasJugador) {
         this.nombreTorneo = nombreTorneo;
-        this.listaJugadores = listaJugadores;
-        
         this.participantes = participantes;
         this.dificultad = dificultad;
         this.cantidadPreguntasJugador = cantidadPreguntasJugador;
     }
-    public static Torneo getInstance(){
-        if(instance == null)
-            instance = new Torneo();
-        return instance;
-    }
-
+    
+    
     public String getNombreTorneo() {
         return nombreTorneo;
     }
 
     public void setNombreTorneo(String nombreTorneo) {
         this.nombreTorneo = nombreTorneo;
-    }
-
-    public ArrayList<Usuario> getListaJugadores() {
-        return listaJugadores;
-    }
-
-    public void setListaJugadores(ArrayList<Usuario> listaJugadores) {
-        this.listaJugadores = listaJugadores;
     }
 
     public int getParticipantes() {
@@ -79,8 +60,7 @@ public class Torneo {
 
     @Override
     public String toString() {
-        return "Torneo{" + "nombreTorneo=" + nombreTorneo + ", listaJugadores=" + listaJugadores + ", participantes=" + participantes + ", dificultad=" + dificultad + ", cantidadPreguntasJugador=" + cantidadPreguntasJugador + '}';
+        return "Torneo{" + "nombreTorneo=" + nombreTorneo + ", participantes=" + participantes + ", dificultad=" + dificultad + ", cantidadPreguntasJugador=" + cantidadPreguntasJugador + '}';
     }
-    
-    
+ 
 }

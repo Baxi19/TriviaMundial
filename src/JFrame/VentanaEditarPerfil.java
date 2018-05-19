@@ -50,7 +50,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         registro = new javax.swing.JPanel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         User = new javax.swing.JLabel();
         Email = new javax.swing.JLabel();
@@ -71,7 +70,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         imagenIcono = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
         usuarioActual = new javax.swing.JLabel();
-        jLabelHome = new javax.swing.JLabel();
         jButtonOff = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
@@ -99,11 +97,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         registro.setForeground(new java.awt.Color(255, 255, 255));
         registro.setOpaque(false);
         registro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel6.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel6.setText("Finalizar:");
-        registro.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 70, 40));
 
         jLabel7.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(111, 174, 2));
@@ -170,14 +163,14 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         jTextFieldPais.setForeground(new java.awt.Color(255, 255, 255));
         registro.add(jTextFieldPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 220, 160, 30));
 
-        jButtonAgregarFoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonAgregarFoto1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit-perf_on.png"))); // NOI18N
         jButtonAgregarFoto1.setBorder(null);
         jButtonAgregarFoto1.setBorderPainted(false);
         jButtonAgregarFoto1.setContentAreaFilled(false);
         jButtonAgregarFoto1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonAgregarFoto1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonAgregarFoto1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonAgregarFoto1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonAgregarFoto1.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit-perf.png"))); // NOI18N
+        jButtonAgregarFoto1.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit-perf.png"))); // NOI18N
+        jButtonAgregarFoto1.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/edit-perf.png"))); // NOI18N
         jButtonAgregarFoto1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonAgregarFoto1MouseClicked(evt);
@@ -188,7 +181,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
                 jButtonAgregarFoto1ActionPerformed(evt);
             }
         });
-        registro.add(jButtonAgregarFoto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 220, 50, 40));
+        registro.add(jButtonAgregarFoto1, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 230, 110, 30));
 
         jButtonAgregarFoto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/foto1.png"))); // NOI18N
         jButtonAgregarFoto.setBorder(null);
@@ -232,12 +225,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 50, 120, 30));
-
-        jLabelHome.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabelHome.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelHome.setText("Log Out");
-        background.add(jLabelHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 40, 120, -1));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 170, 30));
 
         jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
         jButtonOff.setBorder(null);
@@ -267,7 +255,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
                 jButtonHomeMouseClicked(evt);
             }
         });
-        background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(180, 20, 50, 50));
+        background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/botonesperf-conf.png"))); // NOI18N
         background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 50, 60));
@@ -305,7 +293,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(111, 174, 2));
         jLabel5.setText("Welcome");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 50, 80, 30));
+        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 0, 80, 30));
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 418, 1000, 10));
@@ -519,12 +507,10 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBackground;
-    private javax.swing.JLabel jLabelHome;
     private javax.swing.JTextField jTextFieldConfirmarContraseña;
     private javax.swing.JTextField jTextFieldContraseña;
     private javax.swing.JTextField jTextFieldCorreo;

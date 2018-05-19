@@ -63,7 +63,10 @@ public class PreguntaSeleccionUnica extends Pregunta {
 
     @Override
     public String toString() {
-        return "PreguntaSeleccionUnica{" + "respuesta1=" + respuesta1 + ", respuesta2=" + respuesta2 + ", respuesta3=" + respuesta3 + ", respuesta4=" + respuesta4 + '}';
+        return    "Respuesta 1 = " + respuesta1.getRespuesta() + "\n "
+                + "Respuesta 2 = " + respuesta2.getRespuesta() + "\n "
+                + "Respuesta 3 = " + respuesta3.getRespuesta() + "\n "
+                + "Respuesta 4 = " + respuesta4.getRespuesta() + '}';
     }
     
     }

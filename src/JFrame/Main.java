@@ -169,36 +169,29 @@ public class Main extends javax.swing.JFrame {
                 Respuesta rp20 = new Respuesta("Portugal", true);
                 Respuesta rp21 = new Respuesta("Costa Rica", false);
                 Respuesta rp22 = new Respuesta("Honduras", false);
-                Respuesta rp23 = new Respuesta("Panama", false);
-                Respuesta rp24 = new Respuesta("USA", false);
-                Respuesta rp25 = new Respuesta("China", false);
-                Respuesta rp26 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp19, rp20, rp21, rp22, rp23, rp24, rp25, rp26, "Equipos que se enfrentaran el viernes 15 junio ", "Partidos", 1);
+               
+                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp19, rp20, rp21, rp22,"Equipos que se enfrentaran el viernes 15 junio ", "Partidos", 1);
 
                 Respuesta rp27 = new Respuesta("Francia", true);
                 Respuesta rp28 = new Respuesta("Argentina", true);
                 Respuesta rp29 = new Respuesta("Costa Rica", false);
                 Respuesta rp30 = new Respuesta("Honduras", false);
-                Respuesta rp31 = new Respuesta("Panama", false);
-                Respuesta rp32 = new Respuesta("USA", false);
-                Respuesta rp33 = new Respuesta("China", false);
-                Respuesta rp34 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm2 = new PreguntaSeleccionMultiple(rp27, rp28, rp29, rp30, rp31, rp32, rp33, rp34, "Equipos que se enfrentaran el sabado 16 junio ", "Partidos", 3);
+               
+                PreguntaSeleccionMultiple psm2 = new PreguntaSeleccionMultiple(rp27, rp28, rp29, rp30, "Equipos que se enfrentaran el sabado 16 junio ", "Partidos", 3);
 
                 Respuesta rp35 = new Respuesta("España", false);
                 Respuesta rp36 = new Respuesta("Portugal", false);
                 Respuesta rp37 = new Respuesta("Costa Rica", true);
-                Respuesta rp38 = new Respuesta("Honduras", false);
+                
                 Respuesta rp39 = new Respuesta("Brazil", true);
-                Respuesta rp40 = new Respuesta("USA", false);
-                Respuesta rp41 = new Respuesta("China", false);
-                Respuesta rp42 = new Respuesta("Alemania", false);
-                PreguntaSeleccionMultiple psm3 = new PreguntaSeleccionMultiple(rp35, rp36, rp37, rp38, rp39, rp40, rp41, rp42, "Equipos que se enfrentaran el Domingo 17 junio ", "Partidos", 5);
+                
+                PreguntaSeleccionMultiple psm3 = new PreguntaSeleccionMultiple(rp35, rp36, rp37,  rp39, "Equipos que se enfrentaran el Domingo 17 junio ", "Partidos", 5);
 
                 //agregamos las preguntas de seleccion multiple  a la lista
                 Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm1);
                 Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm2);
                 Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(psm3);
+                
 
                 new VentanaLogin().setVisible(true);
             }
