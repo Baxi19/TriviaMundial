@@ -385,7 +385,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
             }
         });
         jPanelEditar.add(crearPreguntasTrueFalse1);
-        crearPreguntasTrueFalse1.setBounds(320, 209, 73, 50);
+        crearPreguntasTrueFalse1.setBounds(320, 199, 60, 50);
 
         jLabel33.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(111, 174, 2));
@@ -425,7 +425,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
             }
         });
         jPanelEditar.add(botonEventos1);
-        botonEventos1.setBounds(320, 160, 63, 39);
+        botonEventos1.setBounds(320, 150, 63, 39);
 
         background.add(jPanelEditar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 410, 260));
 
@@ -1132,34 +1132,11 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_editarPreguntasActionPerformed
 
     private void ModificarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPreguntasActionPerformed
-        Metodos.getInstance().abrirFacebook();
+        Metodos.getInstance().EliminarPregunta(jListPreguntasEditar.getSelectedValue());
     }//GEN-LAST:event_ModificarPreguntasActionPerformed
 
     private void crearPreguntasTrueFalseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalseActionPerformed
-        //metodo que agrega una nueva pregunta de true\ false
-        String eliminar = jListCategoriasTrueFalse.getSelectedValue();
-        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Please select a category");
-        } else {
-            if (jLabelNivelTrueFalse.getText().isEmpty() | preguntaTrueFalse.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Empty field");
-            } else {
-                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta = JOptionPane.showInputDialog("Wrong answer");
-                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
-                Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
-                int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
-                PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar , nivel);
-                Metodos.getInstance().setPreguntaVF(fv1);
-                Crea crea;
-                crea = new CreaPreguntas();
-                PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
-                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
-                System.out.println(pregunta);
-                JOptionPane.showMessageDialog(rootPane, "Question added!");
-            }
-        }
-        
+        agregaPreguntaTrueFalse();
         
     }//GEN-LAST:event_crearPreguntasTrueFalseActionPerformed
 
@@ -1231,37 +1208,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteDificult1MouseClicked
 
     private void crearPreguntasSeleccionUnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionUnicaActionPerformed
-        //metodo que agrega una nueva pregunta de seleccion unica
-        String eliminar = jListCategoriasSeleccionUnica.getSelectedValue();
-        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Please select a category");
-        } else {
-            if (jLabelNivelSeleccionUnica.getText().isEmpty() | preguntaSeleccionUnica.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Empty field");
-            } else {
-                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
-                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
-                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
-
-                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
-                Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
-                Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
-                Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
-          
-                int nivel = Integer.parseInt(jLabelNivelSeleccionUnica.getText());
-                PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp1, rp2, rp3, rp4, preguntaSeleccionUnica.getText(), eliminar, nivel);
-                Metodos.getInstance().setPreguntaSU(psu1);
-                Crea crea;
-                crea = new CreaPreguntas();
-                PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
-                Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
-                System.out.println(pregunta);
-                JOptionPane.showMessageDialog(rootPane, "Question added!");
-                
-            }
-        }
-        
+        agregaPreguntaSeleccionUnica();
         
     }//GEN-LAST:event_crearPreguntasSeleccionUnicaActionPerformed
 
@@ -1306,8 +1253,64 @@ public class VentanaAdmi extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
         }
     }//GEN-LAST:event_jButtonDeleteDificult2MouseClicked
+    public void agregaPreguntaSeleccionUnica(){
+        //metodo que agrega una nueva pregunta de seleccion unica
+        String eliminar = jListCategoriasSeleccionUnica.getSelectedValue();
+        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a category");
+        } else {
+            if (jLabelNivelSeleccionUnica.getText().isEmpty() | preguntaSeleccionUnica.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Empty field");
+            } else {
+                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
 
-    private void crearPreguntasSeleccionMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionMultipleActionPerformed
+                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
+                Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
+                Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
+                Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
+          
+                int nivel = Integer.parseInt(jLabelNivelSeleccionUnica.getText());
+                PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp1, rp2, rp3, rp4, preguntaSeleccionUnica.getText(), eliminar, nivel);
+                Metodos.getInstance().setPreguntaSU(psu1);
+                Crea crea;
+                crea = new CreaPreguntas();
+                PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
+                Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
+                System.out.println(pregunta);
+                JOptionPane.showMessageDialog(rootPane, "Question added!");
+                
+            }
+        }
+    }
+    public void agregaPreguntaTrueFalse(){
+        //metodo que agrega una nueva pregunta de true\ false
+        String eliminar = jListCategoriasTrueFalse.getSelectedValue();
+        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a category");
+        } else {
+            if (jLabelNivelTrueFalse.getText().isEmpty() | preguntaTrueFalse.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Empty field");
+            } else {
+                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+                String respuestaIncorrecta = JOptionPane.showInputDialog("Wrong answer");
+                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
+                Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
+                int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
+                PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar , nivel);
+                Metodos.getInstance().setPreguntaVF(fv1);
+                Crea crea;
+                crea = new CreaPreguntas();
+                PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
+                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
+                System.out.println(pregunta);
+                JOptionPane.showMessageDialog(rootPane, "Question added!");
+            }
+        }
+    }
+    public void agregaPreguntaSeleccionMultiple(){
         //metodo que agrega una nueva pregunta de seleccion unica
         String eliminar = jListCategoriasSeleccionMultiple.getSelectedValue();
         if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
@@ -1337,14 +1340,24 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "Question added!");
             }
         }
-        
+    }
+    
+    private void crearPreguntasSeleccionMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionMultipleActionPerformed
+        agregaPreguntaSeleccionUnica();
         
     }//GEN-LAST:event_crearPreguntasSeleccionMultipleActionPerformed
 
     private void crearPreguntasTrueFalse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalse1ActionPerformed
         
+        if(jComboBoxTipo1.getSelectedIndex() == 0){
+            agregaPreguntaTrueFalse();
+        }else if(jComboBoxTipo1.getSelectedIndex() == 1){
+            agregaPreguntaSeleccionUnica();
+        }else{
+            agregaPreguntaSeleccionMultiple();
+        }
         String preguntaEliminar = jListPreguntasEditar.getSelectedValue();
-      //  Metodos.getInstance().ModificarPregunta(preguntaEliminar);
+        Metodos.getInstance().ModificarPregunta(preguntaEliminar);
     }//GEN-LAST:event_crearPreguntasTrueFalse1ActionPerformed
 
     private void botonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizar1ActionPerformed

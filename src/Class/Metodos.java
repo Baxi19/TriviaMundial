@@ -389,7 +389,7 @@ public class Metodos {
         }
         return null;
     }
-    /*
+    
     public boolean EliminarPregunta(String preguntaEliminar){
         //metodo para recorrer las preguntas y eliminarla
         
@@ -439,6 +439,7 @@ public class Metodos {
                     | aux.getRespuesta3().equals(preguntaModificar) 
                     | aux.getRespuesta4().equals(preguntaModificar)) {
                 Metodos.getInstance().listaPreguntaSeleccionMultiples.remove(i);
+                
                  
                 return true;
             }
@@ -467,5 +468,5 @@ public class Metodos {
         return false;
     
     }
-    */
+    
 }
