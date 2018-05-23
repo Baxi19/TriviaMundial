@@ -85,15 +85,24 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jListCategorias = new javax.swing.JList<>();
         botonEliminarCategoria = new javax.swing.JButton();
+        jPanelEliminar = new javax.swing.JPanel();
+        jScrollPane10 = new javax.swing.JScrollPane();
+        jListPreguntasEliminar = new javax.swing.JList<>();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        jListCategoriasEliminar = new javax.swing.JList<>();
+        buttonEliminarPregunta = new javax.swing.JButton();
+        jLabel34 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        botonActualizar2 = new javax.swing.JButton();
+        botonEventos4 = new javax.swing.JButton();
         jPanelEditar = new javax.swing.JPanel();
         jScrollPane9 = new javax.swing.JScrollPane();
         jListPreguntasEditar = new javax.swing.JList<>();
         jScrollPane8 = new javax.swing.JScrollPane();
         jListCategoriasEditar = new javax.swing.JList<>();
-        crearPreguntasTrueFalse1 = new javax.swing.JButton();
+        buttonEditarPreguntas = new javax.swing.JButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel36 = new javax.swing.JLabel();
-        jComboBoxTipo1 = new javax.swing.JComboBox<>();
         botonActualizar1 = new javax.swing.JButton();
         botonEventos1 = new javax.swing.JButton();
         jPanelSeleccionMultiple = new javax.swing.JPanel();
@@ -155,7 +164,6 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
-        jButtonHome2 = new javax.swing.JButton();
 
         jLabel11.setText("jLabel11");
 
@@ -347,6 +355,81 @@ public class VentanaAdmi extends javax.swing.JFrame {
         });
         background.add(botonEliminarCategoria, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 230, 50, 40));
 
+        jPanelEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jPanelEliminar.setOpaque(false);
+        jPanelEliminar.setLayout(null);
+
+        jScrollPane10.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane10.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jScrollPane10.setOpaque(false);
+
+        jListPreguntasEliminar.setBackground(new java.awt.Color(0, 0, 0));
+        jListPreguntasEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jListPreguntasEliminar.setForeground(new java.awt.Color(111, 174, 2));
+        jListPreguntasEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane10.setViewportView(jListPreguntasEliminar);
+
+        jPanelEliminar.add(jScrollPane10);
+        jScrollPane10.setBounds(10, 130, 280, 80);
+
+        jScrollPane11.setBackground(new java.awt.Color(0, 0, 0));
+        jScrollPane11.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
+        jScrollPane11.setOpaque(false);
+
+        jListCategoriasEliminar.setBackground(new java.awt.Color(0, 0, 0));
+        jListCategoriasEliminar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
+        jListCategoriasEliminar.setForeground(new java.awt.Color(111, 174, 2));
+        jListCategoriasEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jScrollPane11.setViewportView(jListCategoriasEliminar);
+
+        jPanelEliminar.add(jScrollPane11);
+        jScrollPane11.setBounds(10, 70, 280, 60);
+
+        buttonEliminarPregunta.setBackground(new java.awt.Color(0, 0, 0));
+        buttonEliminarPregunta.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/delete2.png"))); // NOI18N
+        buttonEliminarPregunta.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        buttonEliminarPregunta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonEliminarPreguntaActionPerformed(evt);
+            }
+        });
+        jPanelEliminar.add(buttonEliminarPregunta);
+        buttonEliminarPregunta.setBounds(320, 199, 60, 50);
+
+        jLabel34.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel34.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel34.setText("Delete");
+        jPanelEliminar.add(jLabel34);
+        jLabel34.setBounds(250, 220, 60, 40);
+
+        jLabel37.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel37.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel37.setText("Select the Category & Question to Delete it");
+        jPanelEliminar.add(jLabel37);
+        jLabel37.setBounds(50, 10, 310, 30);
+
+        botonActualizar2.setBackground(new java.awt.Color(0, 0, 0));
+        botonActualizar2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update1.png"))); // NOI18N
+        botonActualizar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonActualizar2ActionPerformed(evt);
+            }
+        });
+        jPanelEliminar.add(botonActualizar2);
+        botonActualizar2.setBounds(320, 90, 63, 39);
+
+        botonEventos4.setBackground(new java.awt.Color(0, 0, 0));
+        botonEventos4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/search.png"))); // NOI18N
+        botonEventos4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botonEventos4ActionPerformed(evt);
+            }
+        });
+        jPanelEliminar.add(botonEventos4);
+        botonEventos4.setBounds(320, 150, 63, 39);
+
+        background.add(jPanelEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 210, 410, 260));
+
         jPanelEditar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
         jPanelEditar.setOpaque(false);
         jPanelEditar.setLayout(null);
@@ -362,7 +445,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jScrollPane9.setViewportView(jListPreguntasEditar);
 
         jPanelEditar.add(jScrollPane9);
-        jScrollPane9.setBounds(10, 150, 280, 60);
+        jScrollPane9.setBounds(10, 130, 280, 80);
 
         jScrollPane8.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
@@ -375,17 +458,17 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jScrollPane8.setViewportView(jListCategoriasEditar);
 
         jPanelEditar.add(jScrollPane8);
-        jScrollPane8.setBounds(10, 70, 280, 70);
+        jScrollPane8.setBounds(10, 70, 280, 60);
 
-        crearPreguntasTrueFalse1.setBackground(new java.awt.Color(0, 0, 0));
-        crearPreguntasTrueFalse1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Edit File_40px.png"))); // NOI18N
-        crearPreguntasTrueFalse1.addActionListener(new java.awt.event.ActionListener() {
+        buttonEditarPreguntas.setBackground(new java.awt.Color(0, 0, 0));
+        buttonEditarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Edit File_40px.png"))); // NOI18N
+        buttonEditarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                crearPreguntasTrueFalse1ActionPerformed(evt);
+                buttonEditarPreguntasActionPerformed(evt);
             }
         });
-        jPanelEditar.add(crearPreguntasTrueFalse1);
-        crearPreguntasTrueFalse1.setBounds(320, 199, 60, 50);
+        jPanelEditar.add(buttonEditarPreguntas);
+        buttonEditarPreguntas.setBounds(320, 199, 60, 50);
 
         jLabel33.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel33.setForeground(new java.awt.Color(111, 174, 2));
@@ -395,17 +478,9 @@ public class VentanaAdmi extends javax.swing.JFrame {
 
         jLabel36.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel36.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel36.setText("Select the Category & Question");
+        jLabel36.setText("Select the Category & Question to Edit");
         jPanelEditar.add(jLabel36);
         jLabel36.setBounds(70, 10, 290, 30);
-
-        jComboBoxTipo1.setBackground(new java.awt.Color(0, 0, 0));
-        jComboBoxTipo1.setForeground(new java.awt.Color(111, 174, 2));
-        jComboBoxTipo1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "True \\ False", "Single choice", "Multiple choice" }));
-        jComboBoxTipo1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
-        jComboBoxTipo1.setOpaque(false);
-        jPanelEditar.add(jComboBoxTipo1);
-        jComboBoxTipo1.setBounds(300, 40, 94, 20);
 
         botonActualizar1.setBackground(new java.awt.Color(0, 0, 0));
         botonActualizar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/update1.png"))); // NOI18N
@@ -795,17 +870,17 @@ public class VentanaAdmi extends javax.swing.JFrame {
         background.add(jComboBoxTipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 140, 110, 20));
 
         jLabel18.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Delete Questions");
         background.add(jLabel18, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 110, 120, -1));
 
         jLabel17.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Edit Questions");
         background.add(jLabel17, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 110, 110, -1));
 
         jLabel15.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Delete Category");
         background.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 130, -1));
 
@@ -815,22 +890,22 @@ public class VentanaAdmi extends javax.swing.JFrame {
         background.add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 330, 100, -1));
 
         jLabel12.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Add Questions");
         background.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 110, 130, -1));
 
         jLabel6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Categories");
         background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 250, 80, 40));
 
         jLabel16.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Add Categories");
         background.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 130, 130, -1));
 
         ModificarPreguntas.setBackground(new java.awt.Color(0, 0, 0));
-        ModificarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/fb.png"))); // NOI18N
+        ModificarPreguntas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/delete2.png"))); // NOI18N
         ModificarPreguntas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 ModificarPreguntasActionPerformed(evt);
@@ -921,21 +996,6 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
-        jButtonHome2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom.png"))); // NOI18N
-        jButtonHome2.setBorder(null);
-        jButtonHome2.setBorderPainted(false);
-        jButtonHome2.setContentAreaFilled(false);
-        jButtonHome2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonHome2.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/hom2.png"))); // NOI18N
-        jButtonHome2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonHome2MouseClicked(evt);
-            }
-        });
-        background.add(jButtonHome2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
-
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         pack();
@@ -969,6 +1029,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
         //Abre la ventana principal
+        Metodos.getInstance().getListaJugadoresSeleccionados().clear();
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
         this.dispose();
@@ -976,12 +1037,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHomeMouseClicked
 
     private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
-        cerrar();
+        Metodos.getInstance().cerrar();
     }//GEN-LAST:event_jButtonOffMouseClicked
-
-    private void jButtonHome2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonHome2MouseClicked
 
     private void botonEventosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEventosActionPerformed
         String categoria = jListCategorias.getSelectedValue();
@@ -1026,6 +1083,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         }
         jListQuestions.setModel(listModel2);
         jListPreguntasEditar.setModel(listModel2);
+        jListPreguntasEliminar.setModel(listModel2);
 
     
     }
@@ -1069,6 +1127,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jListCategoriasSeleccionUnica.setModel(listModel);
         jListCategoriasSeleccionMultiple.setModel(listModel);
         jListCategoriasEditar.setModel(listModel);
+        jListCategoriasEliminar.setModel(listModel);
     }
     private void descripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcion1ActionPerformed
         // TODO add your handling code here:
@@ -1111,9 +1170,10 @@ public class VentanaAdmi extends javax.swing.JFrame {
         jPanelSeleccionUnica.setVisible(false);
         jPanelSeleccionMultiple.setVisible(false);
         jPanelEditar.setVisible(false);
+        jPanelEliminar.setVisible(false);
     }
     private void crearPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasActionPerformed
-        //metodo para abrir paneles
+        //metodo para mostrar paneles
         if (jComboBoxTipo.getSelectedIndex() == 0) {
             cerrarPreguntas();
             jPanelTrueFalse.setVisible(true);
@@ -1132,12 +1192,21 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_editarPreguntasActionPerformed
 
     private void ModificarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ModificarPreguntasActionPerformed
-        Metodos.getInstance().EliminarPregunta(jListPreguntasEditar.getSelectedValue());
+        cerrarPreguntas();
+        jPanelEliminar.setVisible(true);
     }//GEN-LAST:event_ModificarPreguntasActionPerformed
 
     private void crearPreguntasTrueFalseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalseActionPerformed
-        agregaPreguntaTrueFalse();
-        
+        String eliminar = jListCategoriasTrueFalse.getSelectedValue();
+        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a category");
+        } else {
+            if (jLabelNivelTrueFalse.getText().isEmpty() | preguntaTrueFalse.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Empty field");
+            } else {
+                agregaPreguntaTrueFalse(eliminar);
+            }
+        }
     }//GEN-LAST:event_crearPreguntasTrueFalseActionPerformed
 
     private void jButtonDeleteDificultMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonDeleteDificultMouseClicked
@@ -1208,7 +1277,16 @@ public class VentanaAdmi extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDeleteDificult1MouseClicked
 
     private void crearPreguntasSeleccionUnicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionUnicaActionPerformed
-        agregaPreguntaSeleccionUnica();
+        String eliminar = jListCategoriasSeleccionUnica.getSelectedValue();
+        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
+            JOptionPane.showMessageDialog(rootPane, "Please select a category");
+        } else {
+            if (jLabelNivelSeleccionUnica.getText().isEmpty() | preguntaSeleccionUnica.getText().isEmpty()) {
+                JOptionPane.showMessageDialog(rootPane, "Empty field");
+            } else {
+                agregaPreguntaSeleccionUnica(eliminar);
+            }
+        }
         
     }//GEN-LAST:event_crearPreguntasSeleccionUnicaActionPerformed
 
@@ -1249,69 +1327,79 @@ public class VentanaAdmi extends javax.swing.JFrame {
             Metodos.getInstance().setNivelSeleccionado(cantidad);
             jLabelNivelSeleccionMultiple.setText(String.valueOf(cantidad));
 
-        }else{
+        } else {
             JOptionPane.showMessageDialog(this, "You already selected the minimum number of players!");
         }
     }//GEN-LAST:event_jButtonDeleteDificult2MouseClicked
-    public void agregaPreguntaSeleccionUnica(){
+    public void agregaPreguntaSeleccionUnica(String eliminar) {
         //metodo que agrega una nueva pregunta de seleccion unica
-        String eliminar = jListCategoriasSeleccionUnica.getSelectedValue();
-        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Please select a category");
-        } else {
-            if (jLabelNivelSeleccionUnica.getText().isEmpty() | preguntaSeleccionUnica.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Empty field");
-            } else {
-                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
-                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
-                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
+        
+        String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+        String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+        String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+        String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
 
-                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
-                Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
-                Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
-                Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
-          
-                int nivel = Integer.parseInt(jLabelNivelSeleccionUnica.getText());
-                PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp1, rp2, rp3, rp4, preguntaSeleccionUnica.getText(), eliminar, nivel);
-                Metodos.getInstance().setPreguntaSU(psu1);
-                Crea crea;
-                crea = new CreaPreguntas();
-                PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
-                Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
-                System.out.println(pregunta);
-                JOptionPane.showMessageDialog(rootPane, "Question added!");
-                
-            }
-        }
+        Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
+        Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
+        Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
+        Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
+
+        int nivel = Integer.parseInt(jLabelNivelSeleccionUnica.getText());
+        PreguntaSeleccionUnica psu1 = new PreguntaSeleccionUnica(rp1, rp2, rp3, rp4, preguntaSeleccionUnica.getText(), eliminar, nivel);
+        Metodos.getInstance().setPreguntaSU(psu1);
+        Crea crea;
+        crea = new CreaPreguntas();
+        PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
+        Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
+        System.out.println(pregunta);
+        JOptionPane.showMessageDialog(rootPane, "Question added!");
+
     }
-    public void agregaPreguntaTrueFalse(){
+
+    public void agregaPreguntaTrueFalse(String eliminar) {
         //metodo que agrega una nueva pregunta de true\ false
-        String eliminar = jListCategoriasTrueFalse.getSelectedValue();
-        if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
-            JOptionPane.showMessageDialog(rootPane, "Please select a category");
-        } else {
-            if (jLabelNivelTrueFalse.getText().isEmpty() | preguntaTrueFalse.getText().isEmpty()) {
-                JOptionPane.showMessageDialog(rootPane, "Empty field");
-            } else {
-                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
-                String respuestaIncorrecta = JOptionPane.showInputDialog("Wrong answer");
-                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
-                Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
-                int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
-                PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar , nivel);
-                Metodos.getInstance().setPreguntaVF(fv1);
-                Crea crea;
-                crea = new CreaPreguntas();
-                PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
-                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
-                System.out.println(pregunta);
-                JOptionPane.showMessageDialog(rootPane, "Question added!");
-            }
-        }
+
+        String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+        String respuestaIncorrecta = JOptionPane.showInputDialog("Wrong answer");
+        Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
+        Respuesta rp2 = new Respuesta(respuestaIncorrecta, false);
+        int nivel = Integer.parseInt(jLabelNivelTrueFalse.getText());
+        PreguntaVerdaderoFalso fv1 = new PreguntaVerdaderoFalso(rp1, rp2, preguntaTrueFalse.getText(), eliminar, nivel);
+        Metodos.getInstance().setPreguntaVF(fv1);
+        Crea crea;
+        crea = new CreaPreguntas();
+        PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
+        Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
+        System.out.println(pregunta);
+        JOptionPane.showMessageDialog(rootPane, "Question True / False added!");
+
     }
-    public void agregaPreguntaSeleccionMultiple(){
+
+    public void agregaPreguntaSeleccionMultiple(String eliminar) {
         //metodo que agrega una nueva pregunta de seleccion unica
+
+        String respuestaCorrecta1 = JOptionPane.showInputDialog("Correct answer 1");
+        String respuestaCorrecta2 = JOptionPane.showInputDialog("Correct answer 2");
+        String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+        String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+
+        Respuesta rp1 = new Respuesta(respuestaCorrecta1, true);
+        Respuesta rp2 = new Respuesta(respuestaCorrecta2, true);
+        Respuesta rp3 = new Respuesta(respuestaIncorrecta1, false);
+        Respuesta rp4 = new Respuesta(respuestaIncorrecta2, false);
+        int nivel = Integer.parseInt(jLabelNivelSeleccionMultiple.getText());
+        PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp1, rp2, rp3, rp4, preguntaSeleccionMultiple.getText(), eliminar, nivel);
+        Metodos.getInstance().setPreguntaSM(psm1);
+        Crea crea;
+        crea = new CreaPreguntas();
+        PreguntaSeleccionMultiple pregunta = crea.creaPreguntaSeleccionMultiple();
+        Metodos.getInstance().listaPreguntaSeleccionMultiples.add(pregunta);
+        System.out.println(pregunta);
+        JOptionPane.showMessageDialog(rootPane, "Question multiple selection added!");
+
+    }
+
+    private void crearPreguntasSeleccionMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionMultipleActionPerformed
         String eliminar = jListCategoriasSeleccionMultiple.getSelectedValue();
         if (Metodos.getInstance().verificarSeleccionCategoria(eliminar) == false) {
             JOptionPane.showMessageDialog(rootPane, "Please select a category");
@@ -1319,46 +1407,17 @@ public class VentanaAdmi extends javax.swing.JFrame {
             if (jLabelNivelSeleccionMultiple.getText().isEmpty() | preguntaSeleccionMultiple.getText().isEmpty()) {
                 JOptionPane.showMessageDialog(rootPane, "Empty field");
             } else {
-                String respuestaCorrecta1 = JOptionPane.showInputDialog("Correct answer 1");
-                String respuestaCorrecta2 = JOptionPane.showInputDialog("Correct answer 2");
-                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
-                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
-               
-                
-                Respuesta rp1 = new Respuesta(respuestaCorrecta1, true);
-                Respuesta rp2 = new Respuesta(respuestaCorrecta2, true);
-                Respuesta rp3 = new Respuesta(respuestaIncorrecta1, false);
-                Respuesta rp4 = new Respuesta(respuestaIncorrecta2, false);
-                int nivel = Integer.parseInt(jLabelNivelSeleccionMultiple.getText());
-                PreguntaSeleccionMultiple psm1 = new PreguntaSeleccionMultiple(rp1, rp2, rp3, rp4,  preguntaSeleccionMultiple.getText(), eliminar, nivel);
-                Metodos.getInstance().setPreguntaSM(psm1);
-                Crea crea;
-                crea = new CreaPreguntas();
-                PreguntaSeleccionMultiple pregunta = crea.creaPreguntaSeleccionMultiple();
-                Metodos.getInstance().listaPreguntaSeleccionMultiples.add(pregunta);
-                System.out.println(pregunta);
-                JOptionPane.showMessageDialog(rootPane, "Question added!");
+                agregaPreguntaSeleccionUnica(eliminar);
             }
         }
-    }
-    
-    private void crearPreguntasSeleccionMultipleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasSeleccionMultipleActionPerformed
-        agregaPreguntaSeleccionUnica();
-        
-    }//GEN-LAST:event_crearPreguntasSeleccionMultipleActionPerformed
 
-    private void crearPreguntasTrueFalse1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearPreguntasTrueFalse1ActionPerformed
-        
-        if(jComboBoxTipo1.getSelectedIndex() == 0){
-            agregaPreguntaTrueFalse();
-        }else if(jComboBoxTipo1.getSelectedIndex() == 1){
-            agregaPreguntaSeleccionUnica();
-        }else{
-            agregaPreguntaSeleccionMultiple();
-        }
-        String preguntaEliminar = jListPreguntasEditar.getSelectedValue();
-        Metodos.getInstance().ModificarPregunta(preguntaEliminar);
-    }//GEN-LAST:event_crearPreguntasTrueFalse1ActionPerformed
+    }//GEN-LAST:event_crearPreguntasSeleccionMultipleActionPerformed
+    
+    private void buttonEditarPreguntasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEditarPreguntasActionPerformed
+        String pregunta = jListPreguntasEditar.getSelectedValue();
+        Metodos.getInstance().ModificarPregunta(pregunta);
+
+    }//GEN-LAST:event_buttonEditarPreguntasActionPerformed
 
     private void botonActualizar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizar1ActionPerformed
         imprimirCategorias();
@@ -1368,19 +1427,26 @@ public class VentanaAdmi extends javax.swing.JFrame {
         String categoria = jListCategoriasEditar.getSelectedValue();
         imprimirPreguntas(categoria);
     }//GEN-LAST:event_botonEventos1ActionPerformed
-    public void cerrar(){
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
+
+    private void buttonEliminarPreguntaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonEliminarPreguntaActionPerformed
+        String eliminar = jListPreguntasEliminar.getSelectedValue();
+        if(Metodos.getInstance().EliminarPregunta(eliminar)){
+            JOptionPane.showMessageDialog(rootPane, "Question deleted");
+        }else{
+            JOptionPane.showMessageDialog(rootPane, "Question not deleted");
         }
-    }
+    }//GEN-LAST:event_buttonEliminarPreguntaActionPerformed
+
+    private void botonActualizar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizar2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_botonActualizar2ActionPerformed
+
+    private void botonEventos4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEventos4ActionPerformed
+        String categoria = jListCategoriasEliminar.getSelectedValue();
+        imprimirPreguntas(categoria);
+    }//GEN-LAST:event_botonEventos4ActionPerformed
+   
+    
     /**
      * @param args the command line arguments
      */
@@ -1431,6 +1497,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JPanel background;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonActualizar1;
+    private javax.swing.JButton botonActualizar2;
     private javax.swing.JButton botonAgregar;
     private javax.swing.JButton botonAgregar1;
     private javax.swing.JButton botonEliminarCategoria;
@@ -1438,13 +1505,15 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton botonEventos1;
     private javax.swing.JButton botonEventos2;
     private javax.swing.JButton botonEventos3;
+    private javax.swing.JButton botonEventos4;
     private javax.swing.JLabel botonMinimizar;
+    private javax.swing.JButton buttonEditarPreguntas;
+    private javax.swing.JButton buttonEliminarPregunta;
     private javax.swing.JTextField categoria;
     private javax.swing.JButton crearPreguntas;
     private javax.swing.JButton crearPreguntasSeleccionMultiple;
     private javax.swing.JButton crearPreguntasSeleccionUnica;
     private javax.swing.JButton crearPreguntasTrueFalse;
-    private javax.swing.JButton crearPreguntasTrueFalse1;
     private javax.swing.JTextField descripcion1;
     private javax.swing.JButton editarPreguntas;
     private javax.swing.JTextField fecha1;
@@ -1458,10 +1527,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDeleteDificult1;
     private javax.swing.JButton jButtonDeleteDificult2;
     private javax.swing.JButton jButtonHome;
-    private javax.swing.JButton jButtonHome2;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JComboBox<String> jComboBoxTipo;
-    private javax.swing.JComboBox<String> jComboBoxTipo1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1486,7 +1553,9 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel33;
+    private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel9;
@@ -1496,11 +1565,13 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNivelTrueFalse;
     private javax.swing.JList<String> jListCategorias;
     private javax.swing.JList<String> jListCategoriasEditar;
+    private javax.swing.JList<String> jListCategoriasEliminar;
     private javax.swing.JList<String> jListCategoriasSeleccionMultiple;
     private javax.swing.JList<String> jListCategoriasSeleccionUnica;
     private javax.swing.JList<String> jListCategoriasTrueFalse;
     private javax.swing.JList<String> jListEventos1;
     private javax.swing.JList<String> jListPreguntasEditar;
+    private javax.swing.JList<String> jListPreguntasEliminar;
     private javax.swing.JList<String> jListQuestions;
     private javax.swing.JList<String> jListUsuarios1;
     private javax.swing.JPanel jPanel4;
@@ -1508,10 +1579,13 @@ public class VentanaAdmi extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanelEditar;
+    private javax.swing.JPanel jPanelEliminar;
     private javax.swing.JPanel jPanelSeleccionMultiple;
     private javax.swing.JPanel jPanelSeleccionUnica;
     private javax.swing.JPanel jPanelTrueFalse;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;

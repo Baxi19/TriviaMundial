@@ -389,16 +389,16 @@ public class Metodos {
         }
         return null;
     }
-    
-    public boolean EliminarPregunta(String preguntaEliminar){
+ 
+    public boolean EliminarPregunta(String preguntaEliminar) {
         //metodo para recorrer las preguntas y eliminarla
-        
+
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
             if (aux.getPregunta().equals(preguntaEliminar)
                     | aux.getRespuesta1().equals(preguntaEliminar)
                     | aux.getRespuesta2().equals(preguntaEliminar)
-                    | aux.getRespuesta3().equals(preguntaEliminar) 
+                    | aux.getRespuesta3().equals(preguntaEliminar)
                     | aux.getRespuesta4().equals(preguntaEliminar)) {
                 Metodos.getInstance().listaPreguntaSeleccionMultiples.remove(i);
                 return true;
@@ -406,67 +406,121 @@ public class Metodos {
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
-            if(aux2.getPregunta().equals(preguntaEliminar)
+            if (aux2.getPregunta().equals(preguntaEliminar)
                     | aux2.getRespuesta1().equals(preguntaEliminar)
                     | aux2.getRespuesta2().equals(preguntaEliminar)
-                    | aux2.getRespuesta3().equals(preguntaEliminar) 
-                    | aux2.getRespuesta4().equals(preguntaEliminar)){
+                    | aux2.getRespuesta3().equals(preguntaEliminar)
+                    | aux2.getRespuesta4().equals(preguntaEliminar)) {
                 Metodos.getInstance().listaPreguntaSeleccionUnicas.remove(i);
                 return true;
             }
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
-            if(aux3.getPregunta().equals(preguntaEliminar)
+            if (aux3.getPregunta().equals(preguntaEliminar)
                     | aux3.getRespuestaVerdadera().equals(preguntaEliminar)
-                    | aux3.getRespuestaFalsa().equals(preguntaEliminar)){
+                    | aux3.getRespuestaFalsa().equals(preguntaEliminar)) {
                 Metodos.getInstance().listaPreguntasVerdaderoFalso.remove(i);
                 return true;
             }
         }
-        
+
         return false;
-    
+
     }
-    public boolean ModificarPregunta(String preguntaModificar){
+
+    public boolean ModificarPregunta(String preguntaModificar) {
         //metodo para recorrer las preguntas y modificarla
-        
+
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
-            if (aux.getPregunta().equals(preguntaModificar)
-                    | aux.getRespuesta1().equals(preguntaModificar)
-                    | aux.getRespuesta2().equals(preguntaModificar)
-                    | aux.getRespuesta3().equals(preguntaModificar) 
-                    | aux.getRespuesta4().equals(preguntaModificar)) {
-                Metodos.getInstance().listaPreguntaSeleccionMultiples.remove(i);
+            if (aux.getPregunta().equals(preguntaModificar)){
                 
-                 
+                PreguntaSeleccionMultiple pregunta = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
+                String nuevaPregunta = JOptionPane.showInputDialog("New Question");
+                String level = JOptionPane.showInputDialog("Level");
+                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
+
+                int nivel = Integer.parseInt(level);
+                Respuesta rp1 = new Respuesta(respuestaCorrecta, true);
+                Respuesta rp2 = new Respuesta(respuestaIncorrecta1, false);
+                Respuesta rp3 = new Respuesta(respuestaIncorrecta2, false);
+                Respuesta rp4 = new Respuesta(respuestaIncorrecta3, false);
+
+                pregunta.setPregunta(nuevaPregunta);
+                pregunta.setRespuesta1(rp1);
+                pregunta.setRespuesta2(rp2);
+                pregunta.setRespuesta3(rp3);
+                pregunta.setRespuesta4(rp4);
+                pregunta.setNivelDificultad(nivel);
+                
+                JOptionPane.showMessageDialog(null, "Question Multiple choice Edited!");
+
                 return true;
             }
         }
+
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
-            if(aux2.getPregunta().equals(preguntaModificar)
-                    | aux2.getRespuesta1().equals(preguntaModificar)
-                    | aux2.getRespuesta2().equals(preguntaModificar)
-                    | aux2.getRespuesta3().equals(preguntaModificar) 
-                    | aux2.getRespuesta4().equals(preguntaModificar)){
-                Metodos.getInstance().listaPreguntaSeleccionUnicas.remove(i);
+            if (aux2.getPregunta().equals(preguntaModificar)) {
+
+                PreguntaSeleccionUnica pregunta = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
+                String nuevaPregunta = JOptionPane.showInputDialog("New Question");
+                String level = JOptionPane.showInputDialog("Level");
+                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+                String respuestaIncorrecta2 = JOptionPane.showInputDialog("Wrong answer 2");
+                String respuestaIncorrecta3 = JOptionPane.showInputDialog("Wrong answer 3");
+
+                int nivel = Integer.parseInt(level);
+                Respuesta rp5 = new Respuesta(respuestaCorrecta, true);
+                Respuesta rp6 = new Respuesta(respuestaIncorrecta1, false);
+                Respuesta rp7 = new Respuesta(respuestaIncorrecta2, false);
+                Respuesta rp8 = new Respuesta(respuestaIncorrecta3, false);
+
+                pregunta.setPregunta(nuevaPregunta);
+                pregunta.setRespuesta1(rp5);
+                pregunta.setRespuesta2(rp6);
+                pregunta.setRespuesta3(rp7);
+                pregunta.setRespuesta4(rp8);
+                pregunta.setNivelDificultad(nivel);
+
+                JOptionPane.showMessageDialog(null, "Question Single choice Edited!");
+
                 return true;
             }
         }
+
         for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
-            if(aux3.getPregunta().equals(preguntaModificar)
-                    | aux3.getRespuestaVerdadera().equals(preguntaModificar)
-                    | aux3.getRespuestaFalsa().equals(preguntaModificar)){
-                Metodos.getInstance().listaPreguntasVerdaderoFalso.remove(i);
+            if (aux3.getPregunta().equals(preguntaModificar)) {
+
+                PreguntaVerdaderoFalso pregunta = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
+                String nuevaPregunta = JOptionPane.showInputDialog("New Question");
+                String level = JOptionPane.showInputDialog("Level");
+                String respuestaCorrecta = JOptionPane.showInputDialog("Correct answer");
+                String respuestaIncorrecta1 = JOptionPane.showInputDialog("Wrong answer 1");
+
+                int nivel = Integer.parseInt(level);
+                Respuesta rp9 = new Respuesta(respuestaCorrecta, true);
+                Respuesta rp10 = new Respuesta(respuestaIncorrecta1, false);
+
+                pregunta.setPregunta(nuevaPregunta);
+                pregunta.setRespuestaVerdadera(rp9);
+                pregunta.setRespuestaFalsa(rp10);
+                pregunta.setNivelDificultad(nivel);
+
+                JOptionPane.showMessageDialog(null, "Question True / False Edited!");
                 return true;
             }
         }
-        
+
         return false;
-    
+
     }
-    
+   
+
 }

@@ -10,6 +10,7 @@ package Class;
  * @author toshib
  */
 public interface Crea {
+    public void update();
     public PreguntaSeleccionMultiple creaPreguntaSeleccionMultiple();
     public PreguntaSeleccionUnica creaPreguntaSeleccionUnica();
     public PreguntaVerdaderoFalso creaPreguntaFalsoVerdadero();

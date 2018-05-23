@@ -8,7 +8,7 @@ package Class;
 
 /**
  *
- * @author toshib
+ * @author toshib  
  */
 public class CreaPreguntas implements Crea {
     
@@ -16,6 +16,12 @@ public class CreaPreguntas implements Crea {
     PreguntaSeleccionUnica sU = Metodos.getInstance().getPreguntaSU();
     PreguntaVerdaderoFalso fV = Metodos.getInstance().getPreguntaVF();
     
+    public void update() {
+        this.sM = Metodos.getInstance().getPreguntaSM();
+        this.sU = Metodos.getInstance().getPreguntaSU();
+        this.fV = Metodos.getInstance().getPreguntaVF();
+
+    }
     public PreguntaSeleccionMultiple creaPreguntaSeleccionMultiple() {
         return new PreguntaSeleccionMultiple(sM.getRespuesta1(), sM.getRespuesta2(), sM.getRespuesta3(), sM.getRespuesta4(), sM.getPregunta(), sM.getTipo(), sM.getNivelDificultad());
     }

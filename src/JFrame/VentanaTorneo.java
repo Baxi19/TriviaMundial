@@ -357,7 +357,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMinimizarMouseClicked
 
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
-
+        Metodos.getInstance().getListaJugadoresSeleccionados().clear();
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
         this.dispose();

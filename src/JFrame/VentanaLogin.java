@@ -475,7 +475,7 @@ public class VentanaLogin extends javax.swing.JFrame {
             this.dispose();
         }
         else{
-            JOptionPane.showMessageDialog(rootPane, "Error  \n Verifique los datos \n Si no tiene una cuenta puede registrarse");
+            JOptionPane.showMessageDialog(rootPane, "Error \n Check the data \n If you do not have an account you can register");
         }
         
        
@@ -492,7 +492,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private void jButtonAgregarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoMouseClicked
         int resultado ;
         VentanaCargarArchivos ventana = new VentanaCargarArchivos();
-        FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Fotos: JPG y PNG", "jpg","png");
+        FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Phtos: JPG y PNG", "jpg","png");
         ventana.jFileCargarFoto.setFileFilter(filtro1);
         resultado = ventana.jFileCargarFoto.showOpenDialog(null);
        
@@ -508,13 +508,13 @@ public class VentanaLogin extends javax.swing.JFrame {
                 foto = (ImageIcon) fotoSubida;
                 //mostrar imagen en label
                 imagenIcono.setIcon(foto);
-                JOptionPane.showMessageDialog(this, "Foto agregada correctamente \n"
-                        + "Puedes modificar alguno de tus datos \n"
-                        + "O presione en el boton para agregar el usuario");
+                JOptionPane.showMessageDialog(this, "Photo added correctly \n"
+                        + "You can modify some of your data \n"
+                        + "Or press on the button to add the user");
                 moverDerecha();
                 mostrarRegistro();
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al abrir la imagen " + ex);
+                JOptionPane.showMessageDialog(null,"Error opening the image " + ex);
             }
         }
     }//GEN-LAST:event_jButtonAgregarFotoMouseClicked
@@ -525,19 +525,21 @@ public class VentanaLogin extends javax.swing.JFrame {
 
     private void jButtonAgregarFoto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1MouseClicked
         if (Metodos.getInstance().buscarNombre(nombreUsuario.getText())) {
-            JOptionPane.showMessageDialog(this, "Este nombre de usuario ya existe, prueba con otro para continuar");
+            JOptionPane.showMessageDialog(this, "This username already exists, try another to continue \");\n" +
+"         } else {");
         } else {
             if (jTextFieldNombreCompleto.getText().isEmpty() | jTextFieldNombreUsuario.getText().isEmpty() | jTextFieldContraseña.getText().isEmpty() | jTextFieldConfirmarContraseña.getText().isEmpty() | jTextFieldCorreo.getText().isEmpty() | jTextFieldPais.getText().isEmpty() ) {
-                JOptionPane.showMessageDialog(this, "Campo Vacio");
+                JOptionPane.showMessageDialog(this, "This username already exists, try another to continue \");\n" +
+" } else {");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
                     Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto,10);
                     Metodos.getInstance().listaUsuarios.add(usuario);
-                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Agregado Exitosamente!");
+                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Successfully Added!");
                     ocultarRegistro();
                     moverIzquierda();
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
+                    JOptionPane.showMessageDialog(rootPane, "Incorrect data");
                 }
             }
         }
@@ -548,7 +550,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonAgregarFoto1ActionPerformed
 
     private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
-        cerrar();
+        Metodos.getInstance().cerrar();
     }//GEN-LAST:event_jButtonOffMouseClicked
 
     public void moverDerecha() {
@@ -581,19 +583,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         AnimationClass acc = new AnimationClass();
         acc.jLabelYUp(100, -220, 5, 8, jLabelPublic2);
     }
-    public void cerrar(){
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-    }
+    
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

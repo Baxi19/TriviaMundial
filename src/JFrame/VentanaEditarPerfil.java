@@ -72,9 +72,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         usuarioActual = new javax.swing.JLabel();
         jButtonOff = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
-        jLabel8 = new javax.swing.JLabel();
-        JButtonConfiguracion = new javax.swing.JButton();
-        JButtonPerfil = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -99,37 +96,42 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         registro.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel7.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("Name");
+        jLabel7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                jLabel7MouseDragged(evt);
+            }
+        });
         registro.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 120, 30));
 
         User.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        User.setForeground(new java.awt.Color(111, 174, 2));
+        User.setForeground(new java.awt.Color(255, 255, 255));
         User.setText("User");
         registro.add(User, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 60, 120, 30));
 
         Email.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        Email.setForeground(new java.awt.Color(111, 174, 2));
+        Email.setForeground(new java.awt.Color(255, 255, 255));
         Email.setText("Emal");
         registro.add(Email, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 180, 60, 30));
 
         jLabel9.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("Confirm Password");
         registro.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 150, 30));
 
         jLabel10.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
         jLabel10.setText("Country");
         registro.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 220, 70, 30));
 
         jLabel15.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Gender ");
         registro.add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 140, 50, 30));
 
         jLabel12.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel12.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Password");
         registro.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 100, 80, 30));
 
@@ -212,7 +214,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         registro.add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 140, 160, 30));
 
         jLabel16.setFont(new java.awt.Font("Script MT Bold", 1, 14)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Photo");
         registro.add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 180, 80, 30));
         registro.add(imagenIcono, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 10, 160, 130));
@@ -256,39 +258,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
             }
         });
         background.add(jButtonHome, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 20, 50, 50));
-
-        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/botonesperf-conf.png"))); // NOI18N
-        background.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 210, 50, 60));
-
-        JButtonConfiguracion.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/config-botton_on.png"))); // NOI18N
-        JButtonConfiguracion.setBorder(null);
-        JButtonConfiguracion.setBorderPainted(false);
-        JButtonConfiguracion.setContentAreaFilled(false);
-        JButtonConfiguracion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        JButtonConfiguracion.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
-        JButtonConfiguracion.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
-        JButtonConfiguracion.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/cofig-botton.png"))); // NOI18N
-        JButtonConfiguracion.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JButtonConfiguracionMouseClicked(evt);
-            }
-        });
-        background.add(JButtonConfiguracion, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 240, -1, -1));
-
-        JButtonPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton_on.png"))); // NOI18N
-        JButtonPerfil.setBorder(null);
-        JButtonPerfil.setBorderPainted(false);
-        JButtonPerfil.setContentAreaFilled(false);
-        JButtonPerfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        JButtonPerfil.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
-        JButtonPerfil.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
-        JButtonPerfil.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/perfil-botton.png"))); // NOI18N
-        JButtonPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                JButtonPerfilMouseClicked(evt);
-            }
-        });
-        background.add(JButtonPerfil, new org.netbeans.lib.awtextra.AbsoluteConstraints(950, 200, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(111, 174, 2));
@@ -343,7 +312,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMinimizarMouseClicked
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
-      
+        Metodos.getInstance().getListaJugadoresSeleccionados().clear();
         VentanaInicio lg = new VentanaInicio(usuarioLogueado);
         lg.setVisible(true);
         this.dispose();
@@ -351,36 +320,28 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHomeMouseClicked
 
     private void jButtonOffMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonOffMouseClicked
-        cerrar();
+        Metodos.getInstance().cerrar();
     }//GEN-LAST:event_jButtonOffMouseClicked
-
-    private void JButtonPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonPerfilMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JButtonPerfilMouseClicked
 
     private void jButtonHome2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHome2MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonHome2MouseClicked
 
-    private void JButtonConfiguracionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonConfiguracionMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JButtonConfiguracionMouseClicked
-
     private void jButtonAgregarFoto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1MouseClicked
         if (Metodos.getInstance().buscarNombre(jTextFieldNombreUsuario.getText())) {
-            JOptionPane.showMessageDialog(this, "Este nombre de usuario ya existe, prueba con otro para continuar");
+            JOptionPane.showMessageDialog(this, "This username is already selected, try a different one");
         } else {
             if (jTextFieldNombreCompleto.getText().isEmpty() | jTextFieldNombreUsuario.getText().isEmpty() | jTextFieldContraseña.getText().isEmpty() | jTextFieldConfirmarContraseña.getText().isEmpty() | jTextFieldCorreo.getText().isEmpty() | jTextFieldPais.getText().isEmpty() ) {
-                JOptionPane.showMessageDialog(this, "Campo Vacio");
+                JOptionPane.showMessageDialog(this, "Empty field");
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
                     int monedas = Metodos.getInstance().getCatidadMonedas(usuarioLogueado);
                     Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto,monedas);
                     Metodos.getInstance().ModificarUsuario(usuario, usuarioLogueado);
-                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "  Modificado Exitosamente!");
+                    JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "Successfully Modified!");
                     
                 } else {
-                    JOptionPane.showMessageDialog(rootPane, "Datos Incorrectos");
+                    JOptionPane.showMessageDialog(rootPane, "Incorrect data");
                 }
             }
         } 
@@ -393,7 +354,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     private void jButtonAgregarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoMouseClicked
       int resultado ;
         VentanaCargarArchivos ventana = new VentanaCargarArchivos();
-        FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Fotos: JPG y PNG", "jpg","png");
+        FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Photos: JPG y PNG", "jpg","png");
         ventana.jFileCargarFoto.setFileFilter(filtro1);
         resultado = ventana.jFileCargarFoto.showOpenDialog(null);
        
@@ -409,12 +370,12 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
                 foto = (ImageIcon) fotoSubida;
                 //mostrar imagen en label
                 imagenIcono.setIcon(foto);
-                JOptionPane.showMessageDialog(this, "Foto agregada correctamente \n"
-                        + "Puedes modificar alguno de tus datos \n"
-                        + "O presione en el boton para agregar el usuario");
+                JOptionPane.showMessageDialog(this, "Photo added correctly \n" + 
+                        "You can modify some of your data \n" + 
+                        "Or click on the button to add the user");
                 
             } catch (Exception ex) {
-                JOptionPane.showMessageDialog(null,"Error al abrir la imagen " + ex);
+                JOptionPane.showMessageDialog(null,"Error opening the image " + ex);
             }
         }
     }//GEN-LAST:event_jButtonAgregarFotoMouseClicked
@@ -422,19 +383,11 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     private void jButtonAgregarFotoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAgregarFotoActionPerformed
-    public void cerrar(){
-        //Para salir del sistema
-        try {
-            int dialoButton = JOptionPane.YES_NO_OPTION;
-            int result = JOptionPane.showConfirmDialog(null, "Desea Salir del Sistema?", "EXIT", dialoButton);
-            if (result == 0) {
-                System.exit(0);
-            }
-            
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(this, e);
-        }
-    }
+
+    private void jLabel7MouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseDragged
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabel7MouseDragged
+   
     /**
      * @param args the command line arguments
      */
@@ -487,8 +440,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel Email;
-    private javax.swing.JButton JButtonConfiguracion;
-    private javax.swing.JButton JButtonPerfil;
     private javax.swing.JLabel User;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonMinimizar;
@@ -508,7 +459,6 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JTextField jTextFieldConfirmarContraseña;
