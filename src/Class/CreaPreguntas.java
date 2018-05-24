@@ -23,17 +23,17 @@ public class CreaPreguntas implements Crea {
 
     }
     public PreguntaSeleccionMultiple creaPreguntaSeleccionMultiple() {
-        return new PreguntaSeleccionMultiple(sM.getRespuesta1(), sM.getRespuesta2(), sM.getRespuesta3(), sM.getRespuesta4(), sM.getPregunta(), sM.getTipo(), sM.getNivelDificultad());
+        return new PreguntaSeleccionMultiple(sM.getRespuesta1(), sM.getRespuesta2(), sM.getRespuesta3(), sM.getRespuesta4(), sM.getPregunta(), sM.getCategoria(), sM.getNivelDificultad());
     }
 
     @Override
     public PreguntaSeleccionUnica creaPreguntaSeleccionUnica() {
-        return new PreguntaSeleccionUnica(sU.getRespuesta1(), sU.getRespuesta2(), sU.getRespuesta3(), sU.getRespuesta4(), sU.getPregunta(), sU.getTipo(), sU.getNivelDificultad());
+        return new PreguntaSeleccionUnica(sU.getRespuesta1(), sU.getRespuesta2(), sU.getRespuesta3(), sU.getRespuesta4(), sU.getPregunta(), sU.getCategoria(), sU.getNivelDificultad());
     }
 
     @Override
     public PreguntaVerdaderoFalso creaPreguntaFalsoVerdadero() {
-        return new PreguntaVerdaderoFalso(fV.getRespuestaVerdadera(), fV.getRespuestaFalsa(), fV.getPregunta(), fV.getTipo(), fV.getNivelDificultad());
+        return new PreguntaVerdaderoFalso(fV.getRespuestaVerdadera(), fV.getRespuestaFalsa(), fV.getPregunta(), fV.getCategoria(), fV.getNivelDificultad());
     }
     
 }

@@ -11,12 +11,12 @@ package Class;
  */
 public abstract class  Pregunta {
     private String pregunta;
-    private String tipo;
+    private String categoria;
     private int nivelDificultad;
 
     public Pregunta(String pregunta, String tipo, int nivelDificultad) {
         this.pregunta = pregunta;
-        this.tipo = tipo;
+        this.categoria = tipo;
         this.nivelDificultad = nivelDificultad;
     }
 
@@ -28,12 +28,12 @@ public abstract class  Pregunta {
         this.pregunta = pregunta;
     }
 
-    public String getTipo() {
-        return tipo;
+    public String getCategoria() {
+        return categoria;
     }
 
-    public void setTipo(String tipo) {
-        this.tipo = tipo;
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public int getNivelDificultad() {

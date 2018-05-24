@@ -41,16 +41,16 @@ public class VentanaPreguntas extends javax.swing.JFrame {
      */
     public VentanaPreguntas(String categoria) {
         initComponents();
-        imprimirCategorias();
+        //imprimirCategorias();
         nombreUsuario = categoria;
         Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
-        Metodos.getInstance().getListaJugadoresSeleccionados().add(aux);
+        Metodos.getInstance().getListaJugadoresTorneo().add(aux);
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
         usuarioActual.setText("");
-        imprimirCategorias();
+        //imprimirCategorias();
         showTimer();
         imprimirPreguntas(categoria);
         
@@ -67,20 +67,13 @@ public class VentanaPreguntas extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox1 = new javax.swing.JCheckBox();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPreguntas = new javax.swing.JList<>();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jListCategorias = new javax.swing.JList<>();
         jLabelLevel1 = new javax.swing.JLabel();
         jLabelNivel = new javax.swing.JLabel();
         fechaAdmi = new javax.swing.JLabel();
         horaAdmi = new javax.swing.JLabel();
         usuarioActual = new javax.swing.JLabel();
-        jButtonImprimirCategorias = new javax.swing.JButton();
         jButtonStartTournament = new javax.swing.JButton();
         jLabelStrat = new javax.swing.JLabel();
         jLabelPlayers = new javax.swing.JLabel();
@@ -107,10 +100,6 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1000, 500));
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        background.add(jCheckBox4, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 290, -1, -1));
-        background.add(jCheckBox3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 270, -1, -1));
-        background.add(jCheckBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 250, -1, -1));
-        background.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 230, -1, -1));
 
         jScrollPane2.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
@@ -123,18 +112,6 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         jScrollPane2.setViewportView(jListPreguntas);
 
         background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 200, 680, 130));
-
-        jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
-        jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
-        jScrollPane1.setOpaque(false);
-
-        jListCategorias.setBackground(new java.awt.Color(0, 0, 0));
-        jListCategorias.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
-        jListCategorias.setForeground(new java.awt.Color(111, 174, 2));
-        jListCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jScrollPane1.setViewportView(jListCategorias);
-
-        background.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, 150, 130));
 
         jLabelLevel1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelLevel1.setForeground(new java.awt.Color(111, 174, 2));
@@ -159,21 +136,6 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
         background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 40, 240, 30));
-
-        jButtonImprimirCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
-        jButtonImprimirCategorias.setBorder(null);
-        jButtonImprimirCategorias.setBorderPainted(false);
-        jButtonImprimirCategorias.setContentAreaFilled(false);
-        jButtonImprimirCategorias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonImprimirCategorias.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonImprimirCategorias.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonImprimirCategorias.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonImprimirCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonImprimirCategoriasMouseClicked(evt);
-            }
-        });
-        background.add(jButtonImprimirCategorias, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 350, -1, -1));
 
         jButtonStartTournament.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
         jButtonStartTournament.setBorder(null);
@@ -253,7 +215,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
-        background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 1000, 500));
+        background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -261,6 +223,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //imprimirCategorias();
         imprimirCategorias();
 
     }//GEN-LAST:event_formWindowOpened
@@ -296,6 +259,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
                     if (contador == -1) {
                         JOptionPane.showMessageDialog(rootPane, "Time off");
                         contador = 30;
+                        this.cancel();
                         VentanaTorneo vT = new VentanaTorneo("");
                         vT.setVisible(true);
                         cerrar();
@@ -311,12 +275,13 @@ public class VentanaPreguntas extends javax.swing.JFrame {
     public void cerrar(){
         this.dispose();
     }
+    
     public void imprimirPreguntas(String categoria){
         //metodo para imprimir preguuntas 
         listModel2.clear();//limpiamos el listmodel
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
-            if (aux.getTipo().equals(categoria)) {
+            if (aux.getCategoria().equals(categoria)) {
                 listModel2.addElement(aux.getPregunta());
                 listModel2.addElement(aux.getRespuesta1().toString());
                 listModel2.addElement(aux.getRespuesta2().toString());
@@ -328,7 +293,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
-            if(aux2.getTipo().equals(categoria)){
+            if(aux2.getCategoria().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
                 listModel2.addElement(aux2.getPregunta());
                 listModel2.addElement(aux2.getRespuesta1().toString());
@@ -341,7 +306,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
-            if(aux3.getTipo().equals(categoria)){
+            if(aux3.getCategoria().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
                 listModel2.addElement(aux3.getPregunta());
                 listModel2.addElement(aux3.getRespuestaFalsa().toString());
@@ -362,7 +327,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
             String aux = Metodos.getInstance().getListaCategorias().get(i).getTipo();
             listModel.addElement(aux);
         }
-        jListCategorias.setModel(listModel);     
+       // jListCategorias.setModel(listModel);     
     
     }
     private void botonMinimizarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonMinimizarMouseClicked
@@ -385,17 +350,6 @@ public class VentanaPreguntas extends javax.swing.JFrame {
     private void jButtonStartTournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournamentMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonStartTournamentMouseClicked
-
-    private void jButtonImprimirCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonImprimirCategoriasMouseClicked
-        
-        String categoria = jListCategorias.getSelectedValue();
-        Metodos.getInstance().desordenarLista();
-        imprimirPreguntas(categoria);
-        if(!juegoIniciado){
-            showTimer();
-        }
-        
-    }//GEN-LAST:event_jButtonImprimirCategoriasMouseClicked
     
     
 
@@ -455,13 +409,8 @@ public class VentanaPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel fechaAdmi;
     private javax.swing.JLabel horaAdmi;
     private javax.swing.JButton jButtonHome;
-    private javax.swing.JButton jButtonImprimirCategorias;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonStartTournament;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
@@ -472,9 +421,7 @@ public class VentanaPreguntas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelPlayers;
     private javax.swing.JLabel jLabelStrat;
-    private javax.swing.JList<String> jListCategorias;
     private javax.swing.JList<String> jListPreguntas;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel usuarioActual;
     // End of variables declaration//GEN-END:variables

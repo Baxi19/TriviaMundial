@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package Class;
-
 import java.awt.Desktop;
 import java.net.URI;
 import java.util.ArrayList;
@@ -16,33 +15,39 @@ import javax.swing.JOptionPane;
  *
  * @author Randald Villegas
  */
-public class Metodos {
 
+public class Metodos {
+    //variables
     private int cantidadJugadores;
-    private PreguntaSeleccionMultiple preguntaSM;
-    private PreguntaSeleccionUnica preguntaSU;
-    private PreguntaVerdaderoFalso preguntaVF;
     private int nivelSeleccionado;
     private int usuarioSelecionado;
     private int auxCodigo;
     private ImageIcon fotografia;
+    
+    //Relaciones
+    private Torneo torneo;
+    private PreguntaSeleccionMultiple preguntaSM;
+    private PreguntaSeleccionUnica preguntaSU;
+    private PreguntaVerdaderoFalso preguntaVF;
     protected Usuario usuarioLogueado;
+    
+    //ArrayList<> 
     public ArrayList<Usuario> listaUsuarios;
     public ArrayList<Usuario> listaUsuariosAdmi;
-    private ArrayList<Usuario> listaJugadores;
-    private ArrayList<Usuario> listaJugadoresSeleccionados;
+    private ArrayList<Usuario> listaJugadoresTorneo;
     public ArrayList<Categoria> listaCategorias;
     public ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
     public ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
     public ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
     public ArrayList<Torneo> listaTorneos;
-
+    public ArrayList <Pregunta> listaPreguntasAuxTorneo;
+    
     //Singleton
     public static Metodos instance = null;
 
     //Constructor
     protected Metodos() {
-
+        this.torneo = torneo;
         this.cantidadJugadores = 1;
         this.preguntaSM = preguntaSM;
         this.preguntaSU = preguntaSU;
@@ -54,21 +59,33 @@ public class Metodos {
         this.usuarioLogueado = usuarioLogueado;
         this.listaUsuarios = new ArrayList<Usuario>();
         this.listaUsuariosAdmi = new ArrayList<Usuario>();
-        this.listaJugadores = new ArrayList<Usuario>();
-        this.listaJugadoresSeleccionados = new ArrayList<Usuario>();
+        this.listaJugadoresTorneo = new ArrayList<Usuario>();
         this.listaCategorias = new ArrayList<Categoria>();
         this.listaPreguntasVerdaderoFalso = new ArrayList<PreguntaVerdaderoFalso>();
         this.listaPreguntaSeleccionUnicas = new ArrayList<PreguntaSeleccionUnica>();
         this.listaPreguntaSeleccionMultiples = new ArrayList<PreguntaSeleccionMultiple>();
         this.listaTorneos = new ArrayList<Torneo>();
-
+        this.listaPreguntasAuxTorneo = new ArrayList<Pregunta>();
     }
 
-    @Override
-    public String toString() {
-        return "Metodos{" + "cantidadJugadores=" + cantidadJugadores + ", preguntaSM=" + preguntaSM + ", preguntaSU=" + preguntaSU + ", preguntaVF=" + preguntaVF + ", nivelSeleccionado=" + nivelSeleccionado + ", usuarioSelecionado=" + usuarioSelecionado + ", auxCodigo=" + auxCodigo + ", fotografia=" + fotografia + ", usuarioLogueado=" + usuarioLogueado + ", listaUsuarios=" + listaUsuarios + ", listaUsuariosAdmi=" + listaUsuariosAdmi + ", listaJugadores=" + listaJugadores + ", listaJugadoresSeleccionados=" + listaJugadoresSeleccionados + ", listaCategorias=" + listaCategorias + ", listaPreguntasVerdaderoFalso=" + listaPreguntasVerdaderoFalso + ", listaPreguntaSeleccionUnicas=" + listaPreguntaSeleccionUnicas + ", listaPreguntaSeleccionMultiples=" + listaPreguntaSeleccionMultiples + ", listaTorneos=" + listaTorneos + '}';
+    public ArrayList<Pregunta> getListaPreguntasAuxTorneo() {
+        return listaPreguntasAuxTorneo;
     }
 
+    public void setListaPreguntasAuxTorneo(ArrayList<Pregunta> listaPreguntasAuxTorneo) {
+        this.listaPreguntasAuxTorneo = listaPreguntasAuxTorneo;
+    }
+    
+
+    public Torneo getTorneo() {
+        return torneo;
+    }
+
+    public void setTorneo(Torneo torneo) {
+        this.torneo = torneo;
+    }
+
+  
     
     public PreguntaSeleccionMultiple getPreguntaSM() {
         return preguntaSM;
@@ -128,12 +145,12 @@ public class Metodos {
         this.nivelSeleccionado = nivelSeleccionado;
     }
 
-    public ArrayList<Usuario> getListaJugadoresSeleccionados() {
-        return listaJugadoresSeleccionados;
+    public ArrayList<Usuario> getListaJugadoresTorneo() {
+        return listaJugadoresTorneo;
     }
 
-    public void setListaJugadoresSeleccionados(ArrayList<Usuario> listaJugadoresSeleccionados) {
-        this.listaJugadoresSeleccionados = listaJugadoresSeleccionados;
+    public void setListaJugadoresTorneo(ArrayList<Usuario> listaJugadoresTorneo) {
+        this.listaJugadoresTorneo = listaJugadoresTorneo;
     }
 
     public int getCantidadJugadores() {
@@ -176,13 +193,6 @@ public class Metodos {
         this.listaUsuarios = listaUsuarios;
     }
 
-    public ArrayList<Usuario> getListaJugadores() {
-        return listaJugadores;
-    }
-
-    public void setListaJugadores(ArrayList<Usuario> listaJugadores) {
-        this.listaJugadores = listaJugadores;
-    }
 
     public ArrayList<Categoria> getListaCategorias() {
         return listaCategorias;
@@ -339,10 +349,8 @@ public class Metodos {
     }
 
     public void desordenarLista() {
-        //metodo para desordenar las listas de las preguntas
-        Collections.shuffle(Metodos.getInstance().listaPreguntasVerdaderoFalso);
-        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionUnicas);
-        Collections.shuffle(Metodos.getInstance().listaPreguntaSeleccionMultiples);
+        //metodo para desordenar la lista de las preguntas
+        Collections.shuffle(Metodos.getInstance().listaPreguntasAuxTorneo);
 
     }
 
@@ -362,7 +370,7 @@ public class Metodos {
     public void abrirFacebook(){
         //funcion para abrir facebook
         try {
-            Desktop.getDesktop().browse(URI.create("https://github.com/JustinCast"));
+            Desktop.getDesktop().browse(URI.create("https://github.com/Baxi19"));
         } catch (Exception e) {
         }
     }
@@ -521,6 +529,10 @@ public class Metodos {
         return false;
 
     }
-   
+    
+    public void MachineLearningPrint(String mensaje){
+        //XD
+        JOptionPane.showMessageDialog(null, mensaje);
+    }
 
 }

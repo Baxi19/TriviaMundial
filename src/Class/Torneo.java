@@ -17,14 +17,16 @@ public class Torneo {
     private int participantes;
     private int dificultad;
     private int cantidadPreguntasJugador;
-
+    
+    
     public Torneo(String nombreTorneo, int participantes, int dificultad, int cantidadPreguntasJugador) {
         this.nombreTorneo = nombreTorneo;
         this.participantes = participantes;
         this.dificultad = dificultad;
         this.cantidadPreguntasJugador = cantidadPreguntasJugador;
+       
     }
-    
+
     
     public String getNombreTorneo() {
         return nombreTorneo;

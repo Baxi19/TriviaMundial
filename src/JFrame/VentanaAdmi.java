@@ -1029,7 +1029,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
         //Abre la ventana principal
-        Metodos.getInstance().getListaJugadoresSeleccionados().clear();
+        Metodos.getInstance().getListaJugadoresTorneo().clear();
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
         this.dispose();
@@ -1050,7 +1050,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         listModel2.clear();//limpiamos el listmodel
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
-            if (aux.getTipo().equals(categoria)) {
+            if (aux.getCategoria().equals(categoria)) {
                 listModel2.addElement(aux.getPregunta());
                 listModel2.addElement(aux.getRespuesta1().toString());
                 listModel2.addElement(aux.getRespuesta2().toString());
@@ -1061,7 +1061,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
-            if(aux2.getTipo().equals(categoria)){
+            if(aux2.getCategoria().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
                 listModel2.addElement(aux2.getPregunta());
                 listModel2.addElement(aux2.getRespuesta1().toString());
@@ -1073,7 +1073,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         }
         for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
-            if(aux3.getTipo().equals(categoria)){
+            if(aux3.getCategoria().equals(categoria)){
                 Pregunta nuevo = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
                 listModel2.addElement(aux3.getPregunta());
                 listModel2.addElement(aux3.getRespuestaFalsa().toString());

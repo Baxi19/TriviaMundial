@@ -312,7 +312,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMinimizarMouseClicked
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
-        Metodos.getInstance().getListaJugadoresSeleccionados().clear();
+        Metodos.getInstance().getListaJugadoresTorneo().clear();
         VentanaInicio lg = new VentanaInicio(usuarioLogueado);
         lg.setVisible(true);
         this.dispose();
