@@ -36,6 +36,16 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         usuarioActual.setText(nombreUsuarioLogueado);
         ImageIcon foto = Metodos.getInstance().BuscarFotoUsuario(usuarioLogueado);
         imagenIcono.setIcon(foto);
+        Usuario u = Metodos.getInstance().buscarUsuario(usuarioLogueado);
+        jTextFieldNombreCompleto.setText(u.getNombreCompleto());
+        jTextFieldNombreUsuario.setText(u.getNombreUsuario());
+        jTextFieldCorreo.setText(u.getCorreo());
+        jTextFieldPais.setText(u.getPais());
+        jTextFieldContraseña.setText(u.getContraseña());
+        jTextFieldConfirmarContraseña.setText(u.getContraseña());
+        if (u.getSexo().equals("Female")) {
+            jComboBoxSexo.setSelectedIndex(1);
+        }
     }
 
 
@@ -433,6 +443,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
+                
                 new VentanaEditarPerfil("").setVisible(true);
             }
         });
