@@ -8,6 +8,7 @@ import java.awt.Desktop;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
@@ -236,6 +237,7 @@ public class Metodos {
         }
         return false;
     }
+    
 
     public boolean verificarAdmi(String nombre, String contraseña) {
         // metodo que verifica el acceso de un usuario registrado como administrador
@@ -367,7 +369,7 @@ public class Metodos {
             JOptionPane.showMessageDialog(null, e);
         }
     }
-    public void abrirFacebook(){
+    public void abrirWeb(){
         //funcion para abrir facebook
         try {
             Desktop.getDesktop().browse(URI.create("https://github.com/Baxi19"));
@@ -533,6 +535,19 @@ public class Metodos {
     public void MachineLearningPrint(String mensaje){
         //XD
         JOptionPane.showMessageDialog(null, mensaje);
+    }
+    
+    public void ordenarListaUsuarios() {
+        //metodo para ordenar la lista de usuarios para un juego
+        ArrayList<Usuario> lista = Metodos.getInstance().getListaJugadoresTorneo();
+        Collections.sort(lista, new Comparator<Usuario>() {
+            @Override
+            public int compare(Usuario obj1, Usuario obj2) {
+                return obj1.nombreUsuario.compareTo(obj2.getNombreUsuario());
+
+            }
+        });
+
     }
 
 }

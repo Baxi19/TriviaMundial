@@ -21,7 +21,11 @@ public class Usuario {
     private String pais;
     private String sexo;
     private ImageIcon fotografia;
+    
     private int monedas;
+    private int puntos;
+    private boolean comodin;
+    private int puntosTotales;
     //constructor
 
     public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia, int monedas) {
@@ -33,11 +37,10 @@ public class Usuario {
         this.sexo = sexo;
         this.fotografia = fotografia;
         this.monedas = monedas;
+        this.puntos = 0;
+        this.comodin = false;
+        this.puntosTotales = 0;
     }
-
-    
-    
-    
 
     public String getNombreCompleto() {
         return nombreCompleto;
@@ -103,18 +106,31 @@ public class Usuario {
         this.monedas = monedas;
     }
 
-    @Override
-    public String toString() {
-        return "Usuario{" + "nombreCompleto=" + nombreCompleto + ", nombreUsuario=" + nombreUsuario + ", correo=" + correo + ", contrase\u00f1a=" + contraseña + ", pais=" + pais + ", sexo=" + sexo + ", fotografia=" + fotografia + ", monedas=" + monedas + '}';
+    public int getPuntos() {
+        return puntos;
+    }
+
+    public void setPuntos(int puntos) {
+        this.puntos = puntos;
+    }
+
+    public boolean isComodin() {
+        return comodin;
+    }
+
+    public void setComodin(boolean comodin) {
+        this.comodin = comodin;
+    }
+
+    public int getPuntosTotales() {
+        return puntosTotales;
+    }
+
+    public void setPuntosTotales(int puntosTotales) {
+        this.puntosTotales = puntosTotales;
     }
     
+    
 
-   
-
-  
-    
-   
-    
-    
     
 }

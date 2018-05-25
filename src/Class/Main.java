@@ -4,16 +4,7 @@
  * and open the template in the editor.
  */
 package Class;
-import Class.Categoria;
-import Class.Crea;
-import Class.CreaPreguntas;
-import Class.Metodos;
-import Class.PreguntaSeleccionMultiple;
-import Class.PreguntaSeleccionUnica;
-import Class.PreguntaVerdaderoFalso;
-import Class.Respuesta;
-
-import Class.Usuario;
+import Class.*;
 import JFrame.VentanaLogin;
 import javax.swing.ImageIcon;
 
@@ -60,12 +51,16 @@ public class Main {
                 ImageIcon foto =  new javax.swing.ImageIcon(getClass().getResource("/Image/Male User_100px.png"));
 
                 //Se crean los usuarios
-                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto,10);
-                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto,10);
-                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto,10);
-                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto,10);
-                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto,10);
-
+                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto,1500);
+                u1.setPuntos(1650);
+                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto,5);
+                u2.setPuntos(1800);
+                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto,100);
+                u3.setPuntos(600);
+                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto,150);
+                u4.setPuntos(1500);
+                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto,110);
+                u5.setPuntos(800);
                 //Los agregamos a la lista
                 Metodos.getInstance().listaUsuarios.add(u1);
                 Metodos.getInstance().listaUsuarios.add(u2);

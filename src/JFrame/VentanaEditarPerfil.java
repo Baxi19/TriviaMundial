@@ -346,7 +346,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
             } else {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
                     int monedas = Metodos.getInstance().getCatidadMonedas(usuarioLogueado);
-                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), foto,monedas);
+                    Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), Metodos.getInstance().BuscarFotoUsuario(usuarioLogueado),monedas);
                     Metodos.getInstance().ModificarUsuario(usuario, usuarioLogueado);
                     JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "Successfully Modified!");
                     

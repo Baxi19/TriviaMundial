@@ -23,6 +23,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.TimerTask;
 import javax.swing.DefaultListModel;
 
@@ -37,7 +38,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private int contador = 30;
     private boolean juegoIniciado = false;
     private Pregunta preguntaActual;
-    
+    private int contadorJugadores = 1;
     
 
     /**
@@ -71,7 +72,16 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
-        jLabelStrat2 = new javax.swing.JLabel();
+        jLabelStrat3 = new javax.swing.JLabel();
+        jLabelStrat6 = new javax.swing.JLabel();
+        JlabelPuntos = new javax.swing.JLabel();
+        JlabelComodin = new javax.swing.JLabel();
+        usuarioMonedas = new javax.swing.JLabel();
+        jButtonStartTournament1 = new javax.swing.JButton();
+        jLabelStrat4 = new javax.swing.JLabel();
+        jButtonStartTournament2 = new javax.swing.JButton();
+        jLabelStrat5 = new javax.swing.JLabel();
+        jButtonStartTournament3 = new javax.swing.JButton();
         jButtonNext = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jListCategorias = new javax.swing.JList<>();
@@ -92,10 +102,10 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jButtonOff = new javax.swing.JButton();
         jButtonHome = new javax.swing.JButton();
         jLabelPaloVertical = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
 
         jLabel11.setText("jLabel11");
@@ -113,10 +123,73 @@ public class VentanaTorneo extends javax.swing.JFrame {
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabelStrat2.setFont(new java.awt.Font("Script MT Bold", 0, 20)); // NOI18N
-        jLabelStrat2.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelStrat2.setText("Next Player");
-        background.add(jLabelStrat2, new org.netbeans.lib.awtextra.AbsoluteConstraints(800, 440, 120, 40));
+        jLabelStrat3.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelStrat3.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelStrat3.setText("Coins");
+        background.add(jLabelStrat3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 40, 50));
+
+        jLabelStrat6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelStrat6.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelStrat6.setText("Skip");
+        background.add(jLabelStrat6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, 50));
+
+        JlabelPuntos.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        JlabelPuntos.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(JlabelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 450, 40, 30));
+
+        JlabelComodin.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        JlabelComodin.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(JlabelComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 40, 30));
+
+        usuarioMonedas.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        usuarioMonedas.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(usuarioMonedas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 40, 30));
+
+        jButtonStartTournament1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/7.png"))); // NOI18N
+        jButtonStartTournament1.setBorder(null);
+        jButtonStartTournament1.setBorderPainted(false);
+        jButtonStartTournament1.setContentAreaFilled(false);
+        jButtonStartTournament1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonStartTournament1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStartTournament1MouseClicked(evt);
+            }
+        });
+        background.add(jButtonStartTournament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 50, 50));
+
+        jLabelStrat4.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelStrat4.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelStrat4.setText("Wildcard");
+        background.add(jLabelStrat4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, 50));
+
+        jButtonStartTournament2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/comod.png"))); // NOI18N
+        jButtonStartTournament2.setBorder(null);
+        jButtonStartTournament2.setBorderPainted(false);
+        jButtonStartTournament2.setContentAreaFilled(false);
+        jButtonStartTournament2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonStartTournament2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStartTournament2MouseClicked(evt);
+            }
+        });
+        background.add(jButtonStartTournament2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 50, 50));
+
+        jLabelStrat5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelStrat5.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelStrat5.setText("Points");
+        background.add(jLabelStrat5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, -1, 50));
+
+        jButtonStartTournament3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/status.png"))); // NOI18N
+        jButtonStartTournament3.setBorder(null);
+        jButtonStartTournament3.setBorderPainted(false);
+        jButtonStartTournament3.setContentAreaFilled(false);
+        jButtonStartTournament3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonStartTournament3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStartTournament3MouseClicked(evt);
+            }
+        });
+        background.add(jButtonStartTournament3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 50));
 
         jButtonNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante1.png"))); // NOI18N
         jButtonNext.setBorder(null);
@@ -264,11 +337,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabelPaloVertical.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublicVertical.png"))); // NOI18N
         background.add(jLabelPaloVertical, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 0, -1, 500));
 
-        jLabel5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(111, 174, 2));
-        jLabel5.setText("Welcome");
-        background.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 110, 30));
-
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/paloPublic.png"))); // NOI18N
         background.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 418, 1000, 10));
 
@@ -283,6 +351,11 @@ public class VentanaTorneo extends javax.swing.JFrame {
         });
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
+        jLabel6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(111, 174, 2));
+        jLabel6.setText("Welcome");
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 110, 30));
+
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
@@ -292,12 +365,20 @@ public class VentanaTorneo extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        //verificamos si exede la cantidad de jugadores para imprimir su informacion
+        if (contadorJugadores >= Metodos.getInstance().getListaJugadoresTorneo().size()) {
+            contadorJugadores = 0;
+        } else {
+            imprimirDatos(Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores));
+            contadorJugadores++;
+        }
         //Agregamos las preguntas al juego en una lista auxiliar
-        
-        
         Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntaSeleccionMultiples());
         Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntaSeleccionUnicas());
         Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntasVerdaderoFalso());
+        
+        //ordenamos la lista de jugadores
+        Metodos.getInstance().ordenarListaUsuarios();
         
         imprimirCategorias();
         
@@ -306,7 +387,14 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabelFotoUsuario.setIcon(Metodos.getInstance().getUsuarioLogueado().getFotografia());
         
     }//GEN-LAST:event_formWindowOpened
-   
+    public Usuario imprimirDatos(Usuario usuario){
+        usuarioActual.setText(usuario.getNombreUsuario());
+        jLabelFotoUsuario.setIcon(usuario.getFotografia());
+        usuarioMonedas.setText(Integer.toString(usuario.getMonedas()));
+        JlabelPuntos.setText(Integer.toString(usuario.getPuntos()));
+        return usuario;
+    
+    }
     public void showDate() {
         //metodo que retorna la fecha
         Date d = new Date();
@@ -327,6 +415,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         }).start();
     }
     public void showTimer() {
+        //metodo para la logica de los turnos del juego y el tiempo para el turno de cada jugador
         java.util.Timer timer = new java.util.Timer();
         TimerTask tiempoJuego = new TimerTask() {
             @Override
@@ -347,14 +436,16 @@ public class VentanaTorneo extends javax.swing.JFrame {
                      jLabelTimeAux.setForeground(new java.awt.Color(204, 0, 0));
                 }
                 if (contador == -1) {
+                    jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18));
+                    jLabelNivel.setForeground(new java.awt.Color(111, 174, 2));
+                    jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 18));
+                    jLabelTimeAux.setForeground(new java.awt.Color(111, 174, 2));
                     JOptionPane.showMessageDialog(rootPane, "Time off");
                     contador = 30;
                     this.cancel();
-                     jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18));
-                     jLabelNivel.setForeground(new java.awt.Color(111, 174, 2));
-                     jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 18)); 
-                     jLabelTimeAux.setForeground(new java.awt.Color(111, 174, 2));
-                    
+                    siguienteJugador();
+                    imprimirCategorias();
+                    return;
                     
                 }
 
@@ -475,10 +566,31 @@ public class VentanaTorneo extends javax.swing.JFrame {
         
             
     }//GEN-LAST:event_jButtonStartTournamentMouseClicked
-    
-    private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
+    public void siguienteJugador(){
+        if (contadorJugadores >= Metodos.getInstance().getListaJugadoresTorneo().size()) {
+            contadorJugadores = 0;
+        } else {
+            imprimirDatos(Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores));
+            contadorJugadores++;
+        }
         juegoIniciado = false;
+    }
+    private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
+        siguienteJugador();
+        
     }//GEN-LAST:event_jButtonNextMouseClicked
+
+    private void jButtonStartTournament1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStartTournament1MouseClicked
+
+    private void jButtonStartTournament2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStartTournament2MouseClicked
+
+    private void jButtonStartTournament3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStartTournament3MouseClicked
     
     public void cargarDatosJugador(){
         imprimirCategorias();
@@ -533,6 +645,8 @@ public class VentanaTorneo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel JlabelComodin;
+    private javax.swing.JLabel JlabelPuntos;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JLabel fechaAdmi;
@@ -542,17 +656,23 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonStartTournament;
+    private javax.swing.JButton jButtonStartTournament1;
+    private javax.swing.JButton jButtonStartTournament2;
+    private javax.swing.JButton jButtonStartTournament3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelBackground;
     private javax.swing.JLabel jLabelFotoUsuario;
     private javax.swing.JLabel jLabelNivel;
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelStrat;
     private javax.swing.JLabel jLabelStrat1;
-    private javax.swing.JLabel jLabelStrat2;
+    private javax.swing.JLabel jLabelStrat3;
+    private javax.swing.JLabel jLabelStrat4;
+    private javax.swing.JLabel jLabelStrat5;
+    private javax.swing.JLabel jLabelStrat6;
     private javax.swing.JLabel jLabelTimeAux;
     private javax.swing.JLabel jLabelTorneo;
     private javax.swing.JList<String> jListCategorias;
@@ -561,5 +681,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JLabel torneoNombre;
     private javax.swing.JLabel usuarioActual;
+    private javax.swing.JLabel usuarioMonedas;
     // End of variables declaration//GEN-END:variables
 }

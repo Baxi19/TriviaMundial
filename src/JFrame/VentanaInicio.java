@@ -33,9 +33,11 @@ public class VentanaInicio extends javax.swing.JFrame {
      */
     public VentanaInicio(String nombreUsuarioLogueado) {
         initComponents();
-        jugador.setText(Metodos.getInstance().getListaUsuarios().get(0).getNombreUsuario());
+        
         nombreUsuario = nombreUsuarioLogueado;
         Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
+        jugador.setText(aux.getNombreUsuario());
+        
         Metodos.getInstance().setUsuarioLogueado(aux);
         Metodos.getInstance().getListaJugadoresTorneo().add(aux);
         //hace aparecer en el centro de la pantalla
@@ -540,13 +542,13 @@ public class VentanaInicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "The Maximun number is :" + suma);
             return;
         } else {
-            Torneo torneo = new Torneo(jTextFieldNombreTorneo.getText(), Metodos.getInstance().getListaJugadoresTorneo().size(), Integer.parseInt(jLabelNivel.getText()), Integer.parseInt(jTextFieldCantidadPreguntas.getText()));
+            Torneo torneo = new Torneo(jTextFieldNombreTorneo.getText(), Metodos.getInstance().getListaJugadoresTorneo().size(), Integer.parseInt(jLabelNivel.getText()), Integer.parseInt(jTextFieldCantidadPreguntas.getText()),Metodos.getInstance().getListaJugadoresTorneo());
             Metodos.getInstance().listaTorneos.add(torneo);
             Metodos.getInstance().setTorneo(torneo);
             JOptionPane.showMessageDialog(rootPane, "Tournament add successful");
-            this.dispose();
             VentanaTorneo vT = new VentanaTorneo(jTextFieldNombreTorneo.getText());
             vT.setVisible(true);
+            this.dispose();
         }
     
 
