@@ -395,6 +395,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         return usuario;
     
     }
+    
     public void showDate() {
         //metodo que retorna la fecha
         Date d = new Date();
