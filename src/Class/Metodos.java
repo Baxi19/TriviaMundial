@@ -549,5 +549,13 @@ public class Metodos {
         });
 
     }
+    public boolean esCorrecta(Respuesta respuesta) {
+        //metodo para verificar si una respuesta es correcta
+        if (respuesta.isCorrecta()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 
 }

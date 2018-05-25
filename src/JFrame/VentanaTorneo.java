@@ -6,26 +6,17 @@
 package JFrame;
 //Libreria de animaciones
 
-import AppPackage.AnimationClass;
-import Class.Metodos;
-import Class.Pregunta;
-import Class.PreguntaSeleccionMultiple;
-import Class.PreguntaSeleccionUnica;
-import Class.PreguntaVerdaderoFalso;
-import javax.swing.Timer;
-import Class.Usuario;
+import Class.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Time;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
-import java.util.Collections;
-import java.util.Comparator;
+import java.util.List;
 import java.util.TimerTask;
 import javax.swing.DefaultListModel;
+import javax.swing.ListSelectionModel;
 
 /**
  *
@@ -37,8 +28,10 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private String nombreTorneo;
     private int contador = 30;
     private boolean juegoIniciado = false;
-    private Pregunta preguntaActual;
+    private String respuestaCorrecta1 = "";
+    private String respuestaCorrecta2 = "";
     private int contadorJugadores = 1;
+    private int auxContadorJugadores = 0;
     
 
     /**
@@ -366,9 +359,10 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         //verificamos si exede la cantidad de jugadores para imprimir su informacion
-        if (contadorJugadores >= Metodos.getInstance().getListaJugadoresTorneo().size()) {
+        if (contadorJugadores == Metodos.getInstance().getListaJugadoresTorneo().size()) {
             contadorJugadores = 0;
-        } else {
+        } 
+        else {
             imprimirDatos(Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores));
             contadorJugadores++;
         }
@@ -454,15 +448,17 @@ public class VentanaTorneo extends javax.swing.JFrame {
         };
         timer.schedule(tiempoJuego, 0, 1000);
     }
-    public boolean imprimirPreguntaPorCategoria(String categoria){
+    public boolean imprimirPreguntaPorCategoria(String categoria,int nivelDificultad){
         //metodo para imprimir una pregunta que selecciona el jugador
+        respuestaCorrecta1 = "";//Limpiamos las variables pa 
+        respuestaCorrecta2 = "";
         listModel2.clear();//limpiamos el listmodel
-       for (int i = 0; i < Metodos.getInstance().listaPreguntasAuxTorneo.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().listaPreguntasAuxTorneo.size(); i++) {
             Pregunta aux = Metodos.getInstance().getListaPreguntasAuxTorneo().get(i);
-            if (aux.getCategoria().equals(categoria)) {
+            if (aux.getCategoria().equals(categoria) && aux.getNivelDificultad() <= nivelDificultad) {
                 listModel2.addElement(aux.getPregunta());
-                if(aux instanceof PreguntaSeleccionMultiple){
-                    Metodos.getInstance().setPreguntaSM( (PreguntaSeleccionMultiple) aux);
+                if (aux instanceof PreguntaSeleccionMultiple) {
+                    Metodos.getInstance().setPreguntaSM((PreguntaSeleccionMultiple) aux);
                     PreguntaSeleccionMultiple preguntaSM = (PreguntaSeleccionMultiple) aux;
                     listModel2.addElement(preguntaSM.getRespuesta1().toString());
                     listModel2.addElement(preguntaSM.getRespuesta2().toString());
@@ -470,12 +466,36 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     listModel2.addElement(preguntaSM.getRespuesta4().toString());
                     listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     jListPreguntas.setModel(listModel2);
+                    //Buscar la respuesta Correcta.
+                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta1())){
+                        respuestaCorrecta1 = preguntaSM.getRespuesta1().toString();
+                    }
+                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta2())){
+                        if(!respuestaCorrecta1.isEmpty() ){
+                            respuestaCorrecta1 = preguntaSM.getRespuesta2().toString();
+                        }else{
+                            respuestaCorrecta2 = preguntaSM.getRespuesta2().toString();
+                        }
+                    }
+                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta3())){
+                        if(!respuestaCorrecta1.isEmpty() ){
+                            respuestaCorrecta1 = preguntaSM.getRespuesta3().toString();
+                        }else{
+                            respuestaCorrecta2 = preguntaSM.getRespuesta3().toString();
+                        }
+                    }
+                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta4())){
+                        if(!respuestaCorrecta1.isEmpty() ){
+                            respuestaCorrecta1 = preguntaSM.getRespuesta4().toString();
+                        }else{
+                            respuestaCorrecta2 = preguntaSM.getRespuesta4().toString();
+                        }
+                    }
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size(); 
+                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
-                }
-                else if(aux instanceof PreguntaSeleccionUnica){
-                    Metodos.getInstance().setPreguntaSU( (PreguntaSeleccionUnica) aux);
+                } else if (aux instanceof PreguntaSeleccionUnica) {
+                    Metodos.getInstance().setPreguntaSU((PreguntaSeleccionUnica) aux);
                     PreguntaSeleccionUnica preguntaSU = (PreguntaSeleccionUnica) aux;
                     listModel2.addElement(preguntaSU.getRespuesta1().toString());
                     listModel2.addElement(preguntaSU.getRespuesta2().toString());
@@ -483,26 +503,39 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     listModel2.addElement(preguntaSU.getRespuesta4().toString());
                     listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     jListPreguntas.setModel(listModel2);
+                    //Buscar la respuesta Correcta.
+                    if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta1())) {
+                        respuestaCorrecta1 = preguntaSU.getRespuesta1().toString();
+                    }
+                    if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta2())) {
+                        respuestaCorrecta1 = preguntaSU.getRespuesta2().toString();
+                    }
+                    if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta3())) {
+                        respuestaCorrecta1 = preguntaSU.getRespuesta3().toString();
+                    }
+                    if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta4())) {
+                        respuestaCorrecta1 = preguntaSU.getRespuesta4().toString();
+                    }
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size() + 1;
+                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
-                }
-                else if(aux instanceof PreguntaVerdaderoFalso){
+                } else if (aux instanceof PreguntaVerdaderoFalso) {
                     Metodos.getInstance().setPreguntaVF((PreguntaVerdaderoFalso) aux);
                     PreguntaVerdaderoFalso preguntaVF = (PreguntaVerdaderoFalso) aux;
                     listModel2.addElement(preguntaVF.getRespuestaVerdadera().getRespuesta());
                     listModel2.addElement(preguntaVF.getRespuestaFalsa().getRespuesta());
                     listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     jListPreguntas.setModel(listModel2);
+                    respuestaCorrecta1 = preguntaVF.getRespuestaVerdadera().toString();
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size() + 1;
+                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
                 }
-                
+
             }
         }
-        Metodos.getInstance().MachineLearningPrint("This category does not have more answers, \n \n \t \t Select another one to continue");
         juegoIniciado = false;
+        Metodos.getInstance().MachineLearningPrint("This category does not have more answers, \n \n \t \t Select another one to continue");
         return false;
     }
     public void imprimirCategorias(){
@@ -537,9 +570,10 @@ public class VentanaTorneo extends javax.swing.JFrame {
         if (!juegoIniciado) {
             String categoria = jListCategorias.getSelectedValue();
             Metodos.getInstance().desordenarLista();
-            imprimirPreguntaPorCategoria(categoria);
-            showTimer();
-            juegoIniciado = true;
+            if(imprimirPreguntaPorCategoria(categoria,Metodos.getInstance().getNivelSeleccionado())){
+                showTimer();
+                juegoIniciado = true;
+            }
         }
         if(verificaGanador()){
             Metodos.getInstance().MachineLearningPrint("Congratulations, you are the winner!");
@@ -555,14 +589,15 @@ public class VentanaTorneo extends javax.swing.JFrame {
     
     private void jButtonStartTournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournamentMouseClicked
         boolean insertar = true;
-        if(contador >= 0){
+        //verificamos si queda tiempo disponible
+        if(contador <= 0){
             insertar = false;
         }
-        
-        if(insertar){
+        //Lista de opciones
+       // List<String> respuestasSeleccionadas = jListPreguntas.getSelectedValuesList();
+        if (insertar) {
             
-            if(jListPreguntas.getSelectedValue().equals(Metodos.getInstance().getPreguntaSM().getRespuesta1()))
-            return;
+         
         }
         
             
@@ -577,6 +612,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         juegoIniciado = false;
     }
     private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
+        
         siguienteJugador();
         
     }//GEN-LAST:event_jButtonNextMouseClicked
