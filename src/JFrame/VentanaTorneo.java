@@ -10,6 +10,8 @@ import Class.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.Timer;
@@ -28,10 +30,11 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private String nombreTorneo;
     private int contador = 30;
     private boolean juegoIniciado = false;
-    private String respuestaCorrecta1 = "";
-    private String respuestaCorrecta2 = "";
+    private boolean preguntaRevisada = false;
     private int contadorJugadores = 1;
     private int auxContadorJugadores = 0;
+    private String tipoRespuesta;
+    ArrayList<String> listaRespuestas = new ArrayList<>();
     
 
     /**
@@ -48,7 +51,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
-        usuarioActual.setText(nombreTorneoRecibido);
+        usuarioActual.setText(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario());
         
         
         
@@ -65,6 +68,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
+        tipoPregunta = new javax.swing.JLabel();
         jLabelStrat3 = new javax.swing.JLabel();
         jLabelStrat6 = new javax.swing.JLabel();
         JlabelPuntos = new javax.swing.JLabel();
@@ -80,7 +84,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jListCategorias = new javax.swing.JList<>();
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPreguntas = new javax.swing.JList<>();
-        jButtonStartTournament = new javax.swing.JButton();
+        jButtonRevisarRespuestas = new javax.swing.JButton();
         jLabelStrat1 = new javax.swing.JLabel();
         torneoNombre = new javax.swing.JLabel();
         jLabelFotoUsuario = new javax.swing.JLabel();
@@ -115,6 +119,10 @@ public class VentanaTorneo extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1000, 500));
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        tipoPregunta.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        tipoPregunta.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(tipoPregunta, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 200, 50));
 
         jLabelStrat3.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat3.setForeground(new java.awt.Color(111, 174, 2));
@@ -223,20 +231,25 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
         background.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 180, 480, 130));
 
-        jButtonStartTournament.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
-        jButtonStartTournament.setBorder(null);
-        jButtonStartTournament.setBorderPainted(false);
-        jButtonStartTournament.setContentAreaFilled(false);
-        jButtonStartTournament.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonStartTournament.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonStartTournament.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonStartTournament.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
-        jButtonStartTournament.addMouseListener(new java.awt.event.MouseAdapter() {
+        jButtonRevisarRespuestas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonRevisarRespuestas.setBorder(null);
+        jButtonRevisarRespuestas.setBorderPainted(false);
+        jButtonRevisarRespuestas.setContentAreaFilled(false);
+        jButtonRevisarRespuestas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonRevisarRespuestas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonRevisarRespuestas.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonRevisarRespuestas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonRevisarRespuestas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonStartTournamentMouseClicked(evt);
+                jButtonRevisarRespuestasMouseClicked(evt);
             }
         });
-        background.add(jButtonStartTournament, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, -1, -1));
+        jButtonRevisarRespuestas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRevisarRespuestasActionPerformed(evt);
+            }
+        });
+        background.add(jButtonRevisarRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, -1, -1));
 
         jLabelStrat1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat1.setForeground(new java.awt.Color(111, 174, 2));
@@ -418,17 +431,24 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
                 jLabelNivel.setText(Integer.toString(contador));
                 contador--;
-                if (contador == 19){
-                     jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 23)); 
-                     jLabelNivel.setForeground(new java.awt.Color(255, 255, 0));
-                     jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 23));
-                     jLabelTimeAux.setForeground(new java.awt.Color(255, 255, 0));
+                if(preguntaRevisada == true){
+                    contador = 30;
+                    this.cancel();
+                    //siguienteJugador();
+                    //imprimirCategorias();
+                    return;
                 }
-                if (contador == 9){
-                     jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 28)); 
-                     jLabelNivel.setForeground(new java.awt.Color(204, 0, 0));
-                     jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 28)); 
-                     jLabelTimeAux.setForeground(new java.awt.Color(204, 0, 0));
+                if (contador == 19) {
+                    jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 23));
+                    jLabelNivel.setForeground(new java.awt.Color(255, 255, 0));
+                    jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 23));
+                    jLabelTimeAux.setForeground(new java.awt.Color(255, 255, 0));
+                }
+                if (contador == 9) {
+                    jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 28));
+                    jLabelNivel.setForeground(new java.awt.Color(204, 0, 0));
+                    jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 28));
+                    jLabelTimeAux.setForeground(new java.awt.Color(204, 0, 0));
                 }
                 if (contador == -1) {
                     jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18));
@@ -438,27 +458,33 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(rootPane, "Time off");
                     contador = 30;
                     this.cancel();
-                    siguienteJugador();
-                    imprimirCategorias();
+                    //siguienteJugador();
+                    //imprimirCategorias();
                     return;
-                    
+
                 }
 
             }
         };
         timer.schedule(tiempoJuego, 0, 1000);
     }
-    public boolean imprimirPreguntaPorCategoria(String categoria,int nivelDificultad){
+    
+   
+    public boolean imprimirPreguntaCategoria(String categoria,int nivelDificultad){
         //metodo para imprimir una pregunta que selecciona el jugador
-        respuestaCorrecta1 = "";//Limpiamos las variables pa 
-        respuestaCorrecta2 = "";
+        preguntaRevisada = false;
+        tipoRespuesta = "";
+        listaRespuestas.clear();
         listModel2.clear();//limpiamos el listmodel
-        for (int i = 0; i < Metodos.getInstance().listaPreguntasAuxTorneo.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntasAuxTorneo().size(); i++) {
             Pregunta aux = Metodos.getInstance().getListaPreguntasAuxTorneo().get(i);
-            if (aux.getCategoria().equals(categoria) && aux.getNivelDificultad() <= nivelDificultad) {
+            //Entra si es de la misma categoria y menor o igual al nivel
+            if (aux.getCategoria().equals(categoria) & aux.getNivelDificultad() <= nivelDificultad) {
                 listModel2.addElement(aux.getPregunta());
-                if (aux instanceof PreguntaSeleccionMultiple) {
-                    Metodos.getInstance().setPreguntaSM((PreguntaSeleccionMultiple) aux);
+                if (aux instanceof PreguntaSeleccionMultiple){
+                    tipoRespuesta = "PreguntaSeleccionMultiple";
+                    tipoPregunta.setText("Multiple Selection Question");
+                   Metodos.getInstance().setPreguntaSM((PreguntaSeleccionMultiple) aux);
                     PreguntaSeleccionMultiple preguntaSM = (PreguntaSeleccionMultiple) aux;
                     listModel2.addElement(preguntaSM.getRespuesta1().toString());
                     listModel2.addElement(preguntaSM.getRespuesta2().toString());
@@ -467,34 +493,23 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     jListPreguntas.setModel(listModel2);
                     //Buscar la respuesta Correcta.
-                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta1())){
-                        respuestaCorrecta1 = preguntaSM.getRespuesta1().toString();
+                    if (Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta1())) {
+                        listaRespuestas.add(preguntaSM.getRespuesta1().toString());
                     }
-                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta2())){
-                        if(!respuestaCorrecta1.isEmpty() ){
-                            respuestaCorrecta1 = preguntaSM.getRespuesta2().toString();
-                        }else{
-                            respuestaCorrecta2 = preguntaSM.getRespuesta2().toString();
-                        }
+                    if (Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta2())) {
+                        listaRespuestas.add(preguntaSM.getRespuesta2().toString());
                     }
-                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta3())){
-                        if(!respuestaCorrecta1.isEmpty() ){
-                            respuestaCorrecta1 = preguntaSM.getRespuesta3().toString();
-                        }else{
-                            respuestaCorrecta2 = preguntaSM.getRespuesta3().toString();
-                        }
+                    if (Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta3())) {
+                        listaRespuestas.add(preguntaSM.getRespuesta3().toString());
                     }
-                    if(Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta4())){
-                        if(!respuestaCorrecta1.isEmpty() ){
-                            respuestaCorrecta1 = preguntaSM.getRespuesta4().toString();
-                        }else{
-                            respuestaCorrecta2 = preguntaSM.getRespuesta4().toString();
-                        }
+                    if (Metodos.getInstance().esCorrecta(preguntaSM.getRespuesta4())) {
+                        listaRespuestas.add(preguntaSM.getRespuesta4().toString());
                     }
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
-                } else if (aux instanceof PreguntaSeleccionUnica) {
+                }else if (aux instanceof PreguntaSeleccionUnica){
+                    tipoRespuesta = "PreguntaSeleccionMultiple";
+                    tipoPregunta.setText("Single Selection Question");
                     Metodos.getInstance().setPreguntaSU((PreguntaSeleccionUnica) aux);
                     PreguntaSeleccionUnica preguntaSU = (PreguntaSeleccionUnica) aux;
                     listModel2.addElement(preguntaSU.getRespuesta1().toString());
@@ -505,39 +520,47 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     jListPreguntas.setModel(listModel2);
                     //Buscar la respuesta Correcta.
                     if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta1())) {
-                        respuestaCorrecta1 = preguntaSU.getRespuesta1().toString();
+                        listaRespuestas.add(preguntaSU.getRespuesta1().toString());
                     }
                     if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta2())) {
-                        respuestaCorrecta1 = preguntaSU.getRespuesta2().toString();
+                        listaRespuestas.add(preguntaSU.getRespuesta2().toString());
                     }
                     if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta3())) {
-                        respuestaCorrecta1 = preguntaSU.getRespuesta3().toString();
+                        listaRespuestas.add(preguntaSU.getRespuesta3().toString());
                     }
                     if (Metodos.getInstance().esCorrecta(preguntaSU.getRespuesta4())) {
-                        respuestaCorrecta1 = preguntaSU.getRespuesta4().toString();
+                        listaRespuestas.add(preguntaSU.getRespuesta4().toString());
                     }
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
-                } else if (aux instanceof PreguntaVerdaderoFalso) {
+                }    
+                else if (aux instanceof PreguntaVerdaderoFalso){
+                    tipoRespuesta = "PreguntaVerdaderoFalso";
+                    tipoPregunta.setText("True or False Question");
                     Metodos.getInstance().setPreguntaVF((PreguntaVerdaderoFalso) aux);
                     PreguntaVerdaderoFalso preguntaVF = (PreguntaVerdaderoFalso) aux;
-                    listModel2.addElement(preguntaVF.getRespuestaVerdadera().getRespuesta());
-                    listModel2.addElement(preguntaVF.getRespuestaFalsa().getRespuesta());
+                    listModel2.addElement(preguntaVF.getRespuestaVerdadera().toString());
+                    listModel2.addElement(preguntaVF.getRespuestaFalsa().toString());
                     listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
                     jListPreguntas.setModel(listModel2);
-                    respuestaCorrecta1 = preguntaVF.getRespuestaVerdadera().toString();
+                    //Buscar la respuesta Correcta.
+                    if (Metodos.getInstance().esCorrecta(preguntaVF.getRespuestaFalsa())) {
+                        listaRespuestas.add(preguntaVF.getRespuestaFalsa().toString());
+                    }
+                    if (Metodos.getInstance().esCorrecta(preguntaVF.getRespuestaVerdadera())) {
+                        listaRespuestas.add(preguntaVF.getRespuestaVerdadera().toString());
+                    }
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
-                    i = Metodos.getInstance().listaPreguntasAuxTorneo.size();
                     return true;
                 }
-
+                 
             }
         }
         juegoIniciado = false;
         Metodos.getInstance().MachineLearningPrint("This category does not have more answers, \n \n \t \t Select another one to continue");
         return false;
-    }
+       
+    }   
     public void imprimirCategorias(){
         //metodo para imprimir categorias
         listModel.clear();//limpiamos el listmodel
@@ -570,7 +593,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         if (!juegoIniciado) {
             String categoria = jListCategorias.getSelectedValue();
             Metodos.getInstance().desordenarLista();
-            if(imprimirPreguntaPorCategoria(categoria,Metodos.getInstance().getNivelSeleccionado())){
+            if( imprimirPreguntaCategoria(categoria,Metodos.getInstance().getNivelSeleccionado())){
                 showTimer();
                 juegoIniciado = true;
             }
@@ -587,23 +610,78 @@ public class VentanaTorneo extends javax.swing.JFrame {
         return false;
     }
     
-    private void jButtonStartTournamentMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournamentMouseClicked
+    private void jButtonRevisarRespuestasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonRevisarRespuestasMouseClicked
+        
+        
         boolean insertar = true;
         //verificamos si queda tiempo disponible
         if(contador <= 0){
             insertar = false;
         }
         //Lista de opciones
-       // List<String> respuestasSeleccionadas = jListPreguntas.getSelectedValuesList();
-        if (insertar) {
-            
-         
+        if (preguntaRevisada == false) {
+            if (insertar) {
+                if ((tipoRespuesta.equals("PreguntaVerdaderoFalso") | tipoRespuesta.equals("PreguntaSeleccionUnica"))) {
+
+                    if (listaRespuestas.get(0).equals(jListPreguntas.getSelectedValue())) {
+                        Metodos.getInstance().MachineLearningPrint("Correct answer");
+                        int puntos = Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).getPuntos();
+                        puntos += 10 ;
+                        Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).setPuntos(puntos);
+                        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
+                        imprimirDatos(u);
+                        juegoIniciado = false;
+                        preguntaRevisada = true;
+                        return;
+                    } else {
+                        Metodos.getInstance().MachineLearningPrint("Wront answer \n the correct option is " + listaRespuestas.get(0));
+                        preguntaRevisada = true;
+                        return;
+                    }
+
+                }
+                else if (tipoRespuesta.equals("PreguntaSeleccionMultiple")) {
+                    int auxContador = 0;
+                    List<String> respuestasSeleccionadasUsuario = jListPreguntas.getSelectedValuesList();
+                    for (String respuestaCorrecta : listaRespuestas) {
+                        for (String respuestaUsuario : respuestasSeleccionadasUsuario) {
+                            if (respuestaUsuario.equals(respuestaCorrecta)) {
+                                auxContador++;
+                                System.out.println("Respuesta selecionada : " + respuestaUsuario);
+                            }
+
+                        }
+                    }
+                    if (auxContador == listaRespuestas.size()) {
+                        Metodos.getInstance().MachineLearningPrint("Correct answers  !!");
+                        insertar = false;
+                        preguntaRevisada = true;
+                        int puntos = Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).getPuntos();
+                        puntos += 10 ;
+                        Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).setPuntos(puntos);
+                        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
+                        imprimirDatos(u);
+                        juegoIniciado = false;
+                        return;
+                    } else {
+                        listModel2.clear();//limpiamos el listmodel
+                        Metodos.getInstance().MachineLearningPrint("Wrong answer  !!");
+                        listModel2.addElement("CORRECT ANSWERS");
+                        for (String respuestasCorrectas : listaRespuestas) {
+                            listModel2.addElement(respuestasCorrectas);
+                        }
+                        jListPreguntas.setModel(listModel2);
+                        preguntaRevisada = true;
+                        return;
+                    }
+
+                }
+            }
         }
-        
-            
-    }//GEN-LAST:event_jButtonStartTournamentMouseClicked
-    public void siguienteJugador(){
-        if (contadorJugadores >= Metodos.getInstance().getListaJugadoresTorneo().size()) {
+
+    }//GEN-LAST:event_jButtonRevisarRespuestasMouseClicked
+    public void siguienteJugador() {
+        if (contadorJugadores == Metodos.getInstance().getListaJugadoresTorneo().size()) {
             contadorJugadores = 0;
         } else {
             imprimirDatos(Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores));
@@ -612,9 +690,13 @@ public class VentanaTorneo extends javax.swing.JFrame {
         juegoIniciado = false;
     }
     private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
-        
+        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
+        int monedas = u.getMonedas();
+        monedas -=3;
+        u.setMonedas(monedas);
+        imprimirDatos(u);
         siguienteJugador();
-        
+
     }//GEN-LAST:event_jButtonNextMouseClicked
 
     private void jButtonStartTournament1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament1MouseClicked
@@ -628,8 +710,12 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private void jButtonStartTournament3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament3MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonStartTournament3MouseClicked
-    
-    public void cargarDatosJugador(){
+
+    private void jButtonRevisarRespuestasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRevisarRespuestasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRevisarRespuestasActionPerformed
+
+    public void cargarDatosJugador() {
         imprimirCategorias();
         //Damos el saludo al usuario logueado
         String nombreUsuario = Metodos.getInstance().getUsuarioLogueado().getNombreUsuario();
@@ -692,7 +778,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonImprimirCategorias;
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonOff;
-    private javax.swing.JButton jButtonStartTournament;
+    private javax.swing.JButton jButtonRevisarRespuestas;
     private javax.swing.JButton jButtonStartTournament1;
     private javax.swing.JButton jButtonStartTournament2;
     private javax.swing.JButton jButtonStartTournament3;
@@ -716,6 +802,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JList<String> jListPreguntas;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel tipoPregunta;
     private javax.swing.JLabel torneoNombre;
     private javax.swing.JLabel usuarioActual;
     private javax.swing.JLabel usuarioMonedas;

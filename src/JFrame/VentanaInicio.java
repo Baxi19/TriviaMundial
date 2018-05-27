@@ -438,6 +438,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
+        jLabelBackground.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabelBackgroundMouseClicked(evt);
+            }
+        });
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
 
         getContentPane().add(background, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -542,11 +547,12 @@ public class VentanaInicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "The Maximun number is :" + suma);
             return;
         } else {
+            Metodos.getInstance().ordenarListaUsuarios();
             Torneo torneo = new Torneo(jTextFieldNombreTorneo.getText(), Metodos.getInstance().getListaJugadoresTorneo().size(), Integer.parseInt(jLabelNivel.getText()), Integer.parseInt(jTextFieldCantidadPreguntas.getText()),Metodos.getInstance().getListaJugadoresTorneo());
             Metodos.getInstance().listaTorneos.add(torneo);
             Metodos.getInstance().setTorneo(torneo);
             JOptionPane.showMessageDialog(rootPane, "Tournament add successful");
-            VentanaTorneo vT = new VentanaTorneo(jTextFieldNombreTorneo.getText());
+            VentanaTorneo vT = new VentanaTorneo(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario());
             vT.setVisible(true);
             this.dispose();
         }
@@ -650,6 +656,10 @@ public class VentanaInicio extends javax.swing.JFrame {
         datosCantidadPreguntas += tipoCantidadPreguntas;
         
     }//GEN-LAST:event_jTextFieldCantidadPreguntasKeyTyped
+
+    private void jLabelBackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBackgroundMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jLabelBackgroundMouseClicked
     
     public void imprimirJugadoresSelecionados(){
         //metodo para imprimir Juagdores Seleccionados 

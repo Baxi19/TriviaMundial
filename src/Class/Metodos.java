@@ -53,7 +53,7 @@ public class Metodos {
         this.preguntaSM = preguntaSM;
         this.preguntaSU = preguntaSU;
         this.preguntaVF = preguntaVF;
-        this.nivelSeleccionado = nivelSeleccionado;
+        this.nivelSeleccionado = 1;
         this.usuarioSelecionado = 0;
         this.auxCodigo = 0;
         this.fotografia = fotografia;
