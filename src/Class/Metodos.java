@@ -35,7 +35,7 @@ public class Metodos {
     //ArrayList<> 
     public ArrayList<Usuario> listaUsuarios;
     public ArrayList<Usuario> listaUsuariosAdmi;
-    private ArrayList<Usuario> listaJugadoresTorneo;
+    private ArrayList<Jugador> listaJugadoresTorneo;
     public ArrayList<Categoria> listaCategorias;
     public ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
     public ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
@@ -60,7 +60,7 @@ public class Metodos {
         this.usuarioLogueado = usuarioLogueado;
         this.listaUsuarios = new ArrayList<Usuario>();
         this.listaUsuariosAdmi = new ArrayList<Usuario>();
-        this.listaJugadoresTorneo = new ArrayList<Usuario>();
+        this.listaJugadoresTorneo = new ArrayList<Jugador>();
         this.listaCategorias = new ArrayList<Categoria>();
         this.listaPreguntasVerdaderoFalso = new ArrayList<PreguntaVerdaderoFalso>();
         this.listaPreguntaSeleccionUnicas = new ArrayList<PreguntaSeleccionUnica>();
@@ -146,11 +146,11 @@ public class Metodos {
         this.nivelSeleccionado = nivelSeleccionado;
     }
 
-    public ArrayList<Usuario> getListaJugadoresTorneo() {
+    public ArrayList<Jugador> getListaJugadoresTorneo() {
         return listaJugadoresTorneo;
     }
 
-    public void setListaJugadoresTorneo(ArrayList<Usuario> listaJugadoresTorneo) {
+    public void setListaJugadoresTorneo(ArrayList<Jugador> listaJugadoresTorneo) {
         this.listaJugadoresTorneo = listaJugadoresTorneo;
     }
 
@@ -376,18 +376,25 @@ public class Metodos {
         } catch (Exception e) {
         }
     }
-    public int getCatidadMonedas(String nombre){
-        //metodo que retorna la cantidad de monedas de un usuario
-        int monedas = 0;
-        for (int i = 0; i < listaUsuarios.size(); i++) {
-            if(listaUsuarios.get(i).equals(nombre)){
-                monedas = listaUsuarios.get(i).getMonedas();
-                
+    public Torneo buscarTorneo(String nombre){
+        Torneo t = new Torneo();
+        for (int i=0; i<Metodos.getInstance().listaTorneos.size();i++){
+            if(Metodos.getInstance().listaTorneos.get(i).getNombreTorneo().equals(nombre)){
+                t = Metodos.getInstance().listaTorneos.get(i);
+                break;
             }
         }
-        
-        return monedas;
-    
+        return t;
+    }
+    public Jugador buscarJugador(String nombre) {
+        //metodo para buscar si existe un nombre en la lista de usuarios
+        for (int i = 0; i < listaJugadoresTorneo.size(); i++) {
+            if (listaJugadoresTorneo.get(i).nombreUsuario.equals(nombre)) {
+                Jugador usuario = listaJugadoresTorneo.get(i);
+                return usuario;
+            }
+        }
+        return null;
     }
     public Usuario buscarUsuario(String nombre) {
         //metodo para buscar si existe un nombre en la lista de usuarios
@@ -539,7 +546,7 @@ public class Metodos {
     
     public void ordenarListaUsuarios() {
         //metodo para ordenar la lista de usuarios para un juego
-        ArrayList<Usuario> lista = Metodos.getInstance().getListaJugadoresTorneo();
+        ArrayList<Jugador> lista = Metodos.getInstance().getListaJugadoresTorneo();
         Collections.sort(lista, new Comparator<Usuario>() {
             @Override
             public int compare(Usuario obj1, Usuario obj2) {
@@ -557,5 +564,5 @@ public class Metodos {
             return false;
         }
     }
-
+    
 }

@@ -6,6 +6,7 @@
 package Class;
 import Class.*;
 import JFrame.VentanaLogin;
+import java.util.ArrayList;
 import javax.swing.ImageIcon;
 
 /**
@@ -51,27 +52,97 @@ public class Main {
                 ImageIcon foto =  new javax.swing.ImageIcon(getClass().getResource("/Image/Male User_100px.png"));
 
                 //Se crean los usuarios
-                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto,1500);
-                u1.setPuntos(1650);
-                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto,5);
-                u2.setPuntos(1800);
-                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto,100);
-                u3.setPuntos(600);
-                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto,150);
-                u4.setPuntos(1500);
-                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto,110);
-                u5.setPuntos(800);
+                Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto);
+                Usuario u4 = new Usuario("Gabriela Villegas", "Gaby", "gaby@gmail.com", "1", "Costa Rica", "Female", foto);
+                Usuario u5 = new Usuario("Fabian Zamora", "Fabian", "guillen@gmail.com", "1", "Costa Rica", "Male", foto);
+                Usuario u6 = new Usuario("Pedro Mario", "Pedro","pedrito@gmail.com","1","Venezuela","Male",foto);
+                Usuario u7 = new Usuario("Felicita Arrieta","Feli","feli123@gmail.com","1","Nicaragua","Female",foto);
+                Usuario u8 = new Usuario("Andrea Murillo","Andreita","andrea@gmail.com","1","Nicaragua","Female",foto);
+                Usuario u9 = new Usuario("Oscar Artavia","Oscar","oscar@gmail.com","1","Venezuela","Male",foto);
+                Usuario u10 = new Usuario("Jeffry Matarrita","Jefron","jeffry@gmail.com","1","Panama","Male",foto);
+                
+                //creamos los 10 jugadores
+                Jugador ju1 = new Jugador(u1.getNombreCompleto(),u1.getNombreUsuario(),u1.getCorreo(), u1.getContraseña(),u1.getPais(),u1.getSexo(),u1.getFotografia());
+                Jugador ju2 = new Jugador(u2.getNombreCompleto(),u2.getNombreUsuario(),u2.getCorreo(), u2.getContraseña(),u2.getPais(),u2.getSexo(),u2.getFotografia());
+                Jugador ju3 = new Jugador(u3.getNombreCompleto(),u3.getNombreUsuario(),u3.getCorreo(), u3.getContraseña(),u3.getPais(),u3.getSexo(),u3.getFotografia());
+                Jugador ju4 = new Jugador(u4.getNombreCompleto(),u4.getNombreUsuario(),u4.getCorreo(), u4.getContraseña(),u4.getPais(),u4.getSexo(),u4.getFotografia());
+                Jugador ju5 = new Jugador(u5.getNombreCompleto(),u5.getNombreUsuario(),u5.getCorreo(), u5.getContraseña(),u5.getPais(),u5.getSexo(),u5.getFotografia());
+                Jugador ju6 = new Jugador(u6.getNombreCompleto(),u6.getNombreUsuario(),u6.getCorreo(), u6.getContraseña(),u6.getPais(),u6.getSexo(),u6.getFotografia());
+                Jugador ju7 = new Jugador(u7.getNombreCompleto(),u7.getNombreUsuario(),u7.getCorreo(), u7.getContraseña(),u7.getPais(),u7.getSexo(),u7.getFotografia());
+                Jugador ju8 = new Jugador(u8.getNombreCompleto(),u8.getNombreUsuario(),u8.getCorreo(), u8.getContraseña(),u8.getPais(),u8.getSexo(),u8.getFotografia());
+                Jugador ju9 = new Jugador(u9.getNombreCompleto(),u9.getNombreUsuario(),u9.getCorreo(), u9.getContraseña(),u9.getPais(),u9.getSexo(),u9.getFotografia());
+                Jugador ju10 = new Jugador(u10.getNombreCompleto(),u10.getNombreUsuario(),u10.getCorreo(), u10.getContraseña(),u10.getPais(),u10.getSexo(),u10.getFotografia());
+                
                 //Los agregamos a la lista
                 Metodos.getInstance().listaUsuarios.add(u1);
                 Metodos.getInstance().listaUsuarios.add(u2);
                 Metodos.getInstance().listaUsuarios.add(u3);
                 Metodos.getInstance().listaUsuarios.add(u4);
                 Metodos.getInstance().listaUsuarios.add(u5);
+                Metodos.getInstance().listaUsuarios.add(u6);
+                Metodos.getInstance().listaUsuarios.add(u7);
+                Metodos.getInstance().listaUsuarios.add(u8);
+                Metodos.getInstance().listaUsuarios.add(u9);
+                Metodos.getInstance().listaUsuarios.add(u10);
                 
                 //Los administradores los agregamos a la lista
                 Metodos.getInstance().listaUsuariosAdmi.add(u1);
                 Metodos.getInstance().listaUsuariosAdmi.add(u2);
                 Metodos.getInstance().listaUsuariosAdmi.add(u3);
+                
+                
+                //Se crean los torneos
+                ArrayList<Jugador> j1= new ArrayList();
+                j1.add(ju1);
+                j1.add(ju2);
+                j1.add(ju3);
+                Torneo t1 = new Torneo("Goles", 1, 1, 5, j1);
+                Torneo t2 = new Torneo("Futbol", 1, 1, 5, j1);
+                Torneo t3 = new Torneo("Jugadores", 1, 1, 5, j1);
+                
+                
+                ArrayList<Jugador> j2= new ArrayList();
+                j2.add(ju4);
+                Torneo t4 = new Torneo("Estadios", 1, 1, 5, j2);
+                
+                ArrayList<Jugador> j3= new ArrayList();
+                j3.add(ju5);
+                Torneo t5 = new Torneo("Partidos", 1, 1, 5, j3);
+                
+                ArrayList<Jugador> j6= new ArrayList();
+                j6.add(ju6);
+                Torneo t6 = new Torneo("Mundial", 1, 1, 5, j6);
+                
+                ArrayList<Jugador> j7= new ArrayList();
+                j7.add(ju7);
+                Torneo t7 = new Torneo("Juego", 1, 1, 5, j7);
+                
+                ArrayList<Jugador> j8= new ArrayList();
+                j8.add(ju8);
+                Torneo t8 = new Torneo("PARTIDOS DIARIOS", 1, 1, 5, j8);
+                
+                ArrayList<Jugador> j9= new ArrayList();
+                j9.add(ju9);
+                Torneo t9 = new Torneo("GOLASOS", 1, 1, 5, j9);
+                
+                ArrayList<Jugador> j10= new ArrayList();
+                j10.add(ju10);
+                Torneo t10 = new Torneo("ONE PIECE", 1, 1, 5, j10);
+                
+                       
+                //AGREGAMOS LOS TORNEOS AL SISTEMA
+                Metodos.getInstance().getListaTorneos().add(t1);
+                Metodos.getInstance().getListaTorneos().add(t2);
+                Metodos.getInstance().getListaTorneos().add(t3);
+                Metodos.getInstance().getListaTorneos().add(t4);
+                Metodos.getInstance().getListaTorneos().add(t5);
+                Metodos.getInstance().getListaTorneos().add(t6);
+                Metodos.getInstance().getListaTorneos().add(t7);
+                Metodos.getInstance().getListaTorneos().add(t8);
+                Metodos.getInstance().getListaTorneos().add(t9);
+                Metodos.getInstance().getListaTorneos().add(t10);
                 
                 
                 //se crean las categorias
@@ -82,12 +153,14 @@ public class Main {
                 Categoria cat5 = new Categoria("Partidos", Metodos.getInstance().aumentarCategoria());
                 
                 
+                
                 //agregamos las categorias a la lista
                 Metodos.getInstance().getListaCategorias().add(cat1);
                 Metodos.getInstance().getListaCategorias().add(cat2);
                 Metodos.getInstance().getListaCategorias().add(cat3);
                 Metodos.getInstance().getListaCategorias().add(cat4);
                 Metodos.getInstance().getListaCategorias().add(cat5);
+
 
                 //se crean las preguntas de verdadero o falso
                 Respuesta rp1 = new Respuesta("Si", true);

@@ -7,6 +7,7 @@ package JFrame;
 //Libreria de animaciones
 
 import AppPackage.AnimationClass;
+import Class.Jugador;
 import Class.Metodos;
 import Class.Torneo;
 import Class.Usuario;
@@ -36,10 +37,11 @@ public class VentanaInicio extends javax.swing.JFrame {
         
         nombreUsuario = nombreUsuarioLogueado;
         Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
+        Jugador aux2 = new Jugador(aux.getNombreCompleto(),aux.getNombreUsuario(), aux.getCorreo(), aux.getContraseña(), aux.getPais(),aux.getSexo(), aux.getFotografia());
         jugador.setText(aux.getNombreUsuario());
         
         Metodos.getInstance().setUsuarioLogueado(aux);
-        Metodos.getInstance().getListaJugadoresTorneo().add(aux);
+        Metodos.getInstance().getListaJugadoresTorneo().add(aux2);
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
@@ -99,6 +101,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
 
         jLabel11.setText("jLabel11");
@@ -437,6 +440,14 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
+        jButton1.setText("Consutas");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 110, 40));
+
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         jLabelBackground.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -552,9 +563,9 @@ public class VentanaInicio extends javax.swing.JFrame {
             Metodos.getInstance().listaTorneos.add(torneo);
             Metodos.getInstance().setTorneo(torneo);
             JOptionPane.showMessageDialog(rootPane, "Tournament add successful");
-            VentanaTorneo vT = new VentanaTorneo(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario());
+            VentanaTorneo vT = new VentanaTorneo(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario(),this);
             vT.setVisible(true);
-            this.dispose();
+            this.setVisible(false);
         }
     
 
@@ -641,7 +652,8 @@ public class VentanaInicio extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(rootPane, "This player is already selected");
             } else {
                 Usuario aux = Metodos.getInstance().buscarUsuario(jugador.getText());
-                Metodos.getInstance().getListaJugadoresTorneo().add(aux);
+                Jugador aux2 = new Jugador(aux.getNombreCompleto(),aux.getNombreUsuario(), aux.getCorreo(), aux.getContraseña(), aux.getPais(),aux.getSexo(), aux.getFotografia());
+                Metodos.getInstance().getListaJugadoresTorneo().add(aux2);
                 jugadores++;
                 Metodos.getInstance().setCantidadJugadores(jugadores);
             }
@@ -660,6 +672,13 @@ public class VentanaInicio extends javax.swing.JFrame {
     private void jLabelBackgroundMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelBackgroundMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelBackgroundMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // BOTON PARA IR A CONSULTAS
+        VentanaConsultas F1 = new VentanaConsultas(this);
+        this.setVisible(false);
+        F1.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     public void imprimirJugadoresSelecionados(){
         //metodo para imprimir Juagdores Seleccionados 
@@ -721,6 +740,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JLabel fechaAdmi;
     private javax.swing.JLabel horaAdmi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddDificult;
     private javax.swing.JButton jButtonAddPlayer;
     private javax.swing.JButton jButtonBackPlayer;

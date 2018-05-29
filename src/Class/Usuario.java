@@ -28,7 +28,7 @@ public class Usuario {
     private int puntosTotales;
     //constructor
 
-    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia, int monedas) {
+    public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia) {
         this.nombreCompleto = nombreCompleto;
         this.nombreUsuario = nombreUsuario;
         this.correo = correo;
@@ -36,10 +36,6 @@ public class Usuario {
         this.pais = pais;
         this.sexo = sexo;
         this.fotografia = fotografia;
-        this.monedas = monedas;
-        this.puntos = 0;
-        this.comodin = false;
-        this.puntosTotales = 0;
     }
 
     public String getNombreCompleto() {
@@ -96,38 +92,6 @@ public class Usuario {
 
     public void setFotografia(ImageIcon fotografia) {
         this.fotografia = fotografia;
-    }
-
-    public int getMonedas() {
-        return monedas;
-    }
-
-    public void setMonedas(int monedas) {
-        this.monedas = monedas;
-    }
-
-    public int getPuntos() {
-        return puntos;
-    }
-
-    public void setPuntos(int puntos) {
-        this.puntos = puntos;
-    }
-
-    public boolean isComodin() {
-        return comodin;
-    }
-
-    public void setComodin(boolean comodin) {
-        this.comodin = comodin;
-    }
-
-    public int getPuntosTotales() {
-        return puntosTotales;
-    }
-
-    public void setPuntosTotales(int puntosTotales) {
-        this.puntosTotales = puntosTotales;
     }
     
     

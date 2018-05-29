@@ -35,14 +35,16 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private int auxContadorJugadores = 0;
     private String tipoRespuesta;
     ArrayList<String> listaRespuestas = new ArrayList<>();
-    
+    private int consecutivas=0;
+    VentanaInicio F1;
 
     /**
      * Creates new form Login
      */
-    public VentanaTorneo(String nombreTorneoRecibido) {
+    public VentanaTorneo(String nombreTorneoRecibido, VentanaInicio F1) {
         initComponents();
         imprimirCategorias();
+        this.F1=F1;
         
         
         nombreTorneo = nombreTorneoRecibido;
@@ -52,8 +54,8 @@ public class VentanaTorneo extends javax.swing.JFrame {
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
         usuarioActual.setText(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario());
-        
-        
+        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+        imprimirDatos(u);
         
     }
 
@@ -66,8 +68,9 @@ public class VentanaTorneo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
+        jLabelTerminarTurno = new javax.swing.JLabel();
+        jButtonTerminarTurno = new javax.swing.JButton();
         tipoPregunta = new javax.swing.JLabel();
         jLabelStrat3 = new javax.swing.JLabel();
         jLabelStrat6 = new javax.swing.JLabel();
@@ -105,8 +108,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabelBackground = new javax.swing.JLabel();
 
-        jLabel11.setText("jLabel11");
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -119,6 +120,31 @@ public class VentanaTorneo extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1000, 500));
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTerminarTurno.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelTerminarTurno.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelTerminarTurno.setText("Next Turn");
+        background.add(jLabelTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 90, -1));
+
+        jButtonTerminarTurno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
+        jButtonTerminarTurno.setBorder(null);
+        jButtonTerminarTurno.setBorderPainted(false);
+        jButtonTerminarTurno.setContentAreaFilled(false);
+        jButtonTerminarTurno.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonTerminarTurno.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonTerminarTurno.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonTerminarTurno.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar2.png"))); // NOI18N
+        jButtonTerminarTurno.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonTerminarTurnoMouseClicked(evt);
+            }
+        });
+        jButtonTerminarTurno.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonTerminarTurnoActionPerformed(evt);
+            }
+        });
+        background.add(jButtonTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
 
         tipoPregunta.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         tipoPregunta.setForeground(new java.awt.Color(111, 174, 2));
@@ -394,7 +420,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabelFotoUsuario.setIcon(Metodos.getInstance().getUsuarioLogueado().getFotografia());
         
     }//GEN-LAST:event_formWindowOpened
-    public Usuario imprimirDatos(Usuario usuario){
+    public Usuario imprimirDatos(Jugador usuario){
         usuarioActual.setText(usuario.getNombreUsuario());
         jLabelFotoUsuario.setIcon(usuario.getFotografia());
         usuarioMonedas.setText(Integer.toString(usuario.getMonedas()));
@@ -438,6 +464,12 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     //imprimirCategorias();
                     return;
                 }
+                if (contador == 29) {
+                    jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 18));
+                    jLabelNivel.setForeground(new java.awt.Color(111, 174, 2));
+                    jLabelTimeAux.setFont(new java.awt.Font("Script MT Bold", 0, 18));
+                    jLabelTimeAux.setForeground(new java.awt.Color(111, 174, 2));
+                }
                 if (contador == 19) {
                     jLabelNivel.setFont(new java.awt.Font("Script MT Bold", 0, 23));
                     jLabelNivel.setForeground(new java.awt.Color(255, 255, 0));
@@ -457,6 +489,11 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     jLabelTimeAux.setForeground(new java.awt.Color(111, 174, 2));
                     JOptionPane.showMessageDialog(rootPane, "Time off");
                     contador = 30;
+                    preguntaRevisada=true;
+                    Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+                    int puntos = u.getPuntos();
+                    u.setPuntos((puntos-5));
+                    imprimirDatos(u);
                     this.cancel();
                     //siguienteJugador();
                     //imprimirCategorias();
@@ -590,23 +627,27 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
     private void jButtonImprimirCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonImprimirCategoriasMouseClicked
         //metodo para imprimir la pregunta segun la categoria
+        
         if (!juegoIniciado) {
             String categoria = jListCategorias.getSelectedValue();
             Metodos.getInstance().desordenarLista();
-            if( imprimirPreguntaCategoria(categoria,Metodos.getInstance().getNivelSeleccionado())){
+            if(imprimirPreguntaCategoria(categoria,Metodos.getInstance().getNivelSeleccionado())){
                 showTimer();
                 juegoIniciado = true;
             }
         }
-        if(verificaGanador()){
-            Metodos.getInstance().MachineLearningPrint("Congratulations, you are the winner!");
-        }
+        
     }//GEN-LAST:event_jButtonImprimirCategoriasMouseClicked
-    public boolean verificaGanador(){
-        int cantidad = Metodos.getInstance().listaPreguntasAuxTorneo.size();
-        if(cantidad == 0){
+    
+    public boolean verificaGanador() {
+        Torneo t=Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+        int cantidad = t.getCantidadPreguntasJugador();
+        cantidad--;
+        t.setCantidadPreguntasJugador(cantidad);
+        System.out.println(t.getCantidadPreguntasJugador());
+        if (cantidad == 0) 
             return true;
-        }
+        
         return false;
     }
     
@@ -622,20 +663,53 @@ public class VentanaTorneo extends javax.swing.JFrame {
         if (preguntaRevisada == false) {
             if (insertar) {
                 if ((tipoRespuesta.equals("PreguntaVerdaderoFalso") | tipoRespuesta.equals("PreguntaSeleccionUnica"))) {
-
-                    if (listaRespuestas.get(0).equals(jListPreguntas.getSelectedValue())) {
+                    
+                    if (listaRespuestas.get(0).equals(jListPreguntas.getSelectedValue())) {//lista con respuestas correctas y compara
+                        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+                        int puntos = u.getPuntos();
+                        puntos+=10;
+                        u.setPuntos(puntos);
                         Metodos.getInstance().MachineLearningPrint("Correct answer");
-                        int puntos = Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).getPuntos();
-                        puntos += 10 ;
-                        Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).setPuntos(puntos);
-                        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
-                        imprimirDatos(u);
+                        String categoria = jListCategorias.getSelectedValue();
+                        Promedio t = new Promedio(categoria);
+                        u.addPorcentajeAciertos(t,true);
                         juegoIniciado = false;
                         preguntaRevisada = true;
+                        consecutivas++;
+                        if(consecutivas==10){
+                            Metodos.getInstance().MachineLearningPrint("CONGRATULATIONS GET 10 COINS FOR 10 QUESTIONS ANSWERED CORRECTLY");
+                            int monedas=Integer.parseInt(usuarioMonedas.getText());
+                            u.setMonedas(monedas-5);
+                            
+                        }
+                        imprimirDatos(u);
+                        if(cantpreg()){
+                            //aqui mando todo lo que ocupee en estadisticas
+                            Torneo torneo = Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+                            VentanaEstadisticas VE= new VentanaEstadisticas(F1,torneo);
+                            VE.setVisible(true);
+                            this.dispose();
+                        };//verifica la cantidad de preguntas
                         return;
                     } else {
+                        consecutivas=0;
+                        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+                        int puntos = u.getPuntos();
+                        puntos-=5;
+                        u.setPuntos(puntos);
+                        imprimirDatos(u);
+                        String categoria = jListCategorias.getSelectedValue();
+                        Promedio t = new Promedio(categoria);
+                        u.addPorcentajeAciertos(t,false);
                         Metodos.getInstance().MachineLearningPrint("Wront answer \n the correct option is " + listaRespuestas.get(0));
                         preguntaRevisada = true;
+                        if(cantpreg()){
+                            //aqui mando todo lo que ocupee en estadisticas
+                            Torneo torneo = Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+                            VentanaEstadisticas VE= new VentanaEstadisticas(F1,torneo);
+                            VE.setVisible(true);
+                            this.dispose();
+                        };//verifica la cantidad de preguntas
                         return;
                     }
 
@@ -653,18 +727,43 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         }
                     }
                     if (auxContador == listaRespuestas.size()) {
+                        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+                        int puntos = u.getPuntos();
+                        puntos+=10;
+                        u.setPuntos(puntos);
                         Metodos.getInstance().MachineLearningPrint("Correct answers  !!");
                         insertar = false;
-                        preguntaRevisada = true;
-                        int puntos = Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).getPuntos();
-                        puntos += 10 ;
-                        Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores-1).setPuntos(puntos);
-                        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
+                        String categoria = jListCategorias.getSelectedValue();
+                        Promedio t = new Promedio(categoria);
+                        u.addPorcentajeAciertos(t,true);
+                        consecutivas++;
+                        if(consecutivas==10){
+                            Metodos.getInstance().MachineLearningPrint("FELICIDADES OBTIENES 10 MONEDAS POR 10 PREGUNTAS RESPONDIDAS CORRECTAMENTE");
+                            int monedas=Integer.parseInt(usuarioMonedas.getText());
+                            u.setMonedas(monedas-5);
+                        }
                         imprimirDatos(u);
+                        preguntaRevisada = true;
+                        //contador setea en 1 en inicio
                         juegoIniciado = false;
+                        if(cantpreg()){
+                            //aqui mando todo lo que ocupee en estadisticas
+                            Torneo torneo = Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+                            VentanaEstadisticas VE= new VentanaEstadisticas(F1,torneo);
+                            VE.setVisible(true);
+                            this.dispose();
+                        };//verifica la cantidad de preguntas
                         return;
                     } else {
                         listModel2.clear();//limpiamos el listmodel
+                        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+                        int puntos = u.getPuntos();
+                        puntos -= 5;
+                        u.setPuntos(puntos);
+                        imprimirDatos(u);
+                        String categoria = jListCategorias.getSelectedValue();
+                        Promedio t = new Promedio(categoria);
+                        u.addPorcentajeAciertos(t,false);
                         Metodos.getInstance().MachineLearningPrint("Wrong answer  !!");
                         listModel2.addElement("CORRECT ANSWERS");
                         for (String respuestasCorrectas : listaRespuestas) {
@@ -672,13 +771,23 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         }
                         jListPreguntas.setModel(listModel2);
                         preguntaRevisada = true;
+                        consecutivas = 0;
+                        if(cantpreg()){
+                            //aqui mando todo lo que ocupee en estadisticas
+                            Torneo torneo = Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+                            VentanaEstadisticas VE= new VentanaEstadisticas(F1,torneo);
+                            VE.setVisible(true);
+                            this.dispose();
+                        };//verifica la cantidad de preguntas
                         return;
                     }
 
                 }
+                
+                
             }
         }
-
+     
     }//GEN-LAST:event_jButtonRevisarRespuestasMouseClicked
     public void siguienteJugador() {
         if (contadorJugadores == Metodos.getInstance().getListaJugadoresTorneo().size()) {
@@ -690,7 +799,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         juegoIniciado = false;
     }
     private void jButtonNextMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNextMouseClicked
-        Usuario u = Metodos.getInstance().buscarUsuario(usuarioActual.getText());
+        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());                
         int monedas = u.getMonedas();
         monedas -=3;
         u.setMonedas(monedas);
@@ -715,6 +824,55 @@ public class VentanaTorneo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRevisarRespuestasActionPerformed
 
+    private void jButtonTerminarTurnoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonTerminarTurnoMouseClicked
+        // BOTON PARA PASAR EL TURNO
+        this.contadorJugadores+=1;
+        int cont=Metodos.getInstance().getListaJugadoresTorneo().size();
+        if(contadorJugadores==(cont+1)){
+            contadorJugadores=1;
+        }
+        juegoIniciado=false;
+        Metodos.getInstance().getListaJugadoresTorneo().get(this.contadorJugadores - 1);
+        usuarioActual.setText(Metodos.getInstance().getListaJugadoresTorneo().get(contadorJugadores - 1).getNombreUsuario());
+        Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+        imprimirDatos(u);
+        
+    }//GEN-LAST:event_jButtonTerminarTurnoMouseClicked
+
+    private void jButtonTerminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminarTurnoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonTerminarTurnoActionPerformed
+    public boolean cantpreg() {
+        if (verificaGanador()) {
+            
+            String ganador = "";//el o los usuarios que ganen
+            int puntajemayor = 0;
+            int contador = Metodos.getInstance().getListaJugadoresTorneo().size();
+            for (int i = 0; i < (contador - 1); i++) {//obtiene el puntaje mayor
+                if (Metodos.getInstance().getListaJugadoresTorneo().get(i).getPuntos() >= Metodos.getInstance().getListaJugadoresTorneo().get(i + 1).getPuntos()) {
+                    puntajemayor = Metodos.getInstance().getListaJugadoresTorneo().get(i).getPuntos();
+                } else {
+                    puntajemayor = Metodos.getInstance().getListaJugadoresTorneo().get(i + 1).getPuntos();
+                }
+            }
+            if(1==Metodos.getInstance().getListaJugadoresTorneo().size()){
+                Metodos.getInstance().MachineLearningPrint("No quedan mas preguntas, Felicidades");
+                return true;
+            }
+            else{
+                for (int i = 0; i < contador; i++) {//suma todos los jugadores a un string si tienen el puntajemayor
+                    if (puntajemayor == Metodos.getInstance().getListaJugadoresTorneo().get(i).getPuntos()) {
+                        ganador += Metodos.getInstance().getListaJugadoresTorneo().get(i).getNombreUsuario() + "\t";
+                    }
+                }
+                //imprime el ganador
+                Metodos.getInstance().MachineLearningPrint("Felicidades ha ganado: " + ganador);
+                //faltan estadisticas.
+                return true;
+            }
+        }
+        return false;
+    }
     public void cargarDatosJugador() {
         imprimirCategorias();
         //Damos el saludo al usuario logueado
@@ -762,7 +920,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new VentanaTorneo("").setVisible(true);
+                new VentanaTorneo("",new VentanaInicio("")).setVisible(true);
             }
         });
     }
@@ -782,8 +940,8 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonStartTournament1;
     private javax.swing.JButton jButtonStartTournament2;
     private javax.swing.JButton jButtonStartTournament3;
+    private javax.swing.JButton jButtonTerminarTurno;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabelBackground;
@@ -796,6 +954,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelStrat4;
     private javax.swing.JLabel jLabelStrat5;
     private javax.swing.JLabel jLabelStrat6;
+    private javax.swing.JLabel jLabelTerminarTurno;
     private javax.swing.JLabel jLabelTimeAux;
     private javax.swing.JLabel jLabelTorneo;
     private javax.swing.JList<String> jListCategorias;

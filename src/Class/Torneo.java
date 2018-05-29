@@ -17,21 +17,31 @@ public class Torneo {
     private int participantes;
     private int dificultad;
     private int cantidadPreguntasJugador;
-    private ArrayList<Usuario> listaJugadores;
+    private ArrayList<Jugador> listaJugadores;
 
-    public Torneo(String nombreTorneo, int participantes, int dificultad, int cantidadPreguntasJugador, ArrayList<Usuario> listaJugadores) {
+    public Torneo() {
+        this.nombreTorneo = "";
+        this.participantes = 0;
+        this.dificultad = 0;
+        this.cantidadPreguntasJugador = 0;
+        this.listaJugadores = new ArrayList<Jugador>();
+    }
+
+    
+    
+    public Torneo(String nombreTorneo, int participantes, int dificultad, int cantidadPreguntasJugador, ArrayList<Jugador> listaJugadores) {
         this.nombreTorneo = nombreTorneo;
         this.participantes = participantes;
         this.dificultad = dificultad;
         this.cantidadPreguntasJugador = cantidadPreguntasJugador;
-        this.listaJugadores = new ArrayList<Usuario>();
+        this.listaJugadores = new ArrayList<Jugador>();
     }
 
-    public ArrayList<Usuario> getListaJugadores() {
+    public ArrayList<Jugador> getListaJugadores() {
         return listaJugadores;
     }
 
-    public void setListaJugadores(ArrayList<Usuario> listaJugadores) {
+    public void setListaJugadores(ArrayList<Jugador> listaJugadores) {
         this.listaJugadores = listaJugadores;
     }
     
