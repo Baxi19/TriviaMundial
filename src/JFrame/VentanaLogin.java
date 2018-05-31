@@ -463,7 +463,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel2MouseClicked
     
     private void jButtonEntrarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonEntrarMouseClicked
-        
+        //metodo para entrar al Login
         if(Metodos.getInstance().verificarAdmi(nombreUsuario.getText(), contraseña.getText())){
             VentanaAdmi va = new VentanaAdmi(nombreUsuario.getText());
             va.setVisible(true);
@@ -490,6 +490,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDownMouseClicked
 
     private void jButtonAgregarFotoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFotoMouseClicked
+        //metodo para agregar importar una imagen del pc
         int resultado ;
         VentanaCargarArchivos ventana = new VentanaCargarArchivos();
         FileNameExtensionFilter filtro1 = new FileNameExtensionFilter("Phtos: JPG y PNG", "jpg","png");

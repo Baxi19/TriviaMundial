@@ -6,7 +6,9 @@
 package Class;
 import Class.*;
 import JFrame.VentanaLogin;
+import java.awt.Image;
 import java.util.ArrayList;
+import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 
 /**
@@ -14,7 +16,7 @@ import javax.swing.ImageIcon;
  * @author toshib
  */
 public class Main {
-
+    
     /**
      * @param args the command line arguments
      */
@@ -47,11 +49,11 @@ public class Main {
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-                public void run() {
-                //Imagen para los usuarios quemados XD
                 ImageIcon foto =  new javax.swing.ImageIcon(getClass().getResource("/Image/Male User_100px.png"));
-
+                
+                public void run() {
                 //Se crean los usuarios
+                
                 Usuario u1 = new Usuario("Randald Villegas", "Baxi", "randald1991@gmail.com", "1", "Costa Rica", "Male", foto);
                 Usuario u2 = new Usuario("Angel Gamboa", "Angel", "angel@gmail.com", "1", "Costa Rica", "Male", foto);
                 Usuario u3 = new Usuario("Meylin Gomez A", "Mey", "mey@gmail.com", "1", "Costa Rica", "Female", foto);

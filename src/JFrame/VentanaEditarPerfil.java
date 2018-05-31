@@ -338,8 +338,8 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonHome2MouseClicked
 
     private void jButtonAgregarFoto1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonAgregarFoto1MouseClicked
-        if (Metodos.getInstance().buscarNombre(jTextFieldNombreUsuario.getText())) {
-            JOptionPane.showMessageDialog(this, "This username is already selected, try a different one");
+        if (jTextFieldNombreUsuario.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Your username is Empty");
         } else {
             if (jTextFieldNombreCompleto.getText().isEmpty() | jTextFieldNombreUsuario.getText().isEmpty() | jTextFieldContraseña.getText().isEmpty() | jTextFieldConfirmarContraseña.getText().isEmpty() | jTextFieldCorreo.getText().isEmpty() | jTextFieldPais.getText().isEmpty() ) {
                 JOptionPane.showMessageDialog(this, "Empty field");

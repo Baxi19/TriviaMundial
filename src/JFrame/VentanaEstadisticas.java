@@ -35,10 +35,9 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
      */
     public VentanaEstadisticas(VentanaInicio F1,Torneo t) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.F1=F1;
         this.t=t;
-        
-        
         
         Jugador ganador = buscarganador();
         usuarioActual.setText(ganador.getNombreUsuario());
@@ -302,7 +301,7 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
         listModel2.addElement("Porcentaja de aciertos por categoria:");
         for (int i = 0; i < j.getPorcentajeAciertos().size(); i++) {
            Promedio p= j.getPorcentajeAciertos().get(i);
-           listModel2.addElement(p.getCategoria()+ "=   aciertas: "+(p.getCorrectas()/(p.getIncorrectas()+p.getCorrectas()))*100 + "   Desaciertas: "+(p.getIncorrectas()/(p.getCorrectas()+p.getIncorrectas()))*100);
+           listModel2.addElement("Categoria : "+p.getCategoria()+ "=   aciertas: "+(p.getCorrectas()/(p.getIncorrectas()+p.getCorrectas()))*100 + "   Desaciertas: "+(p.getIncorrectas()/(p.getCorrectas()+p.getIncorrectas()))*100);
         }
         jListEstadisticas.setModel(listModel2);
    

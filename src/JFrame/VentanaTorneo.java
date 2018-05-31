@@ -18,7 +18,9 @@ import javax.swing.Timer;
 import java.util.List;
 import java.util.TimerTask;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.ListSelectionModel;
+import sun.swing.ImageIconUIResource;
 
 /**
  *
@@ -69,17 +71,18 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        jButtonWildCard = new javax.swing.JButton();
+        jLabelTorneo1 = new javax.swing.JLabel();
         jLabelTerminarTurno = new javax.swing.JLabel();
         jButtonTerminarTurno = new javax.swing.JButton();
         tipoPregunta = new javax.swing.JLabel();
         jLabelStrat3 = new javax.swing.JLabel();
         jLabelStrat6 = new javax.swing.JLabel();
         JlabelPuntos = new javax.swing.JLabel();
-        JlabelComodin = new javax.swing.JLabel();
+        JlabelBorderComodin = new javax.swing.JLabel();
         usuarioMonedas = new javax.swing.JLabel();
         jButtonStartTournament1 = new javax.swing.JButton();
         jLabelStrat4 = new javax.swing.JLabel();
-        jButtonStartTournament2 = new javax.swing.JButton();
         jLabelStrat5 = new javax.swing.JLabel();
         jButtonStartTournament3 = new javax.swing.JButton();
         jButtonNext = new javax.swing.JButton();
@@ -88,7 +91,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         jListPreguntas = new javax.swing.JList<>();
         jButtonRevisarRespuestas = new javax.swing.JButton();
-        jLabelStrat1 = new javax.swing.JLabel();
         torneoNombre = new javax.swing.JLabel();
         jLabelFotoUsuario = new javax.swing.JLabel();
         jLabelTimeAux = new javax.swing.JLabel();
@@ -121,10 +123,38 @@ public class VentanaTorneo extends javax.swing.JFrame {
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jButtonWildCard.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/comod.png"))); // NOI18N
+        jButtonWildCard.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        jButtonWildCard.setBorderPainted(false);
+        jButtonWildCard.setContentAreaFilled(false);
+        jButtonWildCard.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonWildCard.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButtonWildCardMouseMoved(evt);
+            }
+        });
+        jButtonWildCard.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonWildCardMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jButtonWildCardMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButtonWildCardMouseExited(evt);
+            }
+        });
+        background.add(jButtonWildCard, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 440, 50, 50));
+
+        jLabelTorneo1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelTorneo1.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelTorneo1.setText("Correct Answer");
+        background.add(jLabelTorneo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 340, 130, -1));
+
         jLabelTerminarTurno.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelTerminarTurno.setForeground(new java.awt.Color(111, 174, 2));
         jLabelTerminarTurno.setText("Next Turn");
-        background.add(jLabelTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 450, 90, -1));
+        background.add(jLabelTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 460, 90, -1));
 
         jButtonTerminarTurno.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
         jButtonTerminarTurno.setBorder(null);
@@ -144,7 +174,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 jButtonTerminarTurnoActionPerformed(evt);
             }
         });
-        background.add(jButtonTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 440, -1, -1));
+        background.add(jButtonTerminarTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 450, -1, -1));
 
         tipoPregunta.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         tipoPregunta.setForeground(new java.awt.Color(111, 174, 2));
@@ -153,24 +183,24 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabelStrat3.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat3.setForeground(new java.awt.Color(111, 174, 2));
         jLabelStrat3.setText("Coins");
-        background.add(jLabelStrat3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 440, 40, 50));
+        background.add(jLabelStrat3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 450, 40, 40));
 
         jLabelStrat6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat6.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelStrat6.setText("Skip");
-        background.add(jLabelStrat6, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, -1, 50));
+        jLabelStrat6.setText("Skip: -3 Coins");
+        background.add(jLabelStrat6, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 450, 110, 40));
 
         JlabelPuntos.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         JlabelPuntos.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(JlabelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(810, 450, 40, 30));
+        background.add(JlabelPuntos, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 450, 40, 40));
 
-        JlabelComodin.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        JlabelComodin.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(JlabelComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 40, 30));
+        JlabelBorderComodin.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        JlabelBorderComodin.setForeground(new java.awt.Color(111, 174, 2));
+        background.add(JlabelBorderComodin, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 450, 40, 40));
 
         usuarioMonedas.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioMonedas.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioMonedas, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 450, 40, 30));
+        background.add(usuarioMonedas, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 450, 40, 40));
 
         jButtonStartTournament1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/7.png"))); // NOI18N
         jButtonStartTournament1.setBorder(null);
@@ -182,29 +212,18 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 jButtonStartTournament1MouseClicked(evt);
             }
         });
-        background.add(jButtonStartTournament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 50, 50));
+        background.add(jButtonStartTournament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 440, 50, 50));
 
         jLabelStrat4.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat4.setForeground(new java.awt.Color(111, 174, 2));
         jLabelStrat4.setText("Wildcard");
-        background.add(jLabelStrat4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, -1, 50));
-
-        jButtonStartTournament2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/comod.png"))); // NOI18N
-        jButtonStartTournament2.setBorder(null);
-        jButtonStartTournament2.setBorderPainted(false);
-        jButtonStartTournament2.setContentAreaFilled(false);
-        jButtonStartTournament2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonStartTournament2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButtonStartTournament2MouseClicked(evt);
-            }
-        });
-        background.add(jButtonStartTournament2, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 440, 50, 50));
+        jLabelStrat4.setAlignmentX(2.0F);
+        background.add(jLabelStrat4, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 90, 40));
 
         jLabelStrat5.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelStrat5.setForeground(new java.awt.Color(111, 174, 2));
         jLabelStrat5.setText("Points");
-        background.add(jLabelStrat5, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 440, -1, 50));
+        background.add(jLabelStrat5, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 450, -1, 40));
 
         jButtonStartTournament3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/status.png"))); // NOI18N
         jButtonStartTournament3.setBorder(null);
@@ -216,22 +235,22 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 jButtonStartTournament3MouseClicked(evt);
             }
         });
-        background.add(jButtonStartTournament3, new org.netbeans.lib.awtextra.AbsoluteConstraints(750, 440, 50, 50));
+        background.add(jButtonStartTournament3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 440, 50, 50));
 
-        jButtonNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante1.png"))); // NOI18N
+        jButtonNext.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/420.png"))); // NOI18N
         jButtonNext.setBorder(null);
         jButtonNext.setBorderPainted(false);
         jButtonNext.setContentAreaFilled(false);
         jButtonNext.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButtonNext.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante2.png"))); // NOI18N
-        jButtonNext.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante2.png"))); // NOI18N
-        jButtonNext.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/adelante2.png"))); // NOI18N
+        jButtonNext.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/421.png"))); // NOI18N
+        jButtonNext.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/421.png"))); // NOI18N
+        jButtonNext.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/421.png"))); // NOI18N
         jButtonNext.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jButtonNextMouseClicked(evt);
             }
         });
-        background.add(jButtonNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 440, 50, 40));
+        background.add(jButtonNext, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 450, 50, 40));
 
         jScrollPane1.setBackground(new java.awt.Color(0, 0, 0));
         jScrollPane1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(111, 174, 2)));
@@ -275,12 +294,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 jButtonRevisarRespuestasActionPerformed(evt);
             }
         });
-        background.add(jButtonRevisarRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 320, -1, -1));
-
-        jLabelStrat1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
-        jLabelStrat1.setForeground(new java.awt.Color(111, 174, 2));
-        jLabelStrat1.setText("Correct answer ");
-        background.add(jLabelStrat1, new org.netbeans.lib.awtextra.AbsoluteConstraints(690, 330, 120, -1));
+        background.add(jButtonRevisarRespuestas, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 330, -1, -1));
 
         torneoNombre.setFont(new java.awt.Font("Script MT Bold", 0, 20)); // NOI18N
         torneoNombre.setForeground(new java.awt.Color(111, 174, 2));
@@ -309,7 +323,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));
-        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 150, 150, 30));
+        background.add(usuarioActual, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 130, 130, 30));
 
         jButtonImprimirCategorias.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/aceptar1.png"))); // NOI18N
         jButtonImprimirCategorias.setBorder(null);
@@ -386,7 +400,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(111, 174, 2));
         jLabel6.setText("Welcome");
-        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 110, 30));
+        background.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 80, 30));
 
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         background.add(jLabelBackground, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1000, 500));
@@ -521,7 +535,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 if (aux instanceof PreguntaSeleccionMultiple){
                     tipoRespuesta = "PreguntaSeleccionMultiple";
                     tipoPregunta.setText("Multiple Selection Question");
-                   Metodos.getInstance().setPreguntaSM((PreguntaSeleccionMultiple) aux);
+                    Metodos.getInstance().setPreguntaSM((PreguntaSeleccionMultiple) aux);
                     PreguntaSeleccionMultiple preguntaSM = (PreguntaSeleccionMultiple) aux;
                     listModel2.addElement(preguntaSM.getRespuesta1().toString());
                     listModel2.addElement(preguntaSM.getRespuesta2().toString());
@@ -545,7 +559,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     Metodos.getInstance().getListaPreguntasAuxTorneo().remove(i);
                     return true;
                 }else if (aux instanceof PreguntaSeleccionUnica){
-                    tipoRespuesta = "PreguntaSeleccionMultiple";
+                    tipoRespuesta = "PreguntaSeleccionUnica";
                     tipoPregunta.setText("Single Selection Question");
                     Metodos.getInstance().setPreguntaSU((PreguntaSeleccionUnica) aux);
                     PreguntaSeleccionUnica preguntaSU = (PreguntaSeleccionUnica) aux;
@@ -812,9 +826,32 @@ public class VentanaTorneo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonStartTournament1MouseClicked
 
-    private void jButtonStartTournament2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament2MouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButtonStartTournament2MouseClicked
+    private void jButtonWildCardMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonWildCardMouseClicked
+        if(tipoPregunta.getText().equals("Single Selection Question")){
+            Jugador usuario = Metodos.getInstance().buscarJugador(usuarioActual.getText());
+            int monedasUsuario = usuario.getMonedas();
+            if(monedasUsuario >= 5){
+                Metodos.getInstance().buscarJugador(usuarioActual.getText()).setMonedas(monedasUsuario-5);
+                imprimirDatos(usuario);
+                String respuestaVerdadera = listaRespuestas.get(0);
+                int cont = 2;
+                int posicion = 1;
+                while (cont != 0 & posicion <= listModel2.size()) {
+                    if(!listModel2.get(posicion).equals(respuestaVerdadera)){
+                        cont--;
+                        listModel2.remove(posicion);
+                        posicion--;
+                    }
+                    posicion++;
+                }
+                jListPreguntas.setModel(listModel2);
+                     
+            }
+        }
+        else{
+            Metodos.getInstance().MachineLearningPrint("You only can buy this wildcard \n in Single Selection Question by 5 coins");
+        }
+    }//GEN-LAST:event_jButtonWildCardMouseClicked
 
     private void jButtonStartTournament3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament3MouseClicked
         // TODO add your handling code here:
@@ -842,6 +879,18 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private void jButtonTerminarTurnoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonTerminarTurnoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonTerminarTurnoActionPerformed
+
+    private void jButtonWildCardMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonWildCardMouseMoved
+        
+    }//GEN-LAST:event_jButtonWildCardMouseMoved
+
+    private void jButtonWildCardMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonWildCardMouseExited
+        
+    }//GEN-LAST:event_jButtonWildCardMouseExited
+
+    private void jButtonWildCardMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonWildCardMouseEntered
+       
+    }//GEN-LAST:event_jButtonWildCardMouseEntered
     public boolean cantpreg() {
         if (verificaGanador()) {
             
@@ -926,7 +975,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel JlabelComodin;
+    private javax.swing.JLabel JlabelBorderComodin;
     private javax.swing.JLabel JlabelPuntos;
     private javax.swing.JPanel background;
     private javax.swing.JLabel botonMinimizar;
@@ -938,9 +987,9 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonRevisarRespuestas;
     private javax.swing.JButton jButtonStartTournament1;
-    private javax.swing.JButton jButtonStartTournament2;
     private javax.swing.JButton jButtonStartTournament3;
     private javax.swing.JButton jButtonTerminarTurno;
+    private javax.swing.JButton jButtonWildCard;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -949,7 +998,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelNivel;
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelStrat;
-    private javax.swing.JLabel jLabelStrat1;
     private javax.swing.JLabel jLabelStrat3;
     private javax.swing.JLabel jLabelStrat4;
     private javax.swing.JLabel jLabelStrat5;
@@ -957,6 +1005,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTerminarTurno;
     private javax.swing.JLabel jLabelTimeAux;
     private javax.swing.JLabel jLabelTorneo;
+    private javax.swing.JLabel jLabelTorneo1;
     private javax.swing.JList<String> jListCategorias;
     private javax.swing.JList<String> jListPreguntas;
     private javax.swing.JScrollPane jScrollPane1;
