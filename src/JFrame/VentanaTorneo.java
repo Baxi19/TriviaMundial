@@ -314,14 +314,15 @@ public class VentanaTorneo extends javax.swing.JFrame {
         background.add(jLabelNivel, new org.netbeans.lib.awtextra.AbsoluteConstraints(880, 110, 60, 60));
 
         fechaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
-        fechaAdmi.setForeground(new java.awt.Color(111, 174, 2));
+        fechaAdmi.setForeground(new java.awt.Color(255, 255, 255));
+        fechaAdmi.setText("Total Time:");
         fechaAdmi.setToolTipText("");
-        background.add(fechaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 10, 140, 30));
+        background.add(fechaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(700, 0, 110, 50));
 
         horaAdmi.setFont(new java.awt.Font("Script MT Bold", 1, 18)); // NOI18N
-        horaAdmi.setForeground(new java.awt.Color(111, 174, 2));
+        horaAdmi.setForeground(new java.awt.Color(255, 255, 255));
         horaAdmi.setToolTipText("");
-        background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 60, 140, 30));
+        background.add(horaAdmi, new org.netbeans.lib.awtextra.AbsoluteConstraints(820, 10, 50, 30));
 
         usuarioActual.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         usuarioActual.setForeground(new java.awt.Color(111, 174, 2));

@@ -62,6 +62,8 @@ public class VentanaInicio extends javax.swing.JFrame {
 
         jLabel11 = new javax.swing.JLabel();
         background = new javax.swing.JPanel();
+        jButtonStartTournament1 = new javax.swing.JButton();
+        jButtonConsultas = new javax.swing.JButton();
         jTextFieldCantidadPreguntas = new javax.swing.JTextField();
         fechaAdmi = new javax.swing.JLabel();
         horaAdmi = new javax.swing.JLabel();
@@ -101,7 +103,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
 
         jLabel11.setText("jLabel11");
@@ -118,6 +119,35 @@ public class VentanaInicio extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1000, 500));
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jButtonStartTournament1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jButtonStartTournament1.setForeground(new java.awt.Color(111, 174, 2));
+        jButtonStartTournament1.setText("Queries");
+        jButtonStartTournament1.setBorder(null);
+        jButtonStartTournament1.setBorderPainted(false);
+        jButtonStartTournament1.setContentAreaFilled(false);
+        jButtonStartTournament1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonStartTournament1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonStartTournament1MouseClicked(evt);
+            }
+        });
+        background.add(jButtonStartTournament1, new org.netbeans.lib.awtextra.AbsoluteConstraints(790, 450, 120, -1));
+
+        jButtonConsultas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Search_41px.png"))); // NOI18N
+        jButtonConsultas.setBorder(null);
+        jButtonConsultas.setBorderPainted(false);
+        jButtonConsultas.setContentAreaFilled(false);
+        jButtonConsultas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonConsultas.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Search_41px2.png"))); // NOI18N
+        jButtonConsultas.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Search_41px2.png"))); // NOI18N
+        jButtonConsultas.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Search_41px2.png"))); // NOI18N
+        jButtonConsultas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonConsultasMouseClicked(evt);
+            }
+        });
+        background.add(jButtonConsultas, new org.netbeans.lib.awtextra.AbsoluteConstraints(920, 440, -1, -1));
 
         jTextFieldCantidadPreguntas.setBackground(new java.awt.Color(33, 33, 33));
         jTextFieldCantidadPreguntas.setFont(new java.awt.Font("Script MT Bold", 0, 14)); // NOI18N
@@ -440,14 +470,6 @@ public class VentanaInicio extends javax.swing.JFrame {
         });
         background.add(botonMinimizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 10, 40, 50));
 
-        jButton1.setText("Consutas");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        background.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 440, 110, 40));
-
         jLabelBackground.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/Login3.png"))); // NOI18N
         jLabelBackground.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -673,12 +695,16 @@ public class VentanaInicio extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jLabelBackgroundMouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jButtonConsultasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonConsultasMouseClicked
         // BOTON PARA IR A CONSULTAS
         VentanaConsultas F1 = new VentanaConsultas(this);
         this.setVisible(false);
         F1.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButtonConsultasMouseClicked
+
+    private void jButtonStartTournament1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonStartTournament1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonStartTournament1MouseClicked
     
     public void imprimirJugadoresSelecionados(){
         //metodo para imprimir Juagdores Seleccionados 
@@ -740,15 +766,16 @@ public class VentanaInicio extends javax.swing.JFrame {
     private javax.swing.JLabel botonMinimizar;
     private javax.swing.JLabel fechaAdmi;
     private javax.swing.JLabel horaAdmi;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonAddDificult;
     private javax.swing.JButton jButtonAddPlayer;
     private javax.swing.JButton jButtonBackPlayer;
+    private javax.swing.JButton jButtonConsultas;
     private javax.swing.JButton jButtonDeleteDificult;
     private javax.swing.JButton jButtonHome;
     private javax.swing.JButton jButtonNextPlayer;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonStartTournament;
+    private javax.swing.JButton jButtonStartTournament1;
     private javax.swing.JComboBox<String> jComboBoxCantidad;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
