@@ -27,9 +27,13 @@ import javax.swing.ListSelectionModel;
 public class VentanaEstadisticas extends javax.swing.JFrame {
     DefaultListModel<String> listModel = new DefaultListModel<>();
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
-    VentanaInicio F1;
-    Torneo t;
-
+    private VentanaInicio F1;
+    private Torneo t;
+    private int segundosTorneo = Metodos.getInstance().getTiempoTotal();
+    private int horas = 0;
+    private int minutos = 0;
+    private int segundos = 0;
+    private String tiempoConvertido = "";
     /**
      * Creates new form Login
      */
@@ -39,6 +43,7 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
         this.F1=F1;
         this.t=t;
         
+        verificarTiempo(segundosTorneo);
         Jugador ganador = buscarganador();
         usuarioActual.setText(ganador.getNombreUsuario());
         jLabelFotoUsuario.setIcon(ganador.getFotografia());
@@ -63,6 +68,8 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     private void initComponents() {
 
         background = new javax.swing.JPanel();
+        jLabelTiempoTotal1 = new javax.swing.JLabel();
+        jLabelTiempoTotal = new javax.swing.JLabel();
         jLabelTerminarTurno = new javax.swing.JLabel();
         jButtonNewGame = new javax.swing.JButton();
         tipoPregunta = new javax.swing.JLabel();
@@ -99,6 +106,16 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
         background.setMaximumSize(new java.awt.Dimension(1000, 500));
         background.setMinimumSize(new java.awt.Dimension(1000, 500));
         background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabelTiempoTotal1.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelTiempoTotal1.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelTiempoTotal1.setText("00 / 00 / 00");
+        background.add(jLabelTiempoTotal1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 450, 100, 30));
+
+        jLabelTiempoTotal.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
+        jLabelTiempoTotal.setForeground(new java.awt.Color(111, 174, 2));
+        jLabelTiempoTotal.setText("Total Time in the Tournament:");
+        background.add(jLabelTiempoTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 450, 260, 30));
 
         jLabelTerminarTurno.setFont(new java.awt.Font("Script MT Bold", 0, 18)); // NOI18N
         jLabelTerminarTurno.setForeground(new java.awt.Color(111, 174, 2));
@@ -269,6 +286,7 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     }//GEN-LAST:event_botonMinimizarMouseClicked
 
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
+        Metodos.getInstance().setTiempoTotal(0);
         Metodos.getInstance().getListaJugadoresTorneo().clear();
         VentanaLogin lg = new VentanaLogin();
         lg.setVisible(true);
@@ -282,6 +300,7 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     
     private void jButtonNewGameMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonNewGameMouseClicked
         // BOTON para iniciar nuevo juego
+        Metodos.getInstance().setTiempoTotal(0);
         F1.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButtonNewGameMouseClicked
@@ -289,7 +308,26 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     private void jButtonNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewGameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNewGameActionPerformed
-
+    public void verificarTiempo(int segundosTorneo){
+        if(segundosTorneo >= 3600 ){
+            horas++;
+            this.segundosTorneo -= 3600;
+            verificarTiempo(this.segundosTorneo);
+        
+        }else if(segundosTorneo >= 60){
+            minutos++;
+            this.segundosTorneo -= 60;
+            verificarTiempo(this.segundosTorneo);
+            
+        } else if(segundosTorneo > 0) {
+            segundos = this.segundosTorneo ;
+            this.tiempoConvertido = (horas + " / " + minutos + " / " + segundos);
+            jLabelTiempoTotal1.setText(tiempoConvertido);
+            return;
+        }
+        
+    
+    }
     private void jButtonMostrarEstadisticasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonMostrarEstadisticasMouseClicked
         //metodo para imprimir las estadisticas
         String jugador=jListPlayers.getSelectedValue();
@@ -387,6 +425,8 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelPaloVertical;
     private javax.swing.JLabel jLabelStrat;
     private javax.swing.JLabel jLabelTerminarTurno;
+    private javax.swing.JLabel jLabelTiempoTotal;
+    private javax.swing.JLabel jLabelTiempoTotal1;
     private javax.swing.JLabel jLabelTorneo;
     private javax.swing.JList<String> jListEstadisticas;
     private javax.swing.JList<String> jListPlayers;

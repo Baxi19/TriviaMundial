@@ -31,6 +31,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
     DefaultListModel<String> listModel2 = new DefaultListModel<>();
     private String nombreTorneo;
     private int contador = 30;
+    private int contadorTimpoTotal = 0;
     private boolean juegoIniciado = false;
     private boolean preguntaRevisada = false;
     private int contadorJugadores = 1;
@@ -54,6 +55,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
+        showTimerTournament();
         usuarioActual.setText(null);
         usuarioActual.setText(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario());
         Jugador u = Metodos.getInstance().buscarJugador(usuarioActual.getText());
@@ -443,24 +445,21 @@ public class VentanaTorneo extends javax.swing.JFrame {
     
     }
     
-    public void showDate() {
-        //metodo que retorna la fecha
-        Date d = new Date();
-        SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd");
-        fechaAdmi.setText(s.format(d));
-    }
-
-    public void showTime(){
-        //metodo que retorna la hora
-        new Timer(0, new ActionListener() {
+    
+    public void showTimerTournament() {
+        //metodo para la logica de los turnos del juego y el tiempo para el turno de cada jugador
+        java.util.Timer timer = new java.util.Timer();
+        TimerTask tiempoJuego = new TimerTask() {
             @Override
-            public void actionPerformed(ActionEvent e) {
-                Date d = new Date();
-                SimpleDateFormat s = new SimpleDateFormat("hh:mm:ss a");
-                jLabelNivel.setText(s.format(d));
-                
+            public void run() {
+
+                horaAdmi.setText(Integer.toString(contadorTimpoTotal));
+                contadorTimpoTotal++;
+                Metodos.getInstance().setTiempoTotal(contadorTimpoTotal);
+
             }
-        }).start();
+        };
+        timer.schedule(tiempoJuego, 0, 1000);
     }
     public void showTimer() {
         //metodo para la logica de los turnos del juego y el tiempo para el turno de cada jugador

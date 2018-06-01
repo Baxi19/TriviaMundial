@@ -24,6 +24,7 @@ public class Metodos {
     private int usuarioSelecionado;
     private int auxCodigo;
     private ImageIcon fotografia;
+    private int tiempoTotal;
     
     //Relaciones
     private Torneo torneo;
@@ -57,6 +58,7 @@ public class Metodos {
         this.usuarioSelecionado = 0;
         this.auxCodigo = 0;
         this.fotografia = fotografia;
+        this.tiempoTotal = tiempoTotal;
         this.usuarioLogueado = usuarioLogueado;
         this.listaUsuarios = new ArrayList<Usuario>();
         this.listaUsuariosAdmi = new ArrayList<Usuario>();
@@ -69,6 +71,14 @@ public class Metodos {
         this.listaPreguntasAuxTorneo = new ArrayList<Pregunta>();
     }
 
+    public int getTiempoTotal() {
+        return tiempoTotal;
+    }
+
+    public void setTiempoTotal(int tiempoTotal) {
+        this.tiempoTotal = tiempoTotal;
+    }
+    
     public ArrayList<Pregunta> getListaPreguntasAuxTorneo() {
         return listaPreguntasAuxTorneo;
     }
