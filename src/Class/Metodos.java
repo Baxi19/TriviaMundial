@@ -43,6 +43,8 @@ public class Metodos {
     public ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
     public ArrayList<Torneo> listaTorneos;
     public ArrayList <Pregunta> listaPreguntasAuxTorneo;
+    public ArrayList <Jugador> listaMejoresJugadores;
+    public ArrayList <Promedio> listaPromediosTotales;
     
     //Singleton
     public static Metodos instance = null;
@@ -69,6 +71,36 @@ public class Metodos {
         this.listaPreguntaSeleccionMultiples = new ArrayList<PreguntaSeleccionMultiple>();
         this.listaTorneos = new ArrayList<Torneo>();
         this.listaPreguntasAuxTorneo = new ArrayList<Pregunta>();
+        this.listaPromediosTotales = new ArrayList<Promedio>();
+        this.listaMejoresJugadores = new ArrayList<Jugador>();
+        this.listaMejoresJugadores.add(new Jugador());//1
+        this.listaMejoresJugadores.add(new Jugador());//2
+        this.listaMejoresJugadores.add(new Jugador());//3
+        this.listaMejoresJugadores.add(new Jugador());//4
+        this.listaMejoresJugadores.add(new Jugador());//5
+        this.listaMejoresJugadores.add(new Jugador());//6
+        this.listaMejoresJugadores.add(new Jugador());//7
+        this.listaMejoresJugadores.add(new Jugador());//8
+        this.listaMejoresJugadores.add(new Jugador());//9
+        this.listaMejoresJugadores.add(new Jugador());//10
+        
+        
+    }
+
+    public ArrayList<Promedio> getListaPromediosTotales() {
+        return listaPromediosTotales;
+    }
+
+    public void setListaPromediosTotales(ArrayList<Promedio> listaPromediosTotales) {
+        this.listaPromediosTotales = listaPromediosTotales;
+    }
+
+    public ArrayList<Jugador> getListamejoresjugadores() {
+        return listaMejoresJugadores;
+    }
+
+    public void setListamejoresjugadores(ArrayList<Jugador> listamejoresjugadores) {
+        this.listaMejoresJugadores = listamejoresjugadores;
     }
 
     public int getTiempoTotal() {
@@ -573,6 +605,61 @@ public class Metodos {
         } else {
             return false;
         }
+    }
+    
+    //<<<<<<<<<<<<<<<<<<<<<<Compara jugadores de la lista temporal de los jugadores con la lista de los mejores 10>>>>>>>>>>>
+    public void mejores10(){
+        Metodos.getInstance().getListaJugadoresTorneo();
+        Metodos.getInstance().getListamejoresjugadores();
+        Jugador ju=new Jugador();
+        Jugador aux=new Jugador();
+        for (int j = 0; j < Metodos.getInstance().getListaJugadoresTorneo().size(); j++) {
+            ju=Metodos.getInstance().getListaJugadoresTorneo().get(j);
+            for (int i = 0; i < Metodos.getInstance().getListamejoresjugadores().size(); i++) {
+                if(Metodos.getInstance().getListamejoresjugadores().get(i).getPuntos()<ju.getPuntos()){
+                    ArrayList<Jugador> copia=Metodos.getInstance().getListamejoresjugadores();
+                    aux=copia.get(i);
+                    copia.set(i,ju);
+                    copia=moverlista(i+1,aux,copia);
+                    Metodos.getInstance().setListamejoresjugadores(copia);
+                    break;
+                }
+            }
+        }
+    }
+    //mueve la lista insertando al jugador a insertar en el inicio y dejando al ultimo por fuera
+    //al final se retorna la lista
+    public ArrayList<Jugador> moverlista(int inicio,Jugador ainsertar,ArrayList<Jugador> mejores){
+        if(inicio==10){
+            return mejores;
+        }
+        Jugador aux = mejores.get(inicio);
+        mejores.set(inicio, ainsertar);
+        return moverlista(inicio+1, aux, mejores);
+        
+    }
+    public void actualizarPromedios(){
+        for (int i = 0; i < Metodos.getInstance().getListaJugadoresTorneo().size(); i++) {//recorre los jugadores
+            Jugador j = Metodos.getInstance().getListaJugadoresTorneo().get(i);
+            for (int k = 0; k < j.getPorcentajeAciertos().size(); k++) {//recorre los promedios del jugador
+                insertarPromedio(j.getPorcentajeAciertos().get(k));
+            }
+        }
+    }
+    public void insertarPromedio(Promedio p){
+        if(Metodos.getInstance().getListaPromediosTotales().isEmpty()){
+            Metodos.getInstance().getListaPromediosTotales().add(p);
+        }else{
+            boolean b=false;
+            for (int i = 0; i < Metodos.getInstance().getListaPromediosTotales().size(); i++) {
+                if(Metodos.getInstance().getListaPromediosTotales().get(i).getCategoria().equals(p.getCategoria())){
+                    Metodos.getInstance().getListaPromediosTotales().get(i).setCorrectas((Metodos.getInstance().getListaPromediosTotales().get(i).getCorrectas()+p.getCorrectas()));
+                    Metodos.getInstance().getListaPromediosTotales().get(i).setIncorrectas(Metodos.getInstance().getListaPromediosTotales().get(i).getIncorrectas()+p.getIncorrectas());
+                    break;
+                }
+            }
+        }
+        
     }
     
 }

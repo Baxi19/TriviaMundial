@@ -916,7 +916,6 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 }
                 //imprime el ganador
                 Metodos.getInstance().MachineLearningPrint("Felicidades ha ganado: " + ganador);
-                //faltan estadisticas.
                 return true;
             }
         }

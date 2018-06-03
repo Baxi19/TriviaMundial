@@ -42,7 +42,10 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         this.F1=F1;
         this.t=t;
-        
+        Torneo torneo =Metodos.getInstance().buscarTorneo(torneoNombre.getText());
+        torneo.setListaJugadores(Metodos.getInstance().getListaJugadoresTorneo());
+        Metodos.getInstance().mejores10();//actualiza los mejores 10 jugadores
+        Metodos.getInstance().actualizarPromedios();//inserta los nuevos promedios a la lista de toods los promedios por categoria
         verificarTiempo(segundosTorneo);
         Jugador ganador = buscarganador();
         usuarioActual.setText(ganador.getNombreUsuario());
@@ -308,6 +311,20 @@ public class VentanaEstadisticas extends javax.swing.JFrame {
     private void jButtonNewGameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNewGameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonNewGameActionPerformed
+    public void actualizarPromedios(String torneo){
+        Torneo t=Metodos.getInstance().buscarTorneo(torneo);
+        for (int j = 0; j < Metodos.getInstance().getListaJugadoresTorneo().size(); j++) {
+            Jugador jugador= Metodos.getInstance().getListaJugadoresTorneo().get(j);
+            for (int i = 0; i < t.getListaJugadores().size(); i++) {
+                if(t.getListaJugadores().get(i).getNombreUsuario().equals(jugador.getNombreUsuario())){
+                    t.getListaJugadores().get(i).setPorcentajeAciertos(jugador.getPorcentajeAciertos());
+                    break;
+                }
+
+            }
+        }
+    }
+    
     public void verificarTiempo(int segundosTorneo){
         if(segundosTorneo >= 3600 ){
             horas++;

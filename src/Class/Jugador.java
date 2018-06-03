@@ -22,7 +22,7 @@ public class Jugador extends Usuario {
     public Jugador() {
         super("", "", "", "", "", "", new ImageIcon());
         this.monedas = 0;
-        this.puntos = 0;
+        this.puntos = -1000;
         this.comodin = true;
         this.porcentajeAciertos = new ArrayList<>();
     }
@@ -35,6 +35,11 @@ public class Jugador extends Usuario {
         this.comodin=false;
         this.porcentajeAciertos = new  ArrayList<Promedio>();
     }
+
+    public void setPorcentajeAciertos(ArrayList<Promedio> porcentajeAciertos) {
+        this.porcentajeAciertos = porcentajeAciertos;
+    }
+    
 
     public ArrayList<Promedio> getPorcentajeAciertos() {
         return porcentajeAciertos;
