@@ -26,14 +26,14 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public VentanaEditarPerfil(String nombreUsuarioLogueado) {
+    public VentanaEditarPerfil(Usuario nombreUsuarioLogueado) {
         initComponents();
-        usuarioLogueado = nombreUsuarioLogueado;
+        usuarioLogueado = nombreUsuarioLogueado.getNombreUsuario();
         //hace aparecer en el centro de la pantalla
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
-        usuarioActual.setText(nombreUsuarioLogueado);
+        usuarioActual.setText(nombreUsuarioLogueado.getNombreUsuario());
         ImageIcon foto = Metodos.getInstance().BuscarFotoUsuario(usuarioLogueado);
         imagenIcono.setIcon(foto);
         Usuario u = Metodos.getInstance().buscarUsuario(usuarioLogueado);
@@ -323,7 +323,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
     
     private void jButtonHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonHomeMouseClicked
         Metodos.getInstance().getListaJugadoresTorneo().clear();
-        VentanaInicio lg = new VentanaInicio(usuarioLogueado);
+        VentanaInicio lg=new VentanaInicio(usuarioLogueado);
         lg.setVisible(true);
         this.dispose();
         
@@ -347,6 +347,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
                 if (jTextFieldContraseña.getText().equals(jTextFieldConfirmarContraseña.getText())) {
                     Usuario usuario = new Usuario(jTextFieldNombreCompleto.getText(), jTextFieldNombreUsuario.getText(), jTextFieldCorreo.getText(),jTextFieldContraseña.getText(), jTextFieldPais.getText(), jComboBoxSexo.getSelectedItem().toString(), Metodos.getInstance().BuscarFotoUsuario(usuarioLogueado));
                     Metodos.getInstance().ModificarUsuario(usuario, usuarioLogueado);
+                    usuarioLogueado=usuario.getNombreUsuario();
                     JOptionPane.showMessageDialog(rootPane, usuario.getNombreCompleto()+ "Successfully Modified!");
                     
                 } else {
@@ -443,7 +444,7 @@ public class VentanaEditarPerfil extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 
-                new VentanaEditarPerfil("").setVisible(true);
+                new VentanaEditarPerfil(new Usuario()).setVisible(true);
             }
         });
     }

@@ -32,10 +32,10 @@ public class VentanaInicio extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    public VentanaInicio(String nombreUsuarioLogueado) {
+    public VentanaInicio(String u) {
         initComponents();
         
-        nombreUsuario = nombreUsuarioLogueado;
+        nombreUsuario = u;
         Usuario aux = Metodos.getInstance().buscarUsuario(nombreUsuario);
         Jugador aux2 = new Jugador(aux.getNombreCompleto(),aux.getNombreUsuario(), aux.getCorreo(), aux.getContraseña(), aux.getPais(),aux.getSexo(), aux.getFotografia());
         jugador.setText(aux.getNombreUsuario());
@@ -46,7 +46,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //Damos el saludo al usuario logueado
         usuarioActual.setText(null);
-        usuarioActual.setText(nombreUsuarioLogueado);
+        usuarioActual.setText(u);
         showDate();
         showTime();
     }
@@ -594,7 +594,7 @@ public class VentanaInicio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonStartTournamentMouseClicked
 
     private void JButtonPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JButtonPerfilMouseClicked
-        VentanaEditarPerfil edit = new VentanaEditarPerfil(nombreUsuario);
+        VentanaEditarPerfil edit = new VentanaEditarPerfil(Metodos.getInstance().buscarUsuario(nombreUsuario));
         edit.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_JButtonPerfilMouseClicked

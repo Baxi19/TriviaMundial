@@ -28,6 +28,10 @@ public class Usuario {
     private int puntosTotales;
     //constructor
 
+    public Usuario() {
+    }
+
+    
     public Usuario(String nombreCompleto, String nombreUsuario, String correo, String contraseña, String pais, String sexo, ImageIcon fotografia) {
         this.nombreCompleto = nombreCompleto;
         this.nombreUsuario = nombreUsuario;
