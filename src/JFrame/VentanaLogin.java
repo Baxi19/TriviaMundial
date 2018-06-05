@@ -97,6 +97,7 @@ public class VentanaLogin extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         botonMinimizar = new javax.swing.JLabel();
         jButtonBack = new javax.swing.JButton();
+        jButtonGitHub = new javax.swing.JButton();
         jButtonOff = new javax.swing.JButton();
         jButtonNext = new javax.swing.JButton();
         jLabelBackground = new javax.swing.JLabel();
@@ -378,6 +379,21 @@ public class VentanaLogin extends javax.swing.JFrame {
         });
         background.add(jButtonBack, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 440, 50, 40));
 
+        jButtonGitHub.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/GitHub1.png"))); // NOI18N
+        jButtonGitHub.setBorder(null);
+        jButtonGitHub.setBorderPainted(false);
+        jButtonGitHub.setContentAreaFilled(false);
+        jButtonGitHub.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGitHub.setRolloverIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/GitHub2.png"))); // NOI18N
+        jButtonGitHub.setRolloverSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/GitHub2.png"))); // NOI18N
+        jButtonGitHub.setSelectedIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/GitHub2.png"))); // NOI18N
+        jButtonGitHub.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonGitHubMouseClicked(evt);
+            }
+        });
+        background.add(jButtonGitHub, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 130, 60, 60));
+
         jButtonOff.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Image/off1.png"))); // NOI18N
         jButtonOff.setBorder(null);
         jButtonOff.setBorderPainted(false);
@@ -554,6 +570,10 @@ public class VentanaLogin extends javax.swing.JFrame {
         Metodos.getInstance().cerrar();
     }//GEN-LAST:event_jButtonOffMouseClicked
 
+    private void jButtonGitHubMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonGitHubMouseClicked
+        Metodos.getInstance().abrirWeb();
+    }//GEN-LAST:event_jButtonGitHubMouseClicked
+
     public void moverDerecha() {
         // Establecemos la variable que vamos a presentar a la izquierda en x,y  y su movimiento 25 y 5
         AnimationClass ac = new AnimationClass();
@@ -600,6 +620,7 @@ public class VentanaLogin extends javax.swing.JFrame {
     private javax.swing.JButton jButtonBack;
     private javax.swing.JButton jButtonDown;
     private javax.swing.JButton jButtonEntrar;
+    private javax.swing.JButton jButtonGitHub;
     private javax.swing.JButton jButtonNext;
     private javax.swing.JButton jButtonOff;
     private javax.swing.JButton jButtonUp;

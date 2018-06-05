@@ -180,7 +180,7 @@ public class Main {
                 Metodos.getInstance().setPreguntaVF(fv2);
                 crea.update();
                 PreguntaVerdaderoFalso pregunta2 = crea.creaPreguntaFalsoVerdadero();
-                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta2);
+                Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(pregunta2);
                 
                 Respuesta rp5 = new Respuesta("Si", true);
                 Respuesta rp6 = new Respuesta("No", false);
@@ -188,7 +188,7 @@ public class Main {
                 Metodos.getInstance().setPreguntaVF(fv3);
                 crea.update();
                 PreguntaVerdaderoFalso pregunta3 = crea.creaPreguntaFalsoVerdadero();
-                Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta3);
+                Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(pregunta3);
                 
                 //agregamos las preguntas de verdadero o falso  a la lista
                 Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(pregunta);

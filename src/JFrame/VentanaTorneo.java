@@ -423,9 +423,9 @@ public class VentanaTorneo extends javax.swing.JFrame {
             contadorJugadores++;
         }
         //Agregamos las preguntas al juego en una lista auxiliar
-        Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntaSeleccionMultiples());
-        Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntaSeleccionUnicas());
-        Metodos.getInstance().listaPreguntasAuxTorneo.addAll(Metodos.getInstance().getListaPreguntasVerdaderoFalso());
+        Metodos.getInstance().getListaPreguntasAuxTorneo().addAll(Metodos.getInstance().getListaPreguntaSeleccionMultiples());
+        Metodos.getInstance().getListaPreguntasAuxTorneo().addAll(Metodos.getInstance().getListaPreguntaSeleccionUnicas());
+        Metodos.getInstance().getListaPreguntasAuxTorneo().addAll(Metodos.getInstance().getListaPreguntasVerdaderoFalso());
         
         //ordenamos la lista de jugadores
         Metodos.getInstance().ordenarListaUsuarios();
@@ -608,7 +608,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
             }
         }
         juegoIniciado = false;
-        Metodos.getInstance().MachineLearningPrint("This category does not have more answers, \n \n \t \t Select another one to continue");
+        Metodos.getInstance().print("This category does not have more answers, \n \n \t \t Select another one to continue");
         return false;
        
     }   
@@ -683,7 +683,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         int puntos = u.getPuntos();
                         puntos+=10;
                         u.setPuntos(puntos);
-                        Metodos.getInstance().MachineLearningPrint("Correct answer");
+                        Metodos.getInstance().print("Correct answer");
                         String categoria = jListCategorias.getSelectedValue();
                         Promedio t = new Promedio(categoria);
                         u.addPorcentajeAciertos(t,true);
@@ -691,7 +691,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         preguntaRevisada = true;
                         consecutivas++;
                         if(consecutivas==10){
-                            Metodos.getInstance().MachineLearningPrint("CONGRATULATIONS GET 10 COINS FOR 10 QUESTIONS ANSWERED CORRECTLY");
+                            Metodos.getInstance().print("CONGRATULATIONS GET 10 COINS FOR 10 QUESTIONS ANSWERED CORRECTLY");
                             int monedas=Integer.parseInt(usuarioMonedas.getText());
                             u.setMonedas(monedas-5);
                             
@@ -715,7 +715,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         String categoria = jListCategorias.getSelectedValue();
                         Promedio t = new Promedio(categoria);
                         u.addPorcentajeAciertos(t,false);
-                        Metodos.getInstance().MachineLearningPrint("Wront answer \n the correct option is " + listaRespuestas.get(0));
+                        Metodos.getInstance().print("Wront answer \n the correct option is " + listaRespuestas.get(0));
                         preguntaRevisada = true;
                         if(cantpreg()){
                             //aqui mando todo lo que ocupee en estadisticas
@@ -745,14 +745,14 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         int puntos = u.getPuntos();
                         puntos+=10;
                         u.setPuntos(puntos);
-                        Metodos.getInstance().MachineLearningPrint("Correct answers  !!");
+                        Metodos.getInstance().print("Correct answers  !!");
                         insertar = false;
                         String categoria = jListCategorias.getSelectedValue();
                         Promedio t = new Promedio(categoria);
                         u.addPorcentajeAciertos(t,true);
                         consecutivas++;
                         if(consecutivas==10){
-                            Metodos.getInstance().MachineLearningPrint("FELICIDADES OBTIENES 10 MONEDAS POR 10 PREGUNTAS RESPONDIDAS CORRECTAMENTE");
+                            Metodos.getInstance().print("FELICIDADES OBTIENES 10 MONEDAS POR 10 PREGUNTAS RESPONDIDAS CORRECTAMENTE");
                             int monedas=Integer.parseInt(usuarioMonedas.getText());
                             u.setMonedas(monedas-5);
                         }
@@ -778,7 +778,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                         String categoria = jListCategorias.getSelectedValue();
                         Promedio t = new Promedio(categoria);
                         u.addPorcentajeAciertos(t,false);
-                        Metodos.getInstance().MachineLearningPrint("Wrong answer  !!");
+                        Metodos.getInstance().print("Wrong answer  !!");
                         listModel2.addElement("CORRECT ANSWERS");
                         for (String respuestasCorrectas : listaRespuestas) {
                             listModel2.addElement(respuestasCorrectas);
@@ -849,7 +849,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
             }
         }
         else{
-            Metodos.getInstance().MachineLearningPrint("You only can buy this wildcard \n in Single Selection Question by 5 coins");
+            Metodos.getInstance().print("You only can buy this wildcard \n in Single Selection Question by 5 coins");
         }
     }//GEN-LAST:event_jButtonWildCardMouseClicked
 
@@ -905,7 +905,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                 }
             }
             if(1==Metodos.getInstance().getListaJugadoresTorneo().size()){
-                Metodos.getInstance().MachineLearningPrint("No quedan mas preguntas, Felicidades");
+                Metodos.getInstance().print("No quedan mas preguntas, Felicidades");
                 return true;
             }
             else{
@@ -915,7 +915,7 @@ public class VentanaTorneo extends javax.swing.JFrame {
                     }
                 }
                 //imprime el ganador
-                Metodos.getInstance().MachineLearningPrint("Felicidades ha ganado: " + ganador);
+                Metodos.getInstance().print("Felicidades ha ganado: " + ganador);
                 return true;
             }
         }

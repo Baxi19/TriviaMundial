@@ -37,14 +37,14 @@ public class Metodos {
     public ArrayList<Usuario> listaUsuarios;
     public ArrayList<Usuario> listaUsuariosAdmi;
     private ArrayList<Jugador> listaJugadoresTorneo;
-    public ArrayList<Categoria> listaCategorias;
-    public ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
-    public ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
-    public ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
-    public ArrayList<Torneo> listaTorneos;
-    public ArrayList <Pregunta> listaPreguntasAuxTorneo;
-    public ArrayList <Jugador> listaMejoresJugadores;
-    public ArrayList <Promedio> listaPromediosTotales;
+    private ArrayList<Categoria> listaCategorias;
+    private ArrayList<PreguntaVerdaderoFalso> listaPreguntasVerdaderoFalso;
+    private ArrayList<PreguntaSeleccionUnica> listaPreguntaSeleccionUnicas;
+    private ArrayList<PreguntaSeleccionMultiple> listaPreguntaSeleccionMultiples;
+    private ArrayList<Torneo> listaTorneos;
+    private ArrayList <Pregunta> listaPreguntasAuxTorneo;
+    private ArrayList <Jugador> listaMejoresJugadores;
+    private ArrayList <Promedio> listaPromediosTotales;
     
     //Singleton
     public static Metodos instance = null;
@@ -581,7 +581,7 @@ public class Metodos {
 
     }
     
-    public void MachineLearningPrint(String mensaje){
+    public void print(String mensaje){
         //XD
         JOptionPane.showMessageDialog(null, mensaje);
     }

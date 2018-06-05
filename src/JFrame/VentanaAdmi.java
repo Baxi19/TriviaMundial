@@ -1048,7 +1048,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
     public void imprimirPreguntas(String categoria){
         //metodo para imprimir preguuntas 
         listModel2.clear();//limpiamos el listmodel
-        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntaSeleccionMultiples().size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
             if (aux.getCategoria().equals(categoria)) {
                 listModel2.addElement(aux.getPregunta());
@@ -1059,10 +1059,10 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
-        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntaSeleccionUnicas().size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
             if(aux2.getCategoria().equals(categoria)){
-                Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
+                Pregunta nuevo = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
                 listModel2.addElement(aux2.getPregunta());
                 listModel2.addElement(aux2.getRespuesta1().toString());
                 listModel2.addElement(aux2.getRespuesta2().toString());
@@ -1071,10 +1071,10 @@ public class VentanaAdmi extends javax.swing.JFrame {
                 listModel2.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
-        for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntasVerdaderoFalso().size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
             if(aux3.getCategoria().equals(categoria)){
-                Pregunta nuevo = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
+                Pregunta nuevo = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
                 listModel2.addElement(aux3.getPregunta());
                 listModel2.addElement(aux3.getRespuestaFalsa().toString());
                 listModel2.addElement(aux3.getRespuestaVerdadera().toString());
@@ -1103,7 +1103,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         aux2 = Metodos.getInstance().VerificarCategoria(categoria.getText());
         if(aux2 == true ){
             Categoria cat = new Categoria(categoria.getText(), Metodos.getInstance().aumentarCategoria());
-            Metodos.getInstance().listaCategorias.add(cat);
+            Metodos.getInstance().getListaCategorias().add(cat);
             JOptionPane.showMessageDialog(rootPane, categoria.getText() + ":  Category successfully added");
             imprimirCategorias();
         }else{
@@ -1118,8 +1118,8 @@ public class VentanaAdmi extends javax.swing.JFrame {
     public void imprimirCategorias(){
         //metodo para imprimir Categorias 
         listModel.clear();//limpiamos el listmodel
-        for (int i = 0; i < Metodos.getInstance().listaCategorias.size(); i++) {
-            String aux = Metodos.getInstance().listaCategorias.get(i).getTipo();
+        for (int i = 0; i < Metodos.getInstance().getListaCategorias().size(); i++) {
+            String aux = Metodos.getInstance().getListaCategorias().get(i).getTipo();
             listModel.addElement(aux);
         }
         jListCategorias.setModel(listModel);
@@ -1350,7 +1350,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         Crea crea;
         crea = new CreaPreguntas();
         PreguntaSeleccionUnica pregunta = crea.creaPreguntaSeleccionUnica();
-        Metodos.getInstance().listaPreguntaSeleccionUnicas.add(pregunta);
+        Metodos.getInstance().getListaPreguntaSeleccionUnicas().add(pregunta);
         System.out.println(pregunta);
         JOptionPane.showMessageDialog(rootPane, "Question added!");
 
@@ -1369,7 +1369,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         Crea crea;
         crea = new CreaPreguntas();
         PreguntaVerdaderoFalso pregunta = crea.creaPreguntaFalsoVerdadero();
-        Metodos.getInstance().listaPreguntasVerdaderoFalso.add(pregunta);
+        Metodos.getInstance().getListaPreguntasVerdaderoFalso().add(pregunta);
         System.out.println(pregunta);
         JOptionPane.showMessageDialog(rootPane, "Question True / False added!");
 
@@ -1393,7 +1393,7 @@ public class VentanaAdmi extends javax.swing.JFrame {
         Crea crea;
         crea = new CreaPreguntas();
         PreguntaSeleccionMultiple pregunta = crea.creaPreguntaSeleccionMultiple();
-        Metodos.getInstance().listaPreguntaSeleccionMultiples.add(pregunta);
+        Metodos.getInstance().getListaPreguntaSeleccionMultiples().add(pregunta);
         System.out.println(pregunta);
         JOptionPane.showMessageDialog(rootPane, "Question multiple selection added!");
 

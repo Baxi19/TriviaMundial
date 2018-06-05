@@ -721,8 +721,8 @@ public class VentanaConsultas extends javax.swing.JFrame {
     public void imprimirCategorias(){
         //metodo para imprimir Categorias 
         listModel2.clear();//limpiamos el listmodel
-        for (int i = 0; i < Metodos.getInstance().listaCategorias.size(); i++) {
-            String aux = Metodos.getInstance().listaCategorias.get(i).getTipo();
+        for (int i = 0; i < Metodos.getInstance().getListaCategorias().size(); i++) {
+            String aux = Metodos.getInstance().getListaCategorias().get(i).getTipo();
             listModel2.addElement(aux);
         }
         jListCategorias.setModel(listModel2);
@@ -731,7 +731,7 @@ public class VentanaConsultas extends javax.swing.JFrame {
     public void imprimirPreguntas(String categoria){
         //metodo para imprimir preguuntas 
         listModel.clear();//limpiamos el listmodel
-        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionMultiples.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntaSeleccionMultiples().size(); i++) {
             PreguntaSeleccionMultiple aux = Metodos.getInstance().getListaPreguntaSeleccionMultiples().get(i);
             if (aux.getCategoria().equals(categoria)) {
                 listModel.addElement(aux.getPregunta());
@@ -742,10 +742,10 @@ public class VentanaConsultas extends javax.swing.JFrame {
                 listModel.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
-        for (int i = 0; i < Metodos.getInstance().listaPreguntaSeleccionUnicas.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntaSeleccionUnicas().size(); i++) {
             PreguntaSeleccionUnica aux2 = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
             if(aux2.getCategoria().equals(categoria)){
-                Pregunta nuevo = Metodos.getInstance().listaPreguntaSeleccionUnicas.get(i);
+                Pregunta nuevo = Metodos.getInstance().getListaPreguntaSeleccionUnicas().get(i);
                 listModel.addElement(aux2.getPregunta());
                 listModel.addElement(aux2.getRespuesta1().toString());
                 listModel.addElement(aux2.getRespuesta2().toString());
@@ -754,10 +754,10 @@ public class VentanaConsultas extends javax.swing.JFrame {
                 listModel.addElement("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
             }
         }
-        for (int i = 0; i < Metodos.getInstance().listaPreguntasVerdaderoFalso.size(); i++) {
+        for (int i = 0; i < Metodos.getInstance().getListaPreguntasVerdaderoFalso().size(); i++) {
             PreguntaVerdaderoFalso aux3 = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
             if(aux3.getCategoria().equals(categoria)){
-                Pregunta nuevo = Metodos.getInstance().listaPreguntasVerdaderoFalso.get(i);
+                Pregunta nuevo = Metodos.getInstance().getListaPreguntasVerdaderoFalso().get(i);
                 listModel.addElement(aux3.getPregunta());
                 listModel.addElement(aux3.getRespuestaFalsa().toString());
                 listModel.addElement(aux3.getRespuestaVerdadera().toString());

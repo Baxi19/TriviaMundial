@@ -571,7 +571,7 @@ public class VentanaInicio extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(rootPane, "Incorrect data");
             return;
         }
-        int suma = (Metodos.getInstance().listaPreguntaSeleccionMultiples.size()) + (Metodos.getInstance().listaPreguntaSeleccionUnicas.size()) + (Metodos.getInstance().listaPreguntasVerdaderoFalso.size());
+        int suma = (Metodos.getInstance().getListaPreguntaSeleccionMultiples().size()) + (Metodos.getInstance().getListaPreguntaSeleccionUnicas().size()) + (Metodos.getInstance().getListaPreguntasVerdaderoFalso().size());
         if (Integer.parseInt(jTextFieldCantidadPreguntas.getText()) < 1) {
             JOptionPane.showMessageDialog(rootPane, "The Minimun number is 1");
             return;
@@ -582,7 +582,7 @@ public class VentanaInicio extends javax.swing.JFrame {
         } else {
             Metodos.getInstance().ordenarListaUsuarios();
             Torneo torneo = new Torneo(jTextFieldNombreTorneo.getText(), Metodos.getInstance().getListaJugadoresTorneo().size(), Integer.parseInt(jLabelNivel.getText()), Integer.parseInt(jTextFieldCantidadPreguntas.getText()),Metodos.getInstance().getListaJugadoresTorneo());
-            Metodos.getInstance().listaTorneos.add(torneo);
+            Metodos.getInstance().getListaTorneos().add(torneo);
             Metodos.getInstance().setTorneo(torneo);
             JOptionPane.showMessageDialog(rootPane, "Tournament add successful");
             VentanaTorneo vT = new VentanaTorneo(Metodos.getInstance().getListaJugadoresTorneo().get(0).getNombreUsuario(),this);
